@@ -1,4 +1,4 @@
-const association = require('./../model/organizerInfoModel');
+const association = require('./../model/InfoSubCollections/organizerInfoModel');
 
 
 // exports.authorizeAssociation = async(req,res)=>{
