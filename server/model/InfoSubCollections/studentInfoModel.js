@@ -30,6 +30,10 @@ const studentInfoSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Student must mention his year of study"],
   },
+  studentGraduationYear: {
+    type: Number,
+    required: [true, "Student must mention graduation year"],
+  },
   studentEmail: {
     type: String,
     required: [true, "Student must have an Email id"],
