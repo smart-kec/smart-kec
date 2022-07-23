@@ -3,15 +3,11 @@ const mongoose = require('mongoose');
 
 const members = new mongoose.Schema({
     
-    memberName : {
+    memberKey : {
         type : String,
         trim : true
     },
     memberDesignation : {
-        type : String,
-        trim : true
-    },
-    memberEmail : {
         type : String,
         trim : true
     }
@@ -55,6 +51,10 @@ const organizerInfoSchema = new mongoose.Schema({
         default : []
     },
 
+    coOrdinatorsKey : {
+        type : [String],
+        default : []
+    },
     organizationMembers : [members],
 
     organizationEmail : {

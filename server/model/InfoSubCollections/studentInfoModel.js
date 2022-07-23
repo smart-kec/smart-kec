@@ -8,10 +8,12 @@ const studentInfoSchema = new mongoose.Schema({
   studentRollNo: {
     type: String,
     required: [true, "A student must have a roll number"],
+    unique: true,
   },
   _id: {
     type: String,
     required: [true, "Id must be a roll number"],
+    unique: true,
   },
   studentProgramme: {
     type: String,
@@ -31,6 +33,7 @@ const studentInfoSchema = new mongoose.Schema({
   studentEmail: {
     type: String,
     required: [true, "Student must have an Email id"],
+    unique: true,
   },
   studentPhoneNumber: {
     type: String,
@@ -39,6 +42,7 @@ const studentInfoSchema = new mongoose.Schema({
   hackerRankId: {
     type: String,
     required: [true, "Must mention hacker rank id for Coding Contests"],
+    unique: true,
   },
   notifyMe: {
     type: Boolean,
