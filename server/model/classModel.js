@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const advisorSchema = new mongoose.Schema({
   markAdvisorKey: {
-    type: String,
+    type: ObjectId,
   },
   attendenceAdvisorKey: {
-    type: String,
+    type: ObjectId,
   },
   eventsAdvisorKey: {
-    type: String,
-  },
+    type: ObjectId,
+  }
 });
 
 const classSchema = new mongoose.Schema({

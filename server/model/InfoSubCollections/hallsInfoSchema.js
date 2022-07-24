@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const bookingDateSchema = new mongoose.Schema({
     date : {
-        type : String,
+        type : Date,
         unique : true
     },
     bookingKeys : {
-        type : [String]
+        type : [ObjectId]
     }
 });
 

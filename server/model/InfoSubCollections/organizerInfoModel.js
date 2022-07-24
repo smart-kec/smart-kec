@@ -52,7 +52,7 @@ const organizerInfoSchema = new mongoose.Schema({
     },
 
     coOrdinatorsKey : {
-        type : [String],
+        type : [ObjectId],
         default : []
     },
     organizationMembers : [members],

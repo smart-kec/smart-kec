@@ -38,26 +38,26 @@ const timeTableSchema = new mongoose.Schema({
     type: String,
   },
   classKey: {
-    type: String,
+    type: ObjectId,
   },
   subject: {
     type: String,
   },
   staffKey: {
-    type: String,
+    type: ObjectId,
   },
   supportStaffKeys: {
-    type: [String],
+    type: [ObjectId],
   },
 });
 
 const bookingDateSchema = new mongoose.Schema({
     date : {
-        type : String,
+        type : date,
         unique : true
     },
     bookingKeys : {
-        type : [String]
+        type : [ObjectId]
     }
 });
 
@@ -81,10 +81,10 @@ const labInfoSchema = new mongoose.Schema({
     required: [true, "Lab must have an email id"],
   },
   inchargeKey: {
-    type: String,
+    type: ObjectId,
   },
   assistantKey: {
-    type: String,
+    type: ObjectId,
   },
   labDept: {
     type: String,
