@@ -9,15 +9,8 @@ app.use(
   })
 );
 const loginRouter = require("./routes/loginRoutes");
-const studentInfoRouter = require("./routes/studentInfoRoutes");
-const organizerInfoRouter = require("./routes/organizerInfoRoutes");
-const eventInfoRouter = require("./routes/eventInfoRoutes");
-const registrationRouter = require("./routes/registrationRoutes");
 
 // app.use('/login',loginRouter);
-// app.use('/student',studentInfoRouter);
-// app.use('/organizer',organizerInfoRouter);
-// app.use('/event',eventInfoRouter);
-// app.use('/registration',registrationRouter);
+
 
 module.exports = app;
