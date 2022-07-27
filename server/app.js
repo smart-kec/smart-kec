@@ -1,6 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+
+const loginRouter = require("./routes/loginRoutes");
+
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -8,9 +12,9 @@ app.use(
     extended: true,
   })
 );
-const loginRouter = require("./routes/loginRoutes");
 
-// app.use('/login',loginRouter);
+app.use('/login',loginRouter);
+
 
 
 module.exports = app;
