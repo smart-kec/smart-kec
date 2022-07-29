@@ -1,31 +1,12 @@
 const mongoose = require ('mongoose');
 
-const studentDetailsSchema = new mongoose.Schema({
-    studentName : {
-        type : String,
-        required : [true,"A registered student must have a name"]
-    },
-    studentRollNo : {
-        type : String,
-        required : [true,"A registered student must have a roll number"]
-    },
-    studentEmailId : {
-        type : String,
-        trim : true
-    },
-    studentPhoneNumber : {
-        type : String,
-        trim : true
-    }
-});
 
 const registeredStudentsInfoSchema = new mongoose.Schema({
 
     studentDetails : {
-        type : [studentDetailsSchema],
+        type : [String],
         default : []
     },
-
     isSelectedParticipant : {
         type : Boolean,
         required : [true, "Required : Has Participant selected?"],
@@ -37,18 +18,7 @@ const registeredStudentsInfoSchema = new mongoose.Schema({
 });
 
 const selectedParticipantsSchema = new mongoose.Schema({
-    studentName : {
-        type : String,
-        required : [true,"A registered student must have a name"]
-    },
-    studentRollNo : {
-        type : String,
-        required : [true,"A registered student must have a roll number"]
-    },
-    studentEmailId : {
-        type : String,
-        trim : true
-    },
+    studentsKeys : [String],
     participantAttendence : {
         type : Boolean,
         required : [true, "Required : Participant Attendence"],
@@ -84,8 +54,8 @@ const registrationSchema = new mongoose.Schema({
         unique : true,
         trim : true
     },
-    festOrganizer : {
-        type : String,
+    festOrganizerKey : {
+        type : ObjectId,
         required : [true, "Organizer for an event is must"]
     },
     registeredFestEvents : {
