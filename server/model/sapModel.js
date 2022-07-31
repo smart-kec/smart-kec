@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const sapEvents = new mongoose.Schema({
+const sapEventsSchema = new mongoose.Schema({
   eventCategory: {
     type: String,
     required: [true, "Required Event Category"],

@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import studentInfo from "./InfoSubCollections/studentInfoModel";
-import organizerInfo from "./InfoSubCollections/organizerInfoModel";
-import staffInfo from "./InfoSubCollections/studentInfoModel";
-import labInfo from "./InfoSubCollections/labsInfo";
-import hallInfo from "./InfoSubCollections/hallsInfoSchema";
+import studentInfo from "./InfoCollections/studentInfoModel";
+import organizerInfo from "./InfoCollections/organizerInfoModel";
+import staffInfo from "./InfoCollections/studentInfoModel";
+import labInfo from "./InfoCollections/labsInfo";
+import hallInfo from "./InfoCollections/hallsInfoSchema";
 
 const infoSchema = new mongoose.Schema({
   students: [studentInfo],

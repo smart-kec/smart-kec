@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-const loginRouter = require("./routes/loginRoutes");
+const signupRouter = require("./routes/signupRoutes");
 
+const accountCreation = require("./controller/SignUp/createAccount");
+const saveInfo = require("./controller/SignUp/signupController");
 
 app.use(bodyParser.json());
 app.use(
@@ -12,9 +14,7 @@ app.use(
     extended: true,
   })
 );
-
-app.use('/login',loginRouter);
-
-
+//app.post("/studentsignup", accountCreation.saveAccount, saveInfo.studentInfo);
+app.use("/signup", signupRouter);
 
 module.exports = app;
