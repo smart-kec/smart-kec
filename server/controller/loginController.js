@@ -1,6 +1,12 @@
 const association = require('./../model/InfoSubCollections/organizerInfoModel');
 
+exports.loginAuthentication = async (req,res)=>{
 
+}
+
+exports.forgotPassword = async (req,res)=>{
+    
+}
 // exports.authorizeAssociation = async(req,res)=>{
 //     try{
 //         //console.log(req.body.loginEmail);

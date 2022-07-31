@@ -1,45 +1,41 @@
 const mongoose = require("mongoose");
 
 const studentInfoSchema = new mongoose.Schema({
-  studentName: {
+  name: {
     type: String,
     required: [true, "A student must have a name"],
   },
-  studentRollNo: {
+  rollNo: {
     type: String,
     required: [true, "A student must have a roll number"],
-    unique: true,
+    unique: [true, "Rollnumber must be unique"],
   },
-  _id: {
-    type: String,
-    required: [true, "Id must be a roll number"],
-    unique: true,
-  },
-  studentProgramme: {
+  programme: {
     type: String,
     required: [true, "A student must be in a programme"],
   },
-  studentBranch: {
+  branch: {
     type: String,
     required: [true, "Student must study in any one of the branches"],
   },
-  studentSection: {
+  section: {
     type: String,
+    default: "Not Assigned",
   },
-  studentYearOfStudy: {
+  yearOfStudy: {
     type: Number,
     required: [true, "Student must mention his year of study"],
   },
-  studentGraduationYear: {
+  graduationYear: {
     type: Number,
     required: [true, "Student must mention graduation year"],
   },
-  studentEmail: {
+  email: {
     type: String,
     required: [true, "Student must have an Email id"],
     unique: true,
   },
-  studentPhoneNumber: {
+  phoneNumber: {
     type: String,
     required: [true, "Student must mention mobile number for contact"],
   },
@@ -48,11 +44,7 @@ const studentInfoSchema = new mongoose.Schema({
     required: [true, "Must mention hacker rank id for Coding Contests"],
     unique: true,
   },
-  notifyMe: {
-    type: Boolean,
-    required: [true, "Notification on/ off - Must be mentioned"],
-  },
-  studentRegisteredEvents: {
+  registeredEvents: {
     type: [String],
     default: [],
   },

@@ -4,8 +4,13 @@ const loginController = require('./../controller/loginController');
 
 const router = express.Router();
 
-// router 
-//     .route('/create')
-//     .post(loginController.insertAssociation)
+router 
+    .route('/')
+    .post(loginController.loginAuthentication)
+
+router
+    .route('/forgotPassword')
+    .post(loginController.forgotPassword)
+
 
 module.exports = router;
