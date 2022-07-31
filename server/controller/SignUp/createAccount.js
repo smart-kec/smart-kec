@@ -1,35 +1,8 @@
 const User = require("../../model/accountsModel");
+const handlError = require("./handleErrors");
 const bcrypt = require("bcrypt");
 const passwordValidation = require("password-validator");
 var checkPassword;
-const handleError = (err) => {
-  let errors = { email: "", password: "", type: "" };
-  // console.log(err);
-
-  //Password length
-  if (err.message.includes("Password length")) {
-    console.log(checkPassword);
-    checkPassword.forEach((mes) => {
-      errors.password += mes.message + ", ";
-    });
-    return errors;
-  }
-
-  //Duplicate key error
-  if (err.code == 11000) {
-    errors.email = "This email id is already registered...";
-    return errors;
-  }
-
-  //Validation Error
-  if (err.message.includes("accounts validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-
-  return errors;
-};
 
 module.exports.saveAccount = async (req, res, next) => {
   const { email, password, type } = req.body;
@@ -63,7 +36,7 @@ module.exports.saveAccount = async (req, res, next) => {
     console.log("MiddleWare Account Processed");
     next();
   } catch (err) {
-    var errors = handleError(err);
+    var errors = handlError.handleAccountError(err, checkPassword);
     res.status(400).json(errors);
   }
 };
