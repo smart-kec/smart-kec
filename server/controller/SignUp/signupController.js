@@ -1,7 +1,7 @@
 const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const accountsModel = require("../../model/accountsModel");
 const handleError = require("./handleErrors");
-module.exports.studentInfo = async (req, res) => {
+module.exports.studentInfo = async (req, res, next) => {
   const {
     name,
     rollNo,
@@ -15,7 +15,7 @@ module.exports.studentInfo = async (req, res) => {
   } = req.body;
 
   try {
-    const studDetails = await studentInfoModel.create({
+    await studentInfoModel.create({
       name,
       rollNo,
       programme,
@@ -26,14 +26,17 @@ module.exports.studentInfo = async (req, res) => {
       phoneNumber,
       hackerRankId,
     });
-    console.log(studDetails);
-    res.status(201).send("User Created Successfully");
+    next();
   } catch (err) {
     var errors = handleError.handleStudentError(err);
     try {
       await accountsModel.deleteOne({ email });
     } catch (er) {
-      res.status(400).send(er);
+      res.status(400).json({
+        status: "failed",
+        message:
+          "Account model not deleted but constraints available in student info",
+      });
     }
     res.status(400).json(errors);
   }

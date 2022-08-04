@@ -1,5 +1,5 @@
 module.exports.handleAccountError = (err, checkPassword) => {
-  let errors = { email: "", password: "", type: "" };
+  let errors = { status: "failed", email: "", password: "", type: "" };
   // console.log(err);
 
   //Password length
@@ -29,6 +29,7 @@ module.exports.handleAccountError = (err, checkPassword) => {
 
 module.exports.handleStudentError = (err) => {
   let errors = {
+    status: "failed",
     name: "",
     rollNo: "",
     programme: "",
@@ -39,14 +40,41 @@ module.exports.handleStudentError = (err) => {
     phoneNumber: "",
     hackerRankId: "",
   };
-  console.log(err);
+  // console.log(err);
 
   //Duplicate key error
   if (err.code == 11000) {
-    return { duplicate: "Duplicates Values already available" };
+    return {
+      status: "failed",
+      message: "Duplicates Values already available",
+    };
   }
   //Validation Error
   if (err.message.includes("studentinfo validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+    return errors;
+  }
+};
+
+module.exports.handleOTPError = (err) => {
+  let errors = {
+    status: "failed",
+    email: "",
+    otp: "",
+  };
+  // console.log(err);
+
+  //Duplicate key error
+  if (err.code == 11000) {
+    return {
+      status: "failed",
+      message: "Duplicates Values already available",
+    };
+  }
+  //Validation Error
+  if (err.message.includes("otpdetails validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
     });
