@@ -1,10 +1,13 @@
+
 const mongoose = require("mongoose");
+
 
 const registeredStudentsInfoSchema = new mongoose.Schema({
   regStudentRollNo: {
     type: [String],
     default: [],
   },
+
 
   isSelectedParticipant: {
     type: Boolean,
@@ -26,6 +29,7 @@ const selectedParticipantsSchema = new mongoose.Schema({
     required: [true, "Required : Participant Attendence"],
     default: false,
   },
+  
 });
 
 const registeredFestEventsSchema = new mongoose.Schema({
@@ -45,6 +49,7 @@ const registeredFestEventsSchema = new mongoose.Schema({
 });
 
 const registrationSchema = new mongoose.Schema({
+
   registrationFestId: {
     type: String,
     required: [true, "An event must have an event id"],
@@ -64,6 +69,7 @@ const registrationSchema = new mongoose.Schema({
     type: [registeredFestEventsSchema],
     default: [],
   },
+
 });
 
 const registrationModel = mongoose.model(
