@@ -1,0 +1,52 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-Content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+}
+
+.header {
+    color: white;
+    padding: 10px;
+}
+
+.card {
+    margin-top: 20px;
+    box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
+    padding: 50px 100px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.message {
+    text-align: center;
+    font-size: 20px;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.button {
+    text-align: center;
+    padding: 10px;
+    border: none;
+    background-color: #4fffe7;
+    border-radius: 30px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: white;
+    outline: none;
+    font-size: 6;
+    box-sizing: border-box;
+}
