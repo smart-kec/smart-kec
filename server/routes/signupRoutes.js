@@ -5,6 +5,9 @@ const router = Router();
 const accountCreation = require("../controller/SignUp/createAccount");
 const saveInfo = require("../controller/SignUp/signupController");
 const otpController = require("../controller/SignUp/otpController");
+const authorizationController = require("../controller/AuthController/authorizationController");
+
+router.route("/*").post(authorizationController.beforeAuthorization);
 
 router
   .route("/generateotp")

@@ -1,12 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-
+const cookiePareser = require("cookie-parser");
 const signupRouter = require("./routes/signupRoutes");
+const loginRouter = require("./routes/loginRoutes");
 
-const accountCreation = require("./controller/SignUp/createAccount");
-const saveInfo = require("./controller/SignUp/signupController");
-
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -14,7 +13,9 @@ app.use(
     extended: true,
   })
 );
-//app.post("/studentsignup", accountCreation.saveAccount, saveInfo.studentInfo);
+app.use(cookiePareser());
+
 app.use("/signup", signupRouter);
+app.use("/login", loginRouter);
 
 module.exports = app;

@@ -1,4 +1,4 @@
-const otpModel = require("../../model/InfoCollections/otpVerificationModel");
+const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel");
 const accountModel = require("../../model/accountsModel");
 const handleError = require("./handleErrors");
 const bcrypt = require("bcrypt");
@@ -31,7 +31,7 @@ module.exports.generateAndSendEmailOtp = async (req, res) => {
     const data = {
       from: process.env.MAIL_USER,
       to: email,
-      subject: "Verify OTP - Smart KEC",
+      subject: "Verify Your Otp - Smart KEC",
       text: `OTP for your student verification in smart KEC is generated and valid for 5 mins. The OTP is ${otp} `,
     };
     await transporter.sendMail(data, (error, info) => {
