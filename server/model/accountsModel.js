@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+const bcrypt = require("bcrypt");
 
 const accountSchema = new mongoose.Schema({
   email: {
@@ -25,6 +26,23 @@ const accountSchema = new mongoose.Schema({
     ],
   },
 });
+
+accountSchema.statics.login = async function (email, password, type) {
+  const user = await this.findOne({ email, type });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw Error("incorrect password");
+  } else {
+    if (type != "Student") {
+      throw Error("choose your validType");
+    } else {
+      throw Error("incorrect email");
+    }
+  }
+};
 
 const accountModel = mongoose.model("accounts", accountSchema);
 

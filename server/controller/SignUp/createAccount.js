@@ -30,11 +30,10 @@ module.exports.saveAccount = async (req, res, next) => {
     if (checkPassword.length == 0) {
       hashedPassword = await bcrypt.hash(password, 10);
       const user = await User.create({ email, password: hashedPassword, type });
+      next();
     } else {
       throw new Error("Password length");
     }
-    console.log("MiddleWare Account Processed");
-    next();
   } catch (err) {
     var errors = handlError.handleAccountError(err, checkPassword);
     res.status(400).json(errors);
