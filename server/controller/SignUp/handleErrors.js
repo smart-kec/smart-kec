@@ -81,3 +81,32 @@ module.exports.handleOTPError = (err) => {
     return errors;
   }
 };
+
+module.exports.handlePasswordResetError = (err, checkPassword) => {
+  let errors = { status: "failed", email: "", password: "" };
+  // console.log(err);
+
+  //Password length
+  if (err.message.includes("Password length")) {
+    console.log(checkPassword);
+    checkPassword.forEach((mes) => {
+      errors.password += mes.message + ", ";
+    });
+    return errors;
+  }
+
+  //Duplicate key error
+  if (err.code == 11000) {
+    errors.email = "This email id is already registered...";
+    return errors;
+  }
+
+  //Validation Error
+  if (err.message.includes("passwordresets validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+
+  return errors;
+};

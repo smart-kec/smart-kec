@@ -13,4 +13,9 @@ router
   .route("/requestResetPassword")
   .post(resetPassword.checkUser, resetPassword.sendLink);
 
+router.route("/getEmail").post(resetPassword.getEmail);
+
+router
+  .route("/reset")
+  .post(resetPassword.checkForValidToken, resetPassword.resetPassword);
 module.exports = router;
