@@ -11,9 +11,9 @@ const passwordReset = new mongoose.Schema({
     validate: [isEmail, "Please, enter a valid email "],
   },
   userID: { type: String },
-  resetLink: {
+  resetToken: {
     type: String,
-    required: [true, "Reset link"],
+    required: [true, "Reset Token"],
   },
   createdAt: Date,
   expiresAt: Date,
