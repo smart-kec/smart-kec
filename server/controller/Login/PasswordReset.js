@@ -4,7 +4,6 @@ const passwordReset = require("../../model/OTP and Reset Models/resetModel");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
-const { findOne, findOneAndUpdate } = require("../../model/accountsModel");
 const passwordValidation = require("password-validator");
 const handleError = require("../SignUp/handleErrors");
 
