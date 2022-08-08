@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import {
   ServicesContainer,
   ServicesH1,
@@ -9,9 +9,9 @@ import {
   ServicesH2,
   ServicesP,
 } from "./ServicesElements";
-import Icon1 from "../../images/svg-1.svg";
-import Icon2 from "../../images/svg-2.svg";
-import Icon3 from "../../images/svg-3.svg";
+import Icon1 from "../../images/svg-4.svg";
+import Icon2 from "../../images/svg-3.svg";
+import Icon3 from "../../images/svg-2.svg";
 
 // const[image2,setImage] = useState(null)
 // useEffect(() => {
