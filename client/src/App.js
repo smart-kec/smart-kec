@@ -1,13 +1,17 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages";
+import EmailPage from "./pages/EmailPage";
 
 function App() {
   return (
-    <Router>
-      <Home />
-    </Router>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/email" element={<EmailPage />} />
+      </Routes>
+    </>
   );
 }
 
