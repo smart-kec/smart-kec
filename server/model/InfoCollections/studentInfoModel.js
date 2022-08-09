@@ -22,9 +22,17 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     default: "Not Assigned",
   },
+  semesterNo: {
+    type: Number,
+    default: "Not Assigned",
+  },
   yearOfStudy: {
     type: Number,
     required: [true, "Student must mention his year of study"],
+  },
+  gender: {
+    type: String,
+    required: [true, "Mention Gender"],
   },
   graduationYear: {
     type: Number,
