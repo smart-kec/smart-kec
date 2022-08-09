@@ -1,6 +1,6 @@
 const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const accountsModel = require("../../model/accountsModel");
-const handleError = require("./handleErrors");
+const handleError = require("../HandleError/handleErrors");
 module.exports.studentInfo = async (req, res, next) => {
   const {
     name,
@@ -8,6 +8,7 @@ module.exports.studentInfo = async (req, res, next) => {
     programme,
     branch,
     yearOfStudy,
+    gender,
     graduationYear,
     email,
     phoneNumber,
@@ -21,6 +22,7 @@ module.exports.studentInfo = async (req, res, next) => {
       programme,
       branch,
       yearOfStudy,
+      gender,
       graduationYear,
       email,
       phoneNumber,

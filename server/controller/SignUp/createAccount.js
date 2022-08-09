@@ -1,5 +1,5 @@
 const User = require("../../model/accountsModel");
-const handlError = require("./handleErrors");
+const handlError = require("../HandleError/handleErrors");
 const bcrypt = require("bcrypt");
 const passwordValidation = require("password-validator");
 var checkPassword;
@@ -30,6 +30,7 @@ module.exports.saveAccount = async (req, res, next) => {
     if (checkPassword.length == 0) {
       hashedPassword = await bcrypt.hash(password, 10);
       const user = await User.create({ email, password: hashedPassword, type });
+
       next();
     } else {
       throw new Error("Password length");

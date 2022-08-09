@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
 const passwordValidation = require("password-validator");
-const handleError = require("../SignUp/handleErrors");
+const handleError = require("../HandleError/handleErrors");
 
 var transporter = nodemailer.createTransport({
   service: process.env.MAIL_HOST,

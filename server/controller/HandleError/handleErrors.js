@@ -1,3 +1,4 @@
+//Account
 module.exports.handleAccountError = (err, checkPassword) => {
   let errors = { status: "failed", email: "", password: "", type: "" };
   // console.log(err);
@@ -27,6 +28,7 @@ module.exports.handleAccountError = (err, checkPassword) => {
   return errors;
 };
 
+//Student
 module.exports.handleStudentError = (err) => {
   let errors = {
     status: "failed",
@@ -35,6 +37,7 @@ module.exports.handleStudentError = (err) => {
     programme: "",
     branch: "",
     yearOfStudy: "",
+    gender: "",
     graduationYear: "",
     email: "",
     phoneNumber: "",
@@ -58,6 +61,7 @@ module.exports.handleStudentError = (err) => {
   }
 };
 
+//OTP
 module.exports.handleOTPError = (err) => {
   let errors = {
     status: "failed",
@@ -82,6 +86,7 @@ module.exports.handleOTPError = (err) => {
   }
 };
 
+//Password Reset
 module.exports.handlePasswordResetError = (err, checkPassword) => {
   let errors = { status: "failed", email: "", password: "" };
   // console.log(err);
@@ -109,4 +114,33 @@ module.exports.handlePasswordResetError = (err, checkPassword) => {
   }
 
   return errors;
+};
+
+//Department
+module.exports.handleDeptError = (err) => {
+  let errors = {
+    status: "failed",
+    fullName: "",
+    aliasName: "",
+    email: "",
+    noOfSemesters: "",
+    establishedYear: "",
+    hodEmail: "",
+  };
+  // console.log(err);
+
+  //Duplicate key error
+  if (err.code == 11000) {
+    return {
+      status: "failed",
+      message: "Duplicates Values already available",
+    };
+  }
+  //Validation Error
+  if (err.message.includes("departments validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+    return errors;
+  }
 };
