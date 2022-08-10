@@ -1,6 +1,6 @@
 const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel");
 const accountModel = require("../../model/accountsModel");
-const handleError = require("./handleErrors");
+const handleError = require("../HandleError/handleErrors");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
