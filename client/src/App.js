@@ -5,6 +5,7 @@ import Home from "./pages";
 import EmailPage from "./pages/EmailPage";
 import SignIn from "./components/Signin";
 import Navbar from "./components/Navbar";
+import Organiserinfo from './components/Organizer_Info/organiser';
 
 function App() {
     // const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/email" element={<EmailPage />} />
         <Route path="/admin" element={<SignIn />} />
+        <Route path="/admin/organizer/add" element={<Organiserinfo />} />
       </Routes>
     </>
   );
