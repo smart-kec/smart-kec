@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
+
 import {BrowserRouter as Router} from 'react-router-dom';
-import Home from './pages';
+
+import Organiserinfo from './components/Organizer_Info/organiser';
 
 function App() {
   return (
     <Router>
-      <Home />
+
+      <Organiserinfo></Organiserinfo>
     </Router>
   );
 }
