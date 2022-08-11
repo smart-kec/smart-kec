@@ -13,7 +13,15 @@ const SignUp = () => {
                         <FormLabel htmlFor='for'>Email</FormLabel>
                         <FormInput type='email' required />
                         <FormLabel htmlFor='for'>Password</FormLabel>
-                        <FormInput type='password' required /> 
+                        <FormInput type='password' required />
+                        <FormLabel htmlFor='for'>Name</FormLabel>
+                        <FormInput type='text' required />
+                        <FormLabel htmlFor='for'>Roll Number</FormLabel>
+                        <FormInput type='text' required />  
+                        <FormLabel htmlFor='for'>Phone Number</FormLabel>
+                        <FormInput type='text' required /> 
+                        <FormLabel htmlFor='for'>Hackerrank Id</FormLabel>
+                        <FormInput type='text' required /> 
                     </Form>
                 </FormContent>
             </FormWrap>
