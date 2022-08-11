@@ -1,6 +1,6 @@
 const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel");
 const accountModel = require("../../model/accountsModel");
-const handleError = require("../HandleError/handleErrors");
+const handleError = require("../HandleError/handleError");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
@@ -44,7 +44,15 @@ module.exports.generateAndSendEmailOtp = async (req, res) => {
       }
     });
   } catch (err) {
-    var errors = handleError.handleOTPError(err);
+    var errors = handleError(
+      err,
+      {
+        status: "failed",
+        email: "",
+        otp: "",
+      },
+      "otpdetails"
+    );
     res.status(400).json(errors);
   }
 };
