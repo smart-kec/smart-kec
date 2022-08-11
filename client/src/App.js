@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages";
-import EmailPage from "./pages/EmailPage";
+import EmailPage from "./components/email/EmailPage";
 import SignIn from "./components/Signin";
 import Navbar from "./components/Navbar";
 
