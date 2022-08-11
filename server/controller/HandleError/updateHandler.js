@@ -6,6 +6,15 @@ module.exports = (err, errors) => {
       message: "Duplicates Values already available",
     };
   }
+
+  //Not found
+  if (err.message.includes("Cast to ObjectId failed")) {
+    return {
+      status: "failed",
+      message: "Details not found to update",
+    };
+  }
+
   //Validation Error
   if (err.message.includes("Validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
