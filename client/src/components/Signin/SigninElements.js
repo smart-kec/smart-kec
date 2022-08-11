@@ -10,7 +10,7 @@ export const Container = styled.div`
     right: 0;
     top: 0;
     z-index: 0;
-    ${'' /* overflow: hidden; */}
+    ${'' /* overflow: hidden;  */}
     ${'' /* background: linear-gradient(
         180deg,
         rgba(1, 147, 86, 1) 0%,
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const Bg = styled.div`
     width: 100%;
-    height: 200%;
+    height: 800px;
     background-size: cover;
     background: ${(props) => `url(${props.imgUrl})`}; 
 `
