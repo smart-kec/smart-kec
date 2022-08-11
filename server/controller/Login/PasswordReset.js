@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
 const passwordValidation = require("password-validator");
-const handleError = require("../HandleError/handleErrors");
+const handleError = require("../HandleError/passwordHandler");
 
 var transporter = nodemailer.createTransport({
   service: process.env.MAIL_HOST,
@@ -142,7 +142,12 @@ module.exports.resetPassword = async (req, res) => {
       throw new Error("Password length");
     }
   } catch (err) {
-    var errors = handleError.handlePasswordResetError(err, checkPassword);
+    var errors = handleError(
+      err,
+      { status: "failed", email: "", password: "" },
+      checkPassword,
+      "passwordresets"
+    );
     res.status(400).json(errors);
   }
 };

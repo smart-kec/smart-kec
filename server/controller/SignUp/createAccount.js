@@ -1,5 +1,5 @@
 const User = require("../../model/accountsModel");
-const handlError = require("../HandleError/handleErrors");
+const handlError = require("../HandleError/passwordHandler");
 const bcrypt = require("bcrypt");
 const passwordValidation = require("password-validator");
 var checkPassword;
@@ -36,7 +36,12 @@ module.exports.saveAccount = async (req, res, next) => {
       throw new Error("Password length");
     }
   } catch (err) {
-    var errors = handlError.handleAccountError(err, checkPassword);
+    var errors = handleError(
+      err,
+      { status: "failed", email: "", password: "", type: "" },
+      checkPassword,
+      "accounts"
+    );
     res.status(400).json(errors);
   }
 };

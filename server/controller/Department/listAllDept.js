@@ -1,5 +1,5 @@
 const deptModel = require("../../model/InfoCollections/departmentInfo");
-module.exports.allDepts = async (req, res) => {
+module.exports = async (req, res) => {
   try {
     const dept = await deptModel.find();
     res.status(201).json({

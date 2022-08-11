@@ -10,6 +10,7 @@ const authUser = require("../controller/AuthController/authorizationController")
 //Department
 const deptAdd = require("../controller/Department/addDeptInfo");
 const listAllDept = require("../controller/Department/listAllDept");
+const hodUpdate = require("../controller/Department/changeHoD");
 
 //Check for Jwt and verifying AdminSignature
 router.route("/*").post(authUser.afterAdminAuthorization);
@@ -21,6 +22,8 @@ router
 
 router.route("/department/yearincharge").post(deptAdd.addYI);
 
-router.route("/department/all").post(listAllDept.allDepts);
+router.route("/department/all").post(listAllDept);
+
+router.route("/department/hod").post(hodUpdate);
 
 module.exports = router;
