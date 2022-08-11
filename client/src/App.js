@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/email" element={<EmailPage />} />
-        <Route path="/admin" element={<SignIn />} />
+        <Route path="/login/admin" element={<SignIn />} />
         <Route path="/admin/organizer/add" element={<Organiserinfo />} />
       </Routes>
     </>
