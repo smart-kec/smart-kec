@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./EmailPage.css";
 
-function EmailPage() {
+function StudentEmailSignup() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const emailValidation = () => {
     const regEx = /([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
+
     if (regEx.test(email)) {
       setMessage("Email is Valid");
     } else if (!regEx.test(email) && email !== " ") {
@@ -50,4 +51,4 @@ function EmailPage() {
   );
 }
 
-export default EmailPage;
+export default StudentEmailSignup;
