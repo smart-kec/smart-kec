@@ -24,7 +24,7 @@ const studentInfoSchema = new mongoose.Schema({
   },
   semesterNo: {
     type: Number,
-    default: "Not Assigned",
+    default: 0,
   },
   yearOfStudy: {
     type: Number,
@@ -58,6 +58,6 @@ const studentInfoSchema = new mongoose.Schema({
   },
 });
 
-const studentInfoModel = mongoose.model("studentinfo", studentInfoSchema);
+const studentInfoModel = mongoose.model("studentinfos", studentInfoSchema);
 
 module.exports = studentInfoModel;
