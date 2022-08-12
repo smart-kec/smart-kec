@@ -8,6 +8,7 @@ module.exports.studentInfo = async (req, res, next) => {
     programme,
     branch,
     yearOfStudy,
+    semesterNo,
     gender,
     graduationYear,
     email,
@@ -22,6 +23,7 @@ module.exports.studentInfo = async (req, res, next) => {
       programme,
       branch,
       yearOfStudy,
+      semesterNo,
       gender,
       graduationYear,
       email,
@@ -30,7 +32,7 @@ module.exports.studentInfo = async (req, res, next) => {
     });
     next();
   } catch (err) {
-    var errors = handleError(
+    const errors = handleError(
       err,
       {
         status: "failed",
@@ -39,14 +41,16 @@ module.exports.studentInfo = async (req, res, next) => {
         programme: "",
         branch: "",
         yearOfStudy: "",
+        semesterNo: "",
         gender: "",
         graduationYear: "",
         email: "",
         phoneNumber: "",
         hackerRankId: "",
       },
-      "studentinfo"
+      "studentinfos"
     );
+    console.log(errors);
     try {
       await accountsModel.deleteOne({ email });
     } catch (er) {
