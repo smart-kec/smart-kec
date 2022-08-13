@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "./EmailPage.css";
 
-function EmailPage() {
+function StudentEmailSignup() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const emailValidation = () => {
-    const regEx = /([a-zA-Z]+)[\.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
+    const regEx = /([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
+
     if (regEx.test(email)) {
-      setMessage("Email is Valid");
+      setMessage("Email is valid");
     } else if (!regEx.test(email) && email !== " ") {
       setMessage("Email is not valid");
     } else {
@@ -22,24 +23,24 @@ function EmailPage() {
 
   return (
     <div className="app">
-      <div className="header">
+      <div className="head">
         <h2> Email Page </h2>{" "}
       </div>{" "}
-      <div className="card">
+      <div className="con">
         <label htmlFor="email" className="label">
           {" "}
           Email:{" "}
         </label>{" "}
         <input
           id="email"
-          className="input"
+          className="input1"
           type="email"
           placeholder="abc.20cse@kongu.edu"
           value={email}
           onChange={handleOnChange}
         />{" "}
-        <div className="button">
-          <button className="button" onClick={emailValidation}>
+        <div className="buttone">
+          <button className="buttone" onClick={emailValidation}>
             {" "}
             Proceed to OTP Generation{" "}
           </button>{" "}
@@ -50,4 +51,4 @@ function EmailPage() {
   );
 }
 
-export default EmailPage;
+export default StudentEmailSignup;

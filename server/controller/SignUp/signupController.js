@@ -1,6 +1,6 @@
 const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const accountsModel = require("../../model/accountsModel");
-const handleError = require("../HandleError/handleErrors");
+const handleError = require("../HandleError/handleError");
 module.exports.studentInfo = async (req, res, next) => {
   const {
     name,
@@ -8,6 +8,7 @@ module.exports.studentInfo = async (req, res, next) => {
     programme,
     branch,
     yearOfStudy,
+    semesterNo,
     gender,
     graduationYear,
     email,
@@ -22,6 +23,7 @@ module.exports.studentInfo = async (req, res, next) => {
       programme,
       branch,
       yearOfStudy,
+      semesterNo,
       gender,
       graduationYear,
       email,
@@ -30,7 +32,25 @@ module.exports.studentInfo = async (req, res, next) => {
     });
     next();
   } catch (err) {
-    var errors = handleError.handleStudentError(err);
+    const errors = handleError(
+      err,
+      {
+        status: "failed",
+        name: "",
+        rollNo: "",
+        programme: "",
+        branch: "",
+        yearOfStudy: "",
+        semesterNo: "",
+        gender: "",
+        graduationYear: "",
+        email: "",
+        phoneNumber: "",
+        hackerRankId: "",
+      },
+      "studentinfos"
+    );
+    console.log(errors);
     try {
       await accountsModel.deleteOne({ email });
     } catch (er) {

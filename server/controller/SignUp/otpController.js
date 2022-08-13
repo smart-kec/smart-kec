@@ -1,20 +1,12 @@
 const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel");
 const accountModel = require("../../model/accountsModel");
-const handleError = require("../HandleError/handleErrors");
+const handleError = require("../HandleError/handleError");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
-
+const emailHandler = require("../Email/emailHandler");
 const tryAgainError = { status: "failed", message: "try again" };
-var transporter = nodemailer.createTransport({
-  service: process.env.MAIL_HOST,
-  auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASSWORD,
-  },
-});
-
 module.exports.generateAndSendEmailOtp = async (req, res) => {
   const { email } = req.body;
   const otp = `${Math.floor(1000 + Math.random() * 900000)}`;
@@ -34,17 +26,18 @@ module.exports.generateAndSendEmailOtp = async (req, res) => {
       subject: "Verify Your Otp - Smart KEC",
       text: `OTP for your student verification in smart KEC is generated and valid for 5 mins. The OTP is ${otp} `,
     };
-    await transporter.sendMail(data, (error, info) => {
-      if (error) {
-        res.status(400).json(tryAgainError);
-      } else {
-        res
-          .status(201)
-          .json({ status: "success", message: "otp generated", uotp: otp });
-      }
-    });
+
+    emailHandler(data, "otp generated", res);
   } catch (err) {
-    var errors = handleError.handleOTPError(err);
+    var errors = handleError(
+      err,
+      {
+        status: "failed",
+        email: "",
+        otp: "",
+      },
+      "otpdetails"
+    );
     res.status(400).json(errors);
   }
 };

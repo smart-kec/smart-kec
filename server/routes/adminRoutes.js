@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const router = Router();
 
+//Comtrollers
+
 //Account Creation
 const createAccount = require("../controller/SignUp/createAccount");
 
@@ -10,6 +12,9 @@ const authUser = require("../controller/AuthController/authorizationController")
 //Department
 const deptAdd = require("../controller/Department/addDeptInfo");
 const listAllDept = require("../controller/Department/listAllDept");
+const hodUpdate = require("../controller/Department/changeHoD");
+const editDept = require("../controller/Department/updateDetails");
+const deleteDept = require("../controller/Department/deleteDept");
 
 //Check for Jwt and verifying AdminSignature
 router.route("/*").post(authUser.afterAdminAuthorization);
@@ -21,6 +26,9 @@ router
 
 router.route("/department/yearincharge").post(deptAdd.addYI);
 
-router.route("/department/all").post(listAllDept.allDepts);
+router.route("/department/all").post(listAllDept);
 
+router.route("/department/hod").post(hodUpdate);
+router.route("/department/edit").post(editDept);
+router.route("/department/delete").post(deleteDept);
 module.exports = router;

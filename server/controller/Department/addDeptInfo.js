@@ -1,6 +1,6 @@
 const departmentModel = require("../../model/InfoCollections/departmentInfo");
 const accountsModel = require("../../model/accountsModel");
-const handleError = require("../HandleError/handleErrors");
+const handleError = require("../HandleError/handleError");
 module.exports.addDeptInfo = async (req, res) => {
   const {
     fullName,
@@ -25,7 +25,19 @@ module.exports.addDeptInfo = async (req, res) => {
       message: "New department created... Login for more",
     });
   } catch (err) {
-    var errors = handleError.handleDeptError(err);
+    var errors = handleError(
+      err,
+      {
+        status: "failed",
+        fullName: "",
+        aliasName: "",
+        email: "",
+        noOfSemesters: "",
+        establishedYear: "",
+        hodEmail: "",
+      },
+      "departments"
+    );
     try {
       await accountsModel.deleteOne({ email });
     } catch (er) {
@@ -57,7 +69,7 @@ module.exports.addYI = async (req, res) => {
           { new: true, upsert: true, runValidators: true }
         );
         res
-          .status(201)
+          .status(200)
           .json({ status: "success", message: "Updated successfully" });
       } catch (e) {
         res
