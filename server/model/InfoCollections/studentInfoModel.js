@@ -22,9 +22,17 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     default: "Not Assigned",
   },
+  semesterNo: {
+    type: Number,
+    default: 0,
+  },
   yearOfStudy: {
     type: Number,
     required: [true, "Student must mention his year of study"],
+  },
+  gender: {
+    type: String,
+    required: [true, "Mention Gender"],
   },
   graduationYear: {
     type: Number,
@@ -50,6 +58,6 @@ const studentInfoSchema = new mongoose.Schema({
   },
 });
 
-const studentInfoModel = mongoose.model("studentinfo", studentInfoSchema);
+const studentInfoModel = mongoose.model("studentinfos", studentInfoSchema);
 
 module.exports = studentInfoModel;

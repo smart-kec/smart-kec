@@ -1,20 +1,18 @@
 const express = require("express");
+const cookiePareser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 const app = express();
 
-const signupRouter = require("./routes/signupRoutes");
-
-const accountCreation = require("./controller/SignUp/createAccount");
-const saveInfo = require("./controller/SignUp/signupController");
-
+app.use(express.json());
+app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(
-  bodyParser.urlencoded({
-    // to support URL-encoded bodies
-    extended: true,
-  })
+    bodyParser.urlencoded({
+        extended: true,
+    })
 );
-//app.post("/studentsignup", accountCreation.saveAccount, saveInfo.studentInfo);
-app.use("/signup", signupRouter);
+app.use(cookiePareser());
+require("./routes")(app);
 
 module.exports = app;

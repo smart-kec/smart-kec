@@ -19,10 +19,16 @@
   "homepage": "https://github.com/NeerajMayilvakanan/kec_events#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "googleapis": "^105.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.5",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.7",
     "password-validator": "^5.3.0",
+    "randomstring": "^1.2.2",
     "validator": "^13.7.0"
   },
   "devDependencies": {
