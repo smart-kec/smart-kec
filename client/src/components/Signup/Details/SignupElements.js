@@ -3,19 +3,28 @@ import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
     min-height: 692px;
-    position: fixed;
+    ${'' /* padding-bottom: 15px; */}
+    ${'' /* position: fixed; */}
     bottom: 0;
     left: 0;
     right: 0;
     top: 0;
     z-index: 0;
-    overflow: hidden;
-    background: linear-gradient(
+    ${'' /* overflow: hidden;  */}
+    ${'' /* background: linear-gradient(
         180deg,
         rgba(1, 147, 86, 1) 0%,
         rgba(10, 201, 122, 1) 100%
-    );
+    ); */}
 `
+
+export const Bg = styled.div`
+    width: 100%;
+    height: 800px;
+    background-size: cover;
+    background: ${(props) => `url(${props.imgUrl})`}; 
+`
+
 export const FormWrap = styled.div`
     height: 100%;
     display: flex;
@@ -27,19 +36,19 @@ export const FormWrap = styled.div`
    }
 `;
 
-export const Icon = styled(Link)`
-    margin-left: 32px;
-    margin-top: 32px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 700;
-    font-size: 32px;
+// export const Icon = styled(Link)`
+//     margin-left: 32px;
+//     margin-top: 32px;
+//     text-decoration: none;
+//     color: #fff;
+//     font-weight: 700;
+//     font-size: 32px;
 
-    @media screen and (max-width: 480px) {
-        margin-left: 16px;
-        margin-top: 8px;
-    }
-`
+//     @media screen and (max-width: 480px) {
+//         margin-left: 16px;
+//         margin-top: 8px;
+//     }
+// `
 
 export const FormContent = styled.div`
     height: 100%;
@@ -91,10 +100,25 @@ export const FormInput = styled.input`
 `
 
 export const FormButton = styled.button`
-    background: #01bf71;
+    background: #4fffe7;
     padding: 16px 0;
     border: none;
     border-radius: 4px;
     color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+`
+
+export const Links = styled(Link)`
+    text-align: center;
+    margin-top: 24px;
+    color: #fff;
     font-size: 14px;
+`
+
+export const Select = styled.select`
+    padding: 16px 16px;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 4px;
 `

@@ -10,7 +10,7 @@ export const Container = styled.div`
     right: 0;
     top: 0;
     z-index: 0;
-    ${'' /* overflow: hidden; */}
+    ${'' /* overflow: hidden;  */}
     ${'' /* background: linear-gradient(
         180deg,
         rgba(1, 147, 86, 1) 0%,
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const Bg = styled.div`
     width: 100%;
-    height: 200%;
+    height: 800px;
     background-size: cover;
     background: ${(props) => `url(${props.imgUrl})`}; 
 `
@@ -36,19 +36,19 @@ export const FormWrap = styled.div`
    }
 `;
 
-export const Icon = styled(Link)`
-    margin-left: 32px;
-    margin-top: 32px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 700;
-    font-size: 32px;
+// export const Icon = styled(Link)`
+//     margin-left: 32px;
+//     margin-top: 32px;
+//     text-decoration: none;
+//     color: #fff;
+//     font-weight: 700;
+//     font-size: 32px;
 
-    @media screen and (max-width: 480px) {
-        margin-left: 16px;
-        margin-top: 8px;
-    }
-`
+//     @media screen and (max-width: 480px) {
+//         margin-left: 16px;
+//         margin-top: 8px;
+//     }
+// `
 
 export const FormContent = styled.div`
     height: 100%;
@@ -114,4 +114,11 @@ export const Links = styled(Link)`
     margin-top: 24px;
     color: #fff;
     font-size: 14px;
+`
+
+export const Select = styled.select`
+    padding: 16px 16px;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 4px;
 `

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import HeroSection from "../components/HeroSection";
-import InfoSection from "../components/InfoSection";
-import { homeObjOne } from "../components/InfoSection/Data";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import Services from "../components/Services";
-import Footer from "../components/Footer";
+import HeroSection from "../components/Homepage/HeroSection";
+import InfoSection from "../components/Homepage/InfoSection";
+import { homeObjOne } from "../components/Homepage/InfoSection/Data";
+import Sidebar from "../components/Navbar/Sidebar";
+import Services from "../components/Homepage/Services";
+import Footer from "../components/Homepage/Footer";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +15,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar toggle={toggle} />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <HeroSection />
       <InfoSection {...homeObjOne} />

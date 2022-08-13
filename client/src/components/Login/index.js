@@ -1,18 +1,25 @@
 import React from 'react'
 import { Button } from '../ButtonElements';
 import bg from "../../images/bg-1.jpeg";
-import { Container, Bg, FormLabel, FormWrap, Icon, FormContent, Form, FormH1, FormInput, Links } from './SigninElements'
+import { Container, Bg, FormLabel, FormWrap, FormContent, Form, FormH1, FormInput, Links, Select } from './Login'
 
-const SignIn = () => {
+const Login = () => {
   return (
+
     <>
         <Container>
+
         <Bg imgUrl={bg}>
             <FormWrap>
-                <Icon to='/'>Smart_KEC</Icon>
                 <FormContent>
                     <Form action="#">
                         <FormH1>Sign in to your account</FormH1>
+                        <Select name='type'>
+                            <option value="student">Student</option>
+                            <option value="organiser">Organiser</option>
+                            <option value="department">Department</option>
+                            <option value="lab-hall">Lab/Hall</option>
+                        </Select>
                         <FormLabel htmlFor='for'>Email</FormLabel>
                         <FormInput type='email' required />
                         <FormLabel htmlFor='for'>Password</FormLabel>
@@ -28,4 +35,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default Login;
