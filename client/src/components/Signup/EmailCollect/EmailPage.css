@@ -7,31 +7,34 @@
     height: 100vh;
 }
 
-.header {
+.head {
     color: white;
     padding: 10px;
 }
 
-.card {
+.con{
     margin-top: 20px;
     box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
     padding: 50px 100px;
     background-color: white;
     border-radius: 20px;
+    height: 50vh;
+    width: 75vh;
 }
 
 .message {
     text-align: center;
     font-size: 20px;
+    padding-top: 10px;
 }
 
 .label {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     padding-bottom: 15px;
 }
 
-.button {
+.buttone {
     text-align: center;
     padding: 10px;
     border: none;
@@ -39,7 +42,7 @@
     border-radius: 30px;
 }
 
-.input {
+.input1 {
     width: 100%;
     padding: 10px;
     margin: 5px 0;

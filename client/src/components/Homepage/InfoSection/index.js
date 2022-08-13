@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "../ButtonElements";
+import { Button } from "../../ButtonElements";
 
 import {
   InfoContainer,
@@ -36,7 +36,7 @@ const InfoSection = ({
   console.log(homeObjOne);
   const [image, setImage] = useState(null);
   useEffect(() => {
-    setImage(require("../../images/" + homeObjOne.img));
+    setImage(require("../../../images/" + homeObjOne.img));
   }, []);
 
   return (

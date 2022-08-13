@@ -1,38 +1,67 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const { isEmail } = require("validator");
 
 const yearInchargeSchema = new mongoose.Schema({
   year: {
-    type: String,
+    type: Number,
+    unique: [true, "Only one year incharge for one year"],
   },
-  yearInchargeKey: String,
+  yearInchargeEmail: {
+    type: String,
+    trim: true,
+    required: [true, "Required department EMail Id"],
+    lowercase: [true, "Email should be Lowercase"],
+    validate: [isEmail, "Please, enter a valid email "],
+  },
 });
 const departmentSchema = new mongoose.Schema({
-  deptName: {
+  fullName: {
     type: String,
     unique: true,
     trim: true,
     required: [true, "Must mention department name"],
   },
-  deptEmailID: {
-    type: true,
+  aliasName: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: [true, "Must mention department name"],
+  },
+  email: {
+    type: String,
     unique: true,
     trim: true,
     required: [true, "Required department EMail Id"],
+    lowercase: [true, "Email should be Lowercase"],
+    validate: [isEmail, "Please, enter a valid email "],
   },
   noOfSemesters: {
     type: Number,
     required: [true, "Mention Number of Semesters"],
   },
-  hodKey: {
+  establishedYear: {
+    type: Number,
+    required: [true, "Mention the year the department has started"],
+  },
+  hodEmail: {
     type: String,
+    unique: true,
+    trim: true,
+    required: [true, "Required Hod EMail Id"],
+    lowercase: [true, "Email should be Lowercase"],
+    validate: [isEmail, "Please, enter a valid email "],
   },
   facultyCount: {
     type: Number,
+    default: 0,
   },
   studentsCount: {
     type: Number,
+    default: 0,
   },
-  yearIncharge: [yearInchargeSchema],
+  yearIncharge: {
+    type: [yearInchargeSchema],
+  },
 });
 
 const departmentModel = new mongoose.model("departments", departmentSchema);

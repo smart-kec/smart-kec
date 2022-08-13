@@ -3,10 +3,12 @@ import styled from 'styled-components'
 export const ServicesContainer = styled.div`
     height: 800px;
     display: flex;
+    position-r-padding: 100px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: #010606;
+    ${'' /* width: 100 */}
 
     @media screen and (max-width: 768px) {
         height: 1100px;
@@ -21,7 +23,7 @@ export const ServicesWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    display-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-gap: 16px;
     padding: 0 50px;
@@ -39,6 +41,7 @@ export const ServicesWrapper = styled.div`
 export const ServicesCard = styled.div`
     background: #fff;
     display: flex;
+    flex-direction: column;
     flex-direction: flex-start;
     align-items: center;
     border-radius: 10px;
