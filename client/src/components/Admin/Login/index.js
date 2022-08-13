@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '../ButtonElements';
-import bg from "../../images/bg-1.jpeg";
-import { Container, Bg, FormLabel, FormWrap, Icon, FormContent, Form, FormH1, FormInput, Links } from './SigninElements'
+import { Button } from '../../../components/ButtonElements';
+import bg from "../../../images/bg-1.jpeg"
+import { Container, Bg, FormLabel, FormWrap, Icon, FormContent, Form, FormH1, FormInput, Links } from './AdminLoginElements'
 
-const SignIn = () => {
+const AdminLogin = () => {
   return (
     <>
         <Container>
@@ -28,4 +28,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default AdminLogin;
