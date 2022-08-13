@@ -1,12 +1,14 @@
 import React from 'react'
 import { Button } from '../ButtonElements';
 import bg from "../../images/bg-1.jpeg";
-import { Container, Bg, FormLabel, FormWrap, FormContent, Form, FormH1, FormInput, Links, Select } from './LogingeneralElements'
+import { Container, Bg, FormLabel, FormWrap, FormContent, Form, FormH1, FormInput, Links, Select } from './Login'
 
 const Login = () => {
   return (
+
     <>
         <Container>
+
         <Bg imgUrl={bg}>
             <FormWrap>
                 <FormContent>

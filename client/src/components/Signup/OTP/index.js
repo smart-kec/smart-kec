@@ -7,6 +7,7 @@ const OTPBox = () => {
   const handleChange = (element, index) => {
       if(isNaN(element.value)) return false; 
 
+      
       setOtp([...otp.map((d,idx)=> (idx === index) ? element.value : d)]);
 
       if(element.nextSibling){

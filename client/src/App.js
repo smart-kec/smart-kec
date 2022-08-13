@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Pages";
-import StudentEmailSignup from "./components/Signup/EmailCollect/EmailPage";
-import SignIn from "./components/Signin";
+import Home from "./pages";
+import StudentEmailSignup from "./components/Signup/Details";
+import AdminLogin from "./components/Admin/Login";
 import Navbar from "./components/Navbar";
 
-import Login from "./components/Logingeneral";
-import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Signup from "./components/Signup/EmailCollect";
+import Organiserform from "./components/Organizer/organiser";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup/stdemail" element={<StudentEmailSignup />} />
-        <Route path="/login/admin" element={<SignIn />} />
+        <Route path="/login/admin" element={<AdminLogin />} />
 
-        <Route path="/admin/organizer/add" element={<Organiserinfo />} />
+        <Route path="/admin/organizer/add" element={<Organiserform />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
