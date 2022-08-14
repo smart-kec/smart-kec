@@ -24,29 +24,7 @@ body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
 }
-.text-primary-p {
-  color: #a5aaad;
-  font-size: 14px;
-  font-weight: 700;
-}
-.font-bold {
-  font-weight: 700;
-}
-.font-title {
-  color: #2e4a66;
-}
-.text-lightblue {
-  color: #469cac;
-}
-.text-red {
-  color: #cc3d38;
-}
-.text-yellow {
-  color: #a98921;
-}
-.text-green {
-  color: #3b9668;
-}
+
 .container {
   display: grid;
   height: 100vh;
@@ -66,3 +44,4 @@ body {
       "main";
   }
 }
+/* ------------------------------------dept form------------------------------------------ */
