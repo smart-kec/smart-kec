@@ -20,3 +20,5 @@ const homeSchema = new mongoose.Schema({
 const homeDataModel = new mongoose.model("homedata", homeSchema);
 
 module.exports = homeDataModel;
+
+///lorem
