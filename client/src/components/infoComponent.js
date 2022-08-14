@@ -16,7 +16,7 @@ import {
   Img,
 } from "../assets/styles/style/InfoElements";
 
-import { homeObjOne } from "../assets/data/Data.json";
+import homeObjOne from "../assets/data/Data.json";
 const InfoSection = ({
   lightBg,
   id,
@@ -36,7 +36,7 @@ const InfoSection = ({
   console.log(homeObjOne);
   const [image, setImage] = useState(null);
   useEffect(() => {
-    setImage(require("../../../images/" + homeObjOne.img));
+    setImage(require("../assets/images/" + homeObjOne.img));
   }, []);
 
   return (

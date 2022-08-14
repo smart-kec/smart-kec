@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbarComponent";
-import Home from "./pages";
+import Home from "./pages/homePage";
 import AdminLogin from "./components/adminLogin";
 import Login from "./components/loginComponent";
-import StudentEmailSignup from "./components/Signup/EmailCollect";
-import OTPBox from "./components/Signup/OTP";
+import StudentEmailSignup from "./components/studentSignupEmailComponent";
+import OTPBox from "./components/studentSignupOtpComponent";
 // import Signup from "./components/Signup/Details";
 // import Organiserform from "./components/Organizer/organiser";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HeroSection from "../components/heroSection";
 import InfoSection from "../components/infoComponent";
-import { homeObjOne } from "../assets/data/Data.json";
+import homeObjOne from "../assets/data/Data.json";
 import Sidebar from "../components/sidebarComponent";
 import Services from "../components/servicesComponent";
 import Footer from "../components/footerComponent";
