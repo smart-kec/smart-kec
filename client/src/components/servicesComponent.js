@@ -13,8 +13,7 @@ import {
   ServicesIcon,
   ServicesH2,
   ServicesP,
-} from "./ServicesElements";
-
+} from "../assets/styles/style/ServicesElements";
 
 // const[image2,setImage] = useState(null)
 // useEffect(() => {

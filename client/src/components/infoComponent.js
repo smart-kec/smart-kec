@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "../../ButtonElements";
+import { Button } from "./ButtonElements";
 
 import {
   InfoContainer,
@@ -14,9 +14,9 @@ import {
   BtnWrap,
   ImgWrap,
   Img,
-} from "./InfoElements";
+} from "../assets/styles/style/InfoElements";
 
-import { homeObjOne } from "./Data";
+import { homeObjOne } from "../assets/data/Data.json";
 const InfoSection = ({
   lightBg,
   id,
