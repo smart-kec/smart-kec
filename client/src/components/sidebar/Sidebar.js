@@ -32,11 +32,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-user-secret"></i>
           <a href="#">Lab/Halls Booking</a>
         </div>
-        <div className="side__link">
-          <i className="fa fa-user-secret"></i>
-          <a href="#">Admin </a>
-        </div>
-        <h2 class="h2">Organizer</h2>
+
         <div className="side__link">
           <i className="fa fa-user-secret"></i>
           <a href="#">Department</a>
