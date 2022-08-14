@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./ButtonElements";
-import bg from "../../../images/bg-1.jpeg";
+import bg from "../assets/images/bg-1.jpeg";
 import {
   Container,
   Bg,
@@ -12,7 +12,7 @@ import {
   FormInput,
   Links,
   Select,
-} from "./Signup/Details/SignupElements";
+} from "../assets/styles/style/SignupElements";
 
 const Signup = () => {
   return (
