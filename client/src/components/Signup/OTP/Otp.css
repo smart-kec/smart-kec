@@ -15,7 +15,8 @@
   .content{
     color: black;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
+    margin : 15px;
   }
   
   .card {
@@ -29,24 +30,28 @@
   .lnk{
     margin-left: 15px;
     font-size: 20px;
+    margin: 15px;
   }
   .button1 {
     text-align: center;
-    padding: 3%;
+    padding: 4%;
     border: none;
     background-color: #4fffe7;
     border-radius: 30px;
-    margin-right: 50px;
+    margin-right: 80px;
     width : 20%;
+    margin: 15px;
+    margin-top: 20px;
   }
   .button2 {
     text-align: center;
-    padding: 3%;
+    padding: 4%;
     border: none;
     background-color: #4fffe7;
     border-radius: 30px;
-    margin-right: 50px;
+    margin-left: 50px;
     width : 20%;
+    margin-top: 20px;
   }
   .button3 {
     text-align: center;
@@ -54,8 +59,9 @@
     border: none;
     background-color: #4fffe7;
     border-radius: 30px;
-    margin-right: 50px;
+    margin-left: 60px;
     width : 30%;
+    margin-top: 20px;
   }
   
   .otp-field{
