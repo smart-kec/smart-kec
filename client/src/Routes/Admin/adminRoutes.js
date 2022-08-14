@@ -1,1 +1,1 @@
-import createOrganizer from "../../components/Organizer/organiserform";
+import createOrganizer from "../../components/organiserform";
