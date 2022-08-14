@@ -4,38 +4,38 @@
   width: 280px;
 }
 
-.dept-input {
+input {
   padding: 15px;
   margin: 10px 0px;
   border-radius: 5px;
   border: 1px solid gray;
 }
 
-.dept-label {
+label {
   font-size: 15px;
-  color: rgb(57, 53, 53);
+  color: rgb(21, 20, 20);
 }
 
-.dept-span {
+span {
   font-size: 12px;
   padding: 3px;
   color: rgb(11, 211, 161);
   display: none;
 }
 
-.input:invalid[focused="true"] {
+input:invalid[focused="true"] {
   border: 1px solid rgb(21, 20, 20);
 }
 
-.input:invalid[focused="true"] ~ .dept-span {
+input:invalid[focused="true"] ~ span {
   display: block;
 }
+/* .outer {
+  display: inline-block;
+} */
 
-.submit {
-  background-color: aquamarine;
-}
 /* deptform---------- */
-.dept {
+.dept-form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,19 +45,19 @@
   background-position: center;
 }
 
-.dept-form {
+form {
   background-color: white;
   padding: 0px 60px;
   border-radius: 10px;
 }
 
 .dept-details {
-  color: rgb(9, 10, 10);
+  color: rgb(20, 22, 22);
   text-align: center;
 }
 
 .dept-btn {
-  width: 100%;
+  width: 280px;
   height: 50px;
   padding: 10px;
   border: none;

@@ -21,7 +21,7 @@ const Deptform = (props) => {
         }
         focused={focused.toString()}
       />
-      <span className="dept-span">{errorMessage}</span>
+      <span>{errorMessage}</span>
     </div>
   );
 };

@@ -82,9 +82,9 @@ const App = () => {
         <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       </div>
-      <div className="dept">
-        <form className="dept-form" onSubmit={handleSubmit}>
-          <h1 className="dept-details">Department Details</h1>
+      <div className="dept-form">
+        <form onSubmit={handleSubmit}>
+          <h1 class="dept-details">Department Details</h1>
           {inputs.map((input) => (
             <Deptform
               key={input.id}
@@ -93,7 +93,7 @@ const App = () => {
               onChange={onChange}
             />
           ))}
-          <button className="dept-btn">Submit</button>
+          <button class="dept-btn">Submit</button>
         </form>
       </div>
     </div>
