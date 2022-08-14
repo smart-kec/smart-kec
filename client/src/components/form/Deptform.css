@@ -1,6 +1,8 @@
 .container-div {
-  width: 500px;
-  height: 100px;
+  width: 400px;
+
+  justify-content: center;
+  align-items: center;
 }
 .title {
   font-size: 25px;
