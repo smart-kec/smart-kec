@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./organiserform.css";
-const Form = () => {
+import "../assets/styles/css/createOrganizer.css";
+const CreateOrganizer = () => {
   const [Name, setName] = useState("");
   const [collegeName, setCollegeName] = useState("");
   const [Phone, setPhone] = useState("");
@@ -65,7 +65,7 @@ const Form = () => {
     <form onSubmit={submit}>
       <div className="organise__controls">
         <div className="organise__control">
-          <label>NAME</label>
+          <label>Name</label>
           <input
             type="text"
             onChange={(event) => Handler(event.target.value)}
@@ -75,7 +75,7 @@ const Form = () => {
         <br></br>
         <br></br>
         <div className="organise__control">
-          <label>COLLEGE NAME</label>
+          <label>College Name</label>
 
           <input
             type="text"
@@ -86,7 +86,7 @@ const Form = () => {
         <br></br>
         <br></br>
         <div className="organise__control">
-          <label>TYPE</label>
+          <label>Types</label>
           <select
             onChange={(event) => Handler4(event.target.value)}
             value={Type}
@@ -100,7 +100,7 @@ const Form = () => {
         <br></br>
         <br></br>
         <div className="organise__control">
-          <label>PROGRAM</label>
+          <label>Program</label>
           <select
             onChange={(event) => Handler5(event.target.value)}
             value={Type}
@@ -113,7 +113,7 @@ const Form = () => {
         <br></br>
         <br></br>
         <div className="organise__control">
-          <label>BRANCH</label>
+          <label>Branch</label>
           <select
             onChange={(event) => Handler9(event.target.value)}
             value={Branch}
@@ -130,7 +130,7 @@ const Form = () => {
         <br></br>
 
         <div className="organise__control">
-          <label>DESIGNATION</label>
+          <label>Designation</label>
           <select
             onChange={(event) => Handler8(event.target.value)}
             value={Designation}
@@ -144,10 +144,9 @@ const Form = () => {
         </div>
         <br></br>
         <br></br>
-        
 
         <div className="organise__control">
-          <label>PHONE NUMBER</label>
+          <label>Phone Number</label>
           <input
             type="text"
             onChange={(event) => Handler2(event.target.value)}
@@ -156,7 +155,7 @@ const Form = () => {
         </div>
         <br></br>
         <br></br>
-        
+
         <div className="organise__control">
           <label>Email</label>
           <input
@@ -170,7 +169,7 @@ const Form = () => {
         <br></br>
 
         <div className="organise__control">
-          <label>PASSWORD</label>
+          <label>Password</label>
           <input
             type="text"
             onChange={(event) => Handler10(event.target.value)}
@@ -181,32 +180,31 @@ const Form = () => {
         <br></br>
 
         <div className="organise__control">
-          <label>CONFIRM PASSWORD</label>
+          <label>Confirm Password</label>
           <input
             type="text"
             onChange={(event) => Handler11(event.target.value)}
             value={confirmpassword}
           />
         </div>
-      <div className="organise__control">
-        <label>DESCRIPTION</label>
+        <div className="organise__control">
+          <label>Description</label>
         </div>
-        <textarea className="textarea"
+        <textarea
+          className="textarea"
           onChange={(event) => Handler6(event.target.value)}
           value={Description}
           rows="7"
-          cols="102"
+          cols="93"
         ></textarea>
-      
       </div>
-    
-      
+
       <br></br>
       <br></br>
       <div className="organise__actions">
-        <button type="submit">Next</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
 };
-export default Form;
+export default CreateOrganizer;

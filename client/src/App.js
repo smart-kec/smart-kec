@@ -8,6 +8,7 @@ import StudentEmailSignup from "./components/studentSignupEmailComponent";
 import OTPBox from "./components/studentSignupOtpComponent";
 import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
+import CreateOrganizer from "./components/createOrganizerComponent";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           </Route>
           <Route path="login" element={<Login />} />
         </Route>
+
+        {/* Temporary Routes */}
+
+        <Route path="createOrganizer" element={<CreateOrganizer />} />
       </Routes>
     </>
   );

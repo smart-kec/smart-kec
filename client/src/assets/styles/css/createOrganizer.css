@@ -1,0 +1,164 @@
+.organise {
+  background-color: #fff;
+  padding: 1rem;
+  margin: 2rem;
+  margin-left: 6rem;
+  width: 70rem;
+  max-width: 95%;
+  /* border-radius: 12px; */
+  text-align: center;
+  height: auto;
+  /* box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25); */
+}
+
+.organise button {
+  font-family: "Times New Roman", Times, serif;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 12px;
+  margin-right: 15rem;
+}
+
+.organise button:hover,
+.organise button:active {
+  background-color: #510674;
+  border-color: #510674;
+}
+
+.organise button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.organise button.alternative:hover,
+.organise button.alternative:active {
+  background-color: #ddb3f8;
+}
+
+.organise {
+  background-color: #fff;
+  padding: 1rem;
+  margin: 2rem;
+  margin-left: 6rem;
+  width: 70rem;
+  max-width: 95%;
+  /* border-radius: 12px; */
+  text-align: center;
+  height: auto;
+  /* box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25); */
+}
+
+.organise button {
+  font-family: "Times New Roman", Times, serif;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 12px;
+  margin-right: 15rem;
+}
+
+.organise button:hover,
+.organise button:active {
+  background-color: #510674;
+  border-color: #510674;
+}
+
+.organise button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.organise button.alternative:hover,
+.organise button.alternative:active {
+  background-color: #ddb3f8;
+}
+
+.organise__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.organise__control label {
+  font-weight: bold;
+  width: 240px;
+  display: inline-block;
+  font-size: 17px;
+  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+
+.organise__control input {
+  font-family: "Times New Roman", Times, serif;
+  padding: 6px;
+  border-radius: 8px;
+  border: 0.2rem solid #ccc;
+  width: 16rem;
+  height: 2.3rem;
+  margin: auto;
+}
+
+.organise__actions {
+  text-align: right;
+}
+
+.textarea {
+  border-radius: 8px;
+  border: 0.2rem solid #ccc;
+}
+
+.organise__control select {
+  font-family: "Times New Roman", Times, serif;
+  padding: 0.4rem;
+  padding-left: 2rem;
+  padding-right: 1.5rem;
+  border-radius: 8px;
+  border: 3px solid #ccc;
+  margin: auto;
+  width: 16rem;
+
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 8px;
+  font-size: 17px;
+}
+.button-wrap {
+  position: relative;
+}
+.button {
+  display: inline-block;
+  padding: 12px 40px 12px 40px;
+
+  cursor: pointer;
+  background-color: #000;
+  border: 3px solid #000;
+  border-radius: 2rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4fffe7;
+}
+
+.organise__control option {
+  font-family: "Times New Roman", Times, serif;
+}
