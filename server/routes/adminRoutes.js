@@ -9,6 +9,9 @@ const createAccount = require("../controller/SignUp/createAccount");
 //Authorization
 const authUser = require("../controller/AuthController/authorizationController");
 
+//Home
+const insertDetails = require("../controller/Home/insertDetails");
+
 //Department
 const deptAdd = require("../controller/Department/addDeptInfo");
 const listAllDept = require("../controller/Department/listAllDept");
@@ -18,6 +21,9 @@ const deleteDept = require("../controller/Department/deleteDept");
 
 //Check for Jwt and verifying AdminSignature
 router.route("/*").post(authUser.afterAdminAuthorization);
+
+//Home Data Insertion
+router.route("/home/add/data").post(insertDetails);
 
 //Department Routes
 router

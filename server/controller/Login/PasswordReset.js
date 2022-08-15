@@ -4,7 +4,7 @@ const passwordReset = require("../../model/OTP and Reset Models/resetModel");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
-const passwordRules = require("../passwordValidation");
+const passwordRules = require("../Validation/passwordValidation");
 
 const handleError = require("../HandleError/passwordHandler");
 
