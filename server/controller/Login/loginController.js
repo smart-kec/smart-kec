@@ -12,12 +12,12 @@ const createToken = (id) => {
 };
 
 module.exports.loginAuthentication = async (req, res) => {
-  const { email, password, type } = req.body;
+  const { userEmail, userPassword, userType } = req.body;
   try {
-    const user = await accountsModel.login(email, password, type);
+    const user = await accountsModel.login(userEmail, userPassword, userType);
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ status: "success", id: user._id });
+    res.status(200).json({ status: "success", id: user._id });
   } catch (err) {
     res.status(400).json({ status: "failed", message: err.message });
   }

@@ -60,10 +60,3 @@ module.exports.afterAdminAuthorization = async (req, res, next) => {
       .json({ status: "failed", message: "Token Expired or not found" });
   }
 };
-
-module.exports.check = async (req, res) => {
-  res.status(201).json({
-    status: "success",
-    message: "allow",
-  });
-};
