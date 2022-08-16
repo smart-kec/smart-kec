@@ -12,10 +12,10 @@ const CreateOrganizer = () => {
   const [Phone, setPhone] = useState("");
   const [Email, setEmail] = useState("");
   const [Type, setType] = useState("");
-  const [Program, setProgram] = useState("");
+  
   const [Branch, setBranch] = useState("");
   const [Description, setDescription] = useState("");
-  const [Designation, setDesignation] = useState("");
+  const [Program, setProgram] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
   const Handler = (data) => {
@@ -34,14 +34,12 @@ const CreateOrganizer = () => {
     setType(data);
   };
 
-  const Handler5 = (data) => {
-    Program(data);
-  };
+  
   const Handler6 = (data) => {
     setDescription(data);
   };
   const Handler8 = (data) => {
-    setDesignation(data);
+    setProgram(data);
   };
   const Handler9 = (data) => {
     setBranch(data);
@@ -60,10 +58,10 @@ const CreateOrganizer = () => {
     setEmail("");
     setCollegeName("");
     setPhone("");
-    setProgram("");
+   
     setDescription("");
     setBranch("");
-    setDesignation("");
+    setProgram("");
     setpassword("");
     setconfirmpassword("");
   };
@@ -101,17 +99,6 @@ const CreateOrganizer = () => {
             </select>
           </Organizefront>
           <Organizefront>
-            <label>Program</label>
-            <select
-              onChange={(event) => Handler5(event.target.value)}
-              value={Type}
-            >
-              <option>B.E</option>
-              <option>B TECH</option>
-              <option>COMMON TO ALL </option>
-            </select>
-          </Organizefront>
-          <Organizefront>
             <label>Branch</label>
             <select
               onChange={(event) => Handler9(event.target.value)}
@@ -127,27 +114,18 @@ const CreateOrganizer = () => {
           </Organizefront>
 
           <Organizefront>
-            <label>Designation</label>
+            <label>Program</label>
             <select
               onChange={(event) => Handler8(event.target.value)}
-              value={Designation}
+              value={Program}
             >
-              <option>PROFESSOR</option>
-              <option>ASST PROFESSOR</option>
-              <option>ASSOCIATE PROFESSOR </option>
-              <option>LAB INCHARGE</option>
-              <option>OFFICE STAFF</option>
+              <option>BE</option>
+              <option>B Tech</option>
+              <option>Common To All </option>
             </select>
           </Organizefront>
 
-          <Organizefront>
-            <label>Phone Number</label>
-            <input
-              type="text"
-              onChange={(event) => Handler2(event.target.value)}
-              value={Phone}
-            />
-          </Organizefront>
+          
 
           <Organizefront>
             <label>Email</label>
@@ -175,7 +153,14 @@ const CreateOrganizer = () => {
               value={confirmpassword}
             />
           </Organizefront>
-
+    <Organizefront>
+            <label>Phone Number</label>
+            <input
+              type="text"
+              onChange={(event) => Handler2(event.target.value)}
+              value={Phone}
+            />
+          </Organizefront>
           <Organizefront>
             <label>Description</label>
 
