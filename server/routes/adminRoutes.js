@@ -21,7 +21,7 @@ const editDept = require("../controller/Department/updateDetails");
 const deleteDept = require("../controller/Department/deleteDept");
 
 //Check for Jwt and verifying AdminSignature
-router.route("/*").post(afterAdminAuthorization);
+router.use("/*", afterAdminAuthorization);
 
 //Home Data Insertion
 router.route("/home/add/data").post(insertDetails);
@@ -33,7 +33,7 @@ router
   .route("/department/update/add/year/incharge")
   .get(addOrUpdateYearIncharge);
 
-router.route("/department/all").post(listAllDept);
+router.route("/department/get/all").get(listAllDept);
 
 router.route("/department/hod").post(hodUpdate);
 router.route("/department/edit").post(editDept);

@@ -1,19 +1,22 @@
 const departmentModel = require("../../model/InfoCollections/departmentInfo");
 
 module.exports = async (req, res) => {
-  const { email, year, yearInchargeEmail } = req.body;
+  const { deptEmail, studentYear, studentInchargeEmail } = req.body;
   try {
-    const dept = await departmentModel.findOne({ email });
+    const dept = await departmentModel.findOne({ deptEmail });
     if (dept) {
       const yi = dept.yearIncharge;
-      const datas = { year: year, yearInchargeEmail: yearInchargeEmail };
+      const datas = {
+        year: studentYear,
+        yearInchargeEmail: studentInchargeEmail,
+      };
       const final = yi.filter((data) => {
-        return data.year != year;
+        return data.year != studentYear;
       });
       final.push(datas);
       try {
         await departmentModel.updateOne(
-          { email },
+          { deptEmail },
           { $set: { yearIncharge: final } },
           { new: true, upsert: true, runValidators: true }
         );

@@ -3,22 +3,22 @@ const accountsModel = require("../../model/accountsModel");
 const handleError = require("../HandleError/handleError");
 module.exports = async (req, res) => {
   const {
-    fullName,
-    aliasName,
-    email,
-    noOfSemesters,
-    establishedYear,
-    hodEmail,
+    deptFullName,
+    deptShortCode,
+    userEmail,
+    semesterCount,
+    yearStarted,
+    DeptHODEmail,
   } = req.body;
 
   try {
     await departmentModel.create({
-      fullName,
-      aliasName,
-      email,
-      noOfSemesters,
-      establishedYear,
-      hodEmail,
+      fullName: deptFullName,
+      aliasName: deptShortCode,
+      email: userEmail,
+      noOfSemesters: semesterCount,
+      establishedYear: yearStarted,
+      hodEmail: DeptHODEmail,
     });
     res.status(201).json({
       status: "success",
