@@ -1,15 +1,12 @@
 const express = require("express");
 
 const loginController = require("../controller/Login/loginController");
-const authorizationController = require("../controller/AuthController/authorizationController");
 const resetPassword = require("../controller/Login/PasswordReset");
 const adminLogin = require("../controller/Login/adminLogin");
+const beforeAuthorization = require("../controller/AuthController/beforeAuthorization");
 const router = express.Router();
 
-router
-  .route("*")
-  .post(authorizationController.beforeAuthorization)
-  .get(authorizationController.beforeAuthorization);
+router.route("*").post(beforeAuthorization).get(beforeAuthorization);
 
 router.route("/user/authenticate").post(loginController.loginAuthentication);
 

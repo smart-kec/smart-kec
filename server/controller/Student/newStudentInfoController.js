@@ -1,7 +1,7 @@
 const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const accountsModel = require("../../model/accountsModel");
 const handleError = require("../HandleError/handleError");
-module.exports.studentInfo = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const {
     studentName,
     studentRollNo,
@@ -50,7 +50,6 @@ module.exports.studentInfo = async (req, res, next) => {
       },
       "studentinfos"
     );
-    console.log(errors);
     try {
       await accountsModel.deleteOne({ email: userEmail });
     } catch (er) {

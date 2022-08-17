@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const passwordRules = require("../Validation/passwordValidation");
 var checkPassword;
 
-module.exports.saveAccount = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { userEmail, userPassword, userType } = req.body;
 
   try {

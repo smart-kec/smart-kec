@@ -4,33 +4,34 @@ const router = Router();
 //Comtrollers
 
 //Account Creation
-const createAccount = require("../controller/SignUp/createAccount");
+const saveAccount = require("../controller/Account/saveAccountController");
 
 //Authorization
-const authUser = require("../controller/AuthController/authorizationController");
+const afterAdminAuthorization = require("../controller/AuthController/afterAdminAuthorization");
 
 //Home
 const insertDetails = require("../controller/Home/insertDetails");
 
 //Department
-const deptAdd = require("../controller/Department/addDeptInfo");
+const addDeptInfo = require("../controller/Department/addDeptInfo");
+const addOrUpdateYearIncharge = require("../controller/Department/addOrUpdateYearIncharge");
 const listAllDept = require("../controller/Department/listAllDept");
 const hodUpdate = require("../controller/Department/changeHoD");
 const editDept = require("../controller/Department/updateDetails");
 const deleteDept = require("../controller/Department/deleteDept");
 
 //Check for Jwt and verifying AdminSignature
-router.route("/*").post(authUser.afterAdminAuthorization);
+router.route("/*").post(afterAdminAuthorization);
 
 //Home Data Insertion
 router.route("/home/add/data").post(insertDetails);
 
 //Department Routes
-router
-  .route("/department/add")
-  .post(createAccount.saveAccount, deptAdd.addDeptInfo);
+router.route("/department/add/create").post(saveAccount, addDeptInfo);
 
-router.route("/department/yearincharge").post(deptAdd.addYI);
+router
+  .route("/department/update/add/year/incharge")
+  .get(addOrUpdateYearIncharge);
 
 router.route("/department/all").post(listAllDept);
 

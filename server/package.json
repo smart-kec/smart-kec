@@ -33,6 +33,6 @@
   },
   "devDependencies": {
     "@types/node": "^18.7.4",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.19"
   }
 }
