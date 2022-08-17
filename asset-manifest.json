@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/smart-kec/static/css/main.2f281295.css",
+    "main.js": "/smart-kec/static/js/main.e09587b8.js",
+    "static/media/video.mp4": "/smart-kec/static/media/video.d28831bc5d9eeb4a9a44.mp4",
+    "static/media/bg-1.jpeg": "/smart-kec/static/media/bg-1.ce128fae1931a7d8fc3e.jpeg",
+    "static/media/svg-3.svg": "/smart-kec/static/media/svg-3.6b6864ea1bd7acb7620bb4dc2b04ef6b.svg",
+    "static/media/svg-1.svg": "/smart-kec/static/media/svg-1.3230fb2f98bb341031cd.svg",
+    "static/media/svg-4.svg": "/smart-kec/static/media/svg-4.d2d5ebfbb8d8dd3ca5ca94f0b3f43815.svg",
+    "static/media/svg-2.svg": "/smart-kec/static/media/svg-2.667f131ac0727e3a8d8463e9a7c24855.svg",
+    "index.html": "/smart-kec/index.html",
+    "main.2f281295.css.map": "/smart-kec/static/css/main.2f281295.css.map",
+    "main.e09587b8.js.map": "/smart-kec/static/js/main.e09587b8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f281295.css",
+    "static/js/main.e09587b8.js"
+  ]
+}
