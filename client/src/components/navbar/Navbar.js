@@ -7,11 +7,7 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         <i className="fa fa-bars"></i>
       </div>
       <div className="navbar__left">
-        <a href="#">Events</a>
-        <a href="#">Lab/Halls Booking</a>
-        <a className="active_link" href="#">
-          Admin
-        </a>
+        <h1>Hello AANANDHENE...!</h1>
       </div>
       <div className="navbar__right">
         <a href="#">
@@ -20,9 +16,9 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         <a href="#">
           <i className="fa fa-clock-o"></i>
         </a>
-        <a href="#">
+        {/* <a href="#">
           <img width="30" src={user} alt="adminlogo" />
-        </a>
+        </a> */}
       </div>
     </nav>
   );
