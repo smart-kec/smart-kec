@@ -82,21 +82,21 @@ const App = () => {
     <div className="outer">
       <div className="container">
         <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+        <div className="dept-form">
+          <form onSubmit={handleSubmit}>
+            <h1 class="dept-details">Department Details</h1>
+            {inputs.map((input) => (
+              <Deptform
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+            <button class="dept-btn">Submit</button>
+          </form>
+        </div>
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-      </div>
-      <div className="dept-form">
-        <form onSubmit={handleSubmit}>
-          <h1 class="dept-details">Department Details</h1>
-          {inputs.map((input) => (
-            <Deptform
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-            />
-          ))}
-          <button class="dept-btn">Submit</button>
-        </form>
       </div>
     </div>
   );
