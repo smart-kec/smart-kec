@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       final.push(datas);
       try {
         await departmentModel.updateOne(
-          { deptEmail },
+          { email: deptEmail },
           { $set: { yearIncharge: final } },
           { new: true, upsert: true, runValidators: true }
         );
@@ -24,6 +24,7 @@ module.exports = async (req, res) => {
           .status(200)
           .json({ status: "success", message: "Updated successfully" });
       } catch (e) {
+        // console.log(e.message);
         res
           .status(400)
           .json({ status: "failed", message: "Invalid Year or Email" });

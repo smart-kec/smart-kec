@@ -39,6 +39,10 @@ const departmentSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Mention Number of Semesters"],
   },
+  courseDuration: {
+    type: Number,
+    required: [true, "Specify the course Duration"],
+  },
   establishedYear: {
     type: Number,
     required: [true, "Mention the year the department has started"],

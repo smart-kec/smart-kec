@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
           status: "success",
           message: "verified user",
         };
-        res.status(201).json(resDetails);
+        res.status(200).json(resDetails);
       } else {
         try {
           await otpModel.deleteOne({ email: userEmail });

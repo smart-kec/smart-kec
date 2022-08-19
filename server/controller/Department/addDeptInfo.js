@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
     deptShortCode,
     userEmail,
     semesterCount,
+    durationYears,
     yearStarted,
     DeptHODEmail,
   } = req.body;
@@ -17,6 +18,7 @@ module.exports = async (req, res) => {
       aliasName: deptShortCode,
       email: userEmail,
       noOfSemesters: semesterCount,
+      courseDuration : durationYears,
       establishedYear: yearStarted,
       hodEmail: DeptHODEmail,
     });
