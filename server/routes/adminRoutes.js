@@ -35,7 +35,7 @@ router
 
 router.route("/department/get/all").get(listAllDept);
 
-router.route("/department/hod").post(hodUpdate);
-router.route("/department/edit").post(editDept);
+router.route("/department/hod/update").get(hodUpdate);
+router.route("/department/edit/details").get(editDept);
 router.route("/department/delete").post(deleteDept);
 module.exports = router;
