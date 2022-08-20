@@ -20,6 +20,15 @@ const hodUpdate = require("../controller/Department/changeHoD");
 const editDept = require("../controller/Department/updateDetails");
 const deleteDept = require("../controller/Department/deleteDept");
 
+//Staff
+const newStaff = require("../controller/Staff/newStaff");
+const updateStaff = require("../controller/Staff/updateStaff");
+const deleteStaff = require("../controller/Staff/deleteStaff");
+
+//Class
+const createClass = require("../controller/Class/createClass");
+
+//Routes
 //Check for Jwt and verifying AdminSignature
 router.use("/*", afterAdminAuthorization);
 
@@ -37,5 +46,13 @@ router.route("/department/get/all").get(listAllDept);
 
 router.route("/department/hod/update").get(hodUpdate);
 router.route("/department/edit/details").get(editDept);
-router.route("/department/delete").post(deleteDept);
+router.route("/department/delete/account").get(deleteDept);
+
+//Staff Routes
+router.route("/staff/new/add/details").post(saveAccount, newStaff);
+router.route("/staff/edit/update/details").get(updateStaff);
+router.route("/staff/delete/account/details").get(deleteStaff);
+
+//Class Routes
+router.route("/class/new/create").post(createClass)
 module.exports = router;

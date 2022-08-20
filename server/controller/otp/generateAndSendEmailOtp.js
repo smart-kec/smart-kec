@@ -8,7 +8,6 @@ const emailHandler = require("../Email/emailHandler");
 
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
-  // var otp = `${Math.floor(1000 + Math.random() * 900000)}`;
   var otp = Math.floor(1000 + Math.random() * 900000);
 
   while (otp < 100000 && otp > 999999) {

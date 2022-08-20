@@ -8,10 +8,13 @@ module.exports = async (req, res) => {
   const { userEmail, userotp } = req.body;
 
   try {
-    const user = await otpModel.find({ email: userEmail });
-    if (user.length != 0) {
-      if (Date.now() < user[0].expiresAt) {
-        if (await bcrypt.compare(userotp, user[0].otp)) {
+    const user = await otpModel.findOne(
+      { email: userEmail },
+      { expiresAt: 1, otp: 1, _id: 0 }
+    );
+    if (user) {
+      if (Date.now() < user.expiresAt) {
+        if (await bcrypt.compare(userotp, user.otp)) {
           try {
             await otpModel.findOneAndUpdate(
               { email: userEmail },

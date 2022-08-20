@@ -5,22 +5,22 @@ module.exports = async (req, res) => {
   const {
     deptFullName,
     deptShortCode,
+    deptProgramme,
     userEmail,
     semesterCount,
     durationYears,
     yearStarted,
-    DeptHODEmail,
   } = req.body;
 
   try {
     await departmentModel.create({
       fullName: deptFullName,
       aliasName: deptShortCode,
+      programme: deptProgramme,
       email: userEmail,
       noOfSemesters: semesterCount,
-      courseDuration : durationYears,
+      courseDuration: durationYears,
       establishedYear: yearStarted,
-      hodEmail: DeptHODEmail,
     });
     res.status(201).json({
       status: "success",
@@ -36,12 +36,12 @@ module.exports = async (req, res) => {
         email: "",
         noOfSemesters: "",
         establishedYear: "",
-        hodEmail: "",
+        programme: "",
       },
       "departments"
     );
     try {
-      await accountsModel.deleteOne({ email });
+      await accountsModel.deleteOne({ email: userEmail });
     } catch (er) {
       res.status(400).json({
         status: "failed",

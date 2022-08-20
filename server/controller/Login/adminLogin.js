@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
 const jwt = require("jsonwebtoken");
 
-const maxAge = 3600; //seconds
+const maxAge = 12 * 3600; //seconds
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_AUTH_ADMINSECRET, {

@@ -5,13 +5,12 @@ const yearInchargeSchema = new mongoose.Schema({
   year: {
     type: Number,
     unique: [true, "Only one year incharge for one year"],
+    required: [true, "Specify the year"],
   },
-  yearInchargeEmail: {
+  yearInchargeId: {
     type: String,
     trim: true,
-    required: [true, "Required department EMail Id"],
-    lowercase: [true, "Email should be Lowercase"],
-    validate: [isEmail, "Please, enter a valid email "],
+    required: [true, "Required Year Incharge Id"],
   },
 });
 const departmentSchema = new mongoose.Schema({
@@ -26,6 +25,12 @@ const departmentSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     required: [true, "Must mention department name"],
+  },
+  programme: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: [true, "Must mention Programme "],
   },
   email: {
     type: String,
@@ -47,13 +52,10 @@ const departmentSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Mention the year the department has started"],
   },
-  hodEmail: {
+  hodId: {
     type: String,
     unique: true,
     trim: true,
-    required: [true, "Required Hod EMail Id"],
-    lowercase: [true, "Email should be Lowercase"],
-    validate: [isEmail, "Please, enter a valid email "],
   },
   facultyCount: {
     type: Number,
@@ -66,6 +68,8 @@ const departmentSchema = new mongoose.Schema({
   yearIncharge: {
     type: [yearInchargeSchema],
   },
+  classKeys: [String],
+  endedClassKeys: [String],
 });
 
 const departmentModel = new mongoose.model("departments", departmentSchema);

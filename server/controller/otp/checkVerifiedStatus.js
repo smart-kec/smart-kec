@@ -6,8 +6,11 @@ const tryAgainError = { status: "failed", message: "try again" };
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
   try {
-    const user = await otpModel.find({ email: userEmail });
-    if (user.length != 0 && user[0].verified) {
+    const user = await otpModel.findOne(
+      { email: userEmail },
+      { verified: 1, _id: 0 }
+    );
+    if (user && user.verified) {
       res.status(200).json({ status: "success", message: "verified user" });
     } else {
       res.status(400).json({ status: "failed", message: "not verified user" });
