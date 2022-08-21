@@ -39,4 +39,7 @@ router
   .route("/student/new/details")
   .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
+// routwe for duplicate  data entry
+router.route("/sanjeev/entry/duplicates").post(saveAccount,newStudentInfoController,)
+
 module.exports = router;
