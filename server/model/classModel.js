@@ -1,19 +1,23 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 
 const classSchema = new mongoose.Schema({
   className: {
     type: String,
-    unique: true,
+    unique: [true, "Class must have an unique name"],
     trim: true,
-    required: [true, "Class must have an unique name"],
+    required: [true, "Class must have an name"],
   },
   aliasName: {
     type: "String",
+    required: [true, "Class must have an common name"],
   },
   studentsKeys: [String],
 
-  advisorKeys: [String],
+  advisorKeys: {
+    type: [String],
+    required: [true, "Please, Choose Advisors"],
+  },
 
   classGroupMailId: {
     type: String,
@@ -26,7 +30,6 @@ const classSchema = new mongoose.Schema({
   currentSemester: {
     type: Number,
     required: [true, "Choose Semester Number"],
-
   },
 
   graduationYear: {
@@ -37,7 +40,6 @@ const classSchema = new mongoose.Schema({
   regulation: {
     type: Number,
     required: [true, "Mention Regulations"],
-
   },
 
   boysRep: String,
@@ -49,6 +51,6 @@ const classSchema = new mongoose.Schema({
   },
 });
 
-const classModel = new mongoose.model("class", classSchema);
+const classModel = new mongoose.model("classes", classSchema);
 
 module.exports = classModel;

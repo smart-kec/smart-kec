@@ -45,11 +45,16 @@ const staffInfoSchema = new mongoose.Schema({
   },
   classId: {
     type: String,
+    default: "",
   },
   labID: {
     type: String,
+    default: "",
   },
-  pastClass: [String],
+  pastClass: {
+    type: [String],
+    default: [],
+  },
 });
 
 const staffInfoModel = new mongoose.model("staffinfo", staffInfoSchema);

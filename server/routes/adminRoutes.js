@@ -27,6 +27,7 @@ const deleteStaff = require("../controller/Staff/deleteStaff");
 
 //Class
 const createClass = require("../controller/Class/createClass");
+const addAdvisor = require("../controller/Class/addAdvisor");
 
 //Routes
 //Check for Jwt and verifying AdminSignature
@@ -54,5 +55,6 @@ router.route("/staff/edit/update/details").get(updateStaff);
 router.route("/staff/delete/account/details").get(deleteStaff);
 
 //Class Routes
-router.route("/class/new/create").post(createClass)
+router.route("/class/new/create").post(createClass);
+router.route("/class/update/add/advisors").get(addAdvisor);
 module.exports = router;
