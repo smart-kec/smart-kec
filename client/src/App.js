@@ -9,7 +9,7 @@ import OTPBox from "./components/studentSignupOtpComponent";
 import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import CreateOrganizer from "./components/createOrganizerComponent";
-
+import Add from "./components/AddHod/Front"
 function App() {
   return (
     <>
@@ -29,6 +29,9 @@ function App() {
         {/* Temporary Routes */}
 
         <Route path="createOrganizer" element={<CreateOrganizer />} />
+      </Routes>
+      <Routes>
+      <Route path="Add" element={<Add />} />
       </Routes>
     </>
   );

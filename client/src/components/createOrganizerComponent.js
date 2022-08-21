@@ -7,12 +7,14 @@ import {
   Organizefront,
 } from "../assets/styles/style/CreateOrganizerElements";
 const CreateOrganizer = () => {
+
+  
   const [Name, setName] = useState("");
   const [collegeName, setCollegeName] = useState("");
   const [Phone, setPhone] = useState("");
   const [Email, setEmail] = useState("");
   const [Type, setType] = useState("");
-  
+
   const [Branch, setBranch] = useState("");
   const [Description, setDescription] = useState("");
   const [Program, setProgram] = useState("");
@@ -34,7 +36,6 @@ const CreateOrganizer = () => {
     setType(data);
   };
 
-  
   const Handler6 = (data) => {
     setDescription(data);
   };
@@ -51,20 +52,24 @@ const CreateOrganizer = () => {
     setconfirmpassword(data);
   };
 
-  const submit = (event) => {
+  const submit =  (event) => {
     event.preventDefault();
 
     setName("");
     setEmail("");
     setCollegeName("");
     setPhone("");
-   
+
     setDescription("");
     setBranch("");
     setProgram("");
     setpassword("");
     setconfirmpassword("");
+
+    
   };
+
+  
   return (
     <form onSubmit={submit}>
       <Organize>
@@ -125,8 +130,6 @@ const CreateOrganizer = () => {
             </select>
           </Organizefront>
 
-          
-
           <Organizefront>
             <label>Email</label>
             <input
@@ -153,7 +156,7 @@ const CreateOrganizer = () => {
               value={confirmpassword}
             />
           </Organizefront>
-    <Organizefront>
+          <Organizefront>
             <label>Phone Number</label>
             <input
               type="text"
