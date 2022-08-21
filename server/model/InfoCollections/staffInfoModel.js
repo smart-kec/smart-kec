@@ -2,22 +2,36 @@ const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 
 const staffInfoSchema = new mongoose.Schema({
-  staffName: {
+  name: {
     type: String,
     required: [true, "Staff must have a name"],
     trim: true,
   },
-  staffDesignation: {
+  designation: {
     type: String,
-    required: [true, "Required grade as Assistant / Associate / Professor"],
+    required: [true, "Select Designation"],
     trim: true,
   },
-  staffDepartment: {
+  idNo: {
+    type: String,
+    required: [true, "Enter your ID No"],
+    trim: true,
+    unique: [true, "Already registered with this id Number"],
+  },
+  qualification: {
+    type: String,
+    required: [true, "Enter the qualification details "],
+  },
+  gender: {
+    type: String,
+    required: [true, "Specify gender"],
+  },
+  department: {
     type: String,
     required: [true, "Required Department Staff or Office Staff"],
     trim: true,
   },
-  staffEmail: {
+  email: {
     type: String,
     required: [true, "Staff must have an email id"],
     trim: true,
@@ -29,8 +43,15 @@ const staffInfoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Staff must mention his/her phone number"],
   },
+  classId: {
+    type: String,
+  },
+  labID: {
+    type: String,
+  },
+  pastClass: [String],
 });
 
-const staffInfoModel = new mongoose.model("staffInfo", staffInfoSchema);
+const staffInfoModel = new mongoose.model("staffinfo", staffInfoSchema);
 
 module.exports = staffInfoModel;

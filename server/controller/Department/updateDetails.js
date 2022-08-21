@@ -1,13 +1,13 @@
 const departmentModel = require("../../model/InfoCollections/departmentInfo");
 const handleError = require("../HandleError/updateHandler");
 module.exports = async (req, res) => {
-  const { _id, noOfSemesters, establishedYear } = req.body;
+  const { _id, semesterCount, yearStarted } = req.body;
   try {
     await departmentModel.updateOne(
       {
         _id,
       },
-      { noOfSemesters, establishedYear },
+      { noOfSemesters: semesterCount, establishedYear: yearStarted },
       { new: true, upsert: true, runValidators: true }
     );
     res
