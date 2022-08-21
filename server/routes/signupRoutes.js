@@ -40,14 +40,9 @@ router
   .route("/student/new/details")
   .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
-<<<<<<< HEAD
 // routwe for duplicate  data entry
 router
   .route("/sanjeev/entry/duplicates")
   .post(saveAccount, newStudentInfoController, dupResponse);
-=======
-// route for duplicate  data entry
-router.route("/sanjeev/entry/duplicates").post(saveAccount,newStudentInfoController,)
->>>>>>> 5bc5fcb22cc055ebc63b80e7edd3b134f11c35f1
 
 module.exports = router;
