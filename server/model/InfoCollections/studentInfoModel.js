@@ -56,6 +56,7 @@ const studentInfoSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  classKey: String,
 });
 
 const studentInfoModel = mongoose.model("studentinfos", studentInfoSchema);

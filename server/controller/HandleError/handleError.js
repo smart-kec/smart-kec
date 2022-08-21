@@ -1,5 +1,4 @@
 module.exports = (err, errors, collectionName) => {
-  console.log(err.message, err.code);
   //Duplicate key error
   if (err.code == 11000) {
     return {
