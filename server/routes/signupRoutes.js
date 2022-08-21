@@ -20,6 +20,7 @@ const checkVerifiedStatus = require("../controller/otp/checkVerifiedStatus");
 const verifyUser = require("../controller/otp/verifyUser");
 const deleteOtp = require("../controller/otp/deleteOtp");
 const resendOtp = require("../controller/otp/resendOtp");
+const dupResponse = require("../controller/Student/dupResponse");
 
 router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
@@ -40,6 +41,8 @@ router
   .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
 // routwe for duplicate  data entry
-router.route("/sanjeev/entry/duplicates").post(saveAccount,newStudentInfoController,)
+router
+  .route("/sanjeev/entry/duplicates")
+  .post(saveAccount, newStudentInfoController, dupResponse);
 
 module.exports = router;
