@@ -11,6 +11,8 @@ import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
 
+import Testing from "./pages/Testing";
+
 function App() {
   return (
     <>
@@ -31,6 +33,7 @@ function App() {
           </Route>
           <Route path="login" element={<Login />} />
         </Route>
+        <Route path="testing" element={<Testing />}></Route>
       </Routes>
     </>
   );
