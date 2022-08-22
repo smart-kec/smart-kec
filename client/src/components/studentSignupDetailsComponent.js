@@ -101,8 +101,10 @@ const Signup = () => {
                 </Select>
 
                 <FormLabel htmlFor="for">Gender</FormLabel>
-                <FormInput type="radio" name="male" value="male"/>
-                <FormInput type="radio" name="female" value="female"/>
+                <FormLabel>
+                <FormInput type="radio" name="male" />Male    
+                <FormInput type="radio" name="female"/>Female
+                </FormLabel>
 
                 <FormLabel htmlFor="for">Phone no</FormLabel>
                 <FormInput type="text" name="phone" required />
