@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "./ButtonElements";
+// import { Button } from "./ButtonElements";
 import bg from "../assets/images/bg-1.jpeg";
 import {
   Container,
@@ -11,6 +11,7 @@ import {
   Form,
   FormH1,
   FormInput,
+  FormButton,
   Links,
 } from "../assets/styles/style/AdminLoginElements";
 
@@ -28,10 +29,10 @@ const AdminLogin = () => {
                 <FormInput type="email" required />
                 <FormLabel htmlFor="for"> Password </FormLabel>{" "}
                 <FormInput type="password" required />
-                <Button to="/" primary="true" dark="true">
+                <FormButton to="/" primary="true" dark="true">
                   {" "}
                   Continue{" "}
-                </Button>{" "}
+                </FormButton>{" "}
                 <Links to="/"> Forgot Password ? </Links>{" "}
               </Form>{" "}
             </FormContent>{" "}

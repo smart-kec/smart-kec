@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
-    min-height: 692px;
+    min-height: 1092px;
     ${'' /* padding-bottom: 15px; */}
     ${'' /* position: fixed; */}
     bottom: 0;
@@ -20,13 +20,14 @@ export const Container = styled.div`
 
 export const Bg = styled.div`
     width: 100%;
-    height: 800px;
+    height: 1200px;
     background-size: cover;
-    background: ${(props) => `url(${props.imgUrl})`}; 
+    background: ${(props) => `url(${props.imgUrl})`};
 `
 
 export const FormWrap = styled.div`
-    height: 100%;
+    padding-top: 180px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +52,7 @@ export const FormWrap = styled.div`
 // `
 
 export const FormContent = styled.div`
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +65,7 @@ export const FormContent = styled.div`
 export const Form = styled.form`
     background: #010101;
     max-width: 400px;
-    height: auto;
+    height: 100vh;
     width: 100%;
     z-index: 1;
     display: grid;
@@ -79,7 +80,8 @@ export const Form = styled.form`
 `
 
 export const FormH1 = styled.h1`
-    margin-bottom: 40px;
+    margin-bottom: 20px; 
+    ${'' /* 40px */}
     color: #fff;
     font-size: 20px;
     fonty-weight: 400;
@@ -100,14 +102,19 @@ export const FormInput = styled.input`
 `
 
 export const FormButton = styled.button`
-    background: #4fffe7;
-    padding: 16px 0;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-`
+  background: ${({primary}) => (primary ? '#4fffe7' : '#010606')};
+  padding: 16px 0;
+  border: none;
+  border-radius: 4px;
+  color: ${({dark}) => (dark ? '#010606' : '#fff')};;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover{
+        transition: all 0.2s ease-in-out;
+        background: ${({primary}) => (primary ? '#fff' : '#4fffe7')};
+  }
+`;
 
 export const Links = styled(Link)`
     text-align: center;
@@ -122,3 +129,34 @@ export const Select = styled.select`
     border: none;
     border-radius: 4px;
 `
+
+export const Radio = styled.span`
+    display: inline-block;
+    position: relative;
+    border: 1px solid #777777;
+    width: 14px;
+    height: 14px;
+    left: 0;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+`;
+
+export const RadioInput = styled.input`
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    &:checked + ${Radio} {
+        &::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: blue;
+            left: 2px;
+            top: 15%;
+            position: absolute;
+        }
+    }
+`;

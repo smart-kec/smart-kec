@@ -99,15 +99,29 @@ export const FormInput = styled.input`
     border-radius: 4px;
 `
 
+// export const FormButton = styled.button`
+//     background: #4fffe7;
+//     padding: 16px 0;
+//     border: none;
+//     border-radius: 4px;
+//     color: #fff;
+//     font-size: 20px;
+//     cursor: pointer;
+// `
 export const FormButton = styled.button`
-    background: #4fffe7;
-    padding: 16px 0;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-`
+  background: ${({primary}) => (primary ? '#4fffe7' : '#010606')};
+  padding: 16px 0;
+  border: none;
+  border-radius: 4px;
+  color: ${({dark}) => (dark ? '#010606' : '#fff')};;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover{
+        transition: all 0.2s ease-in-out;
+        background: ${({primary}) => (primary ? '#fff' : '#4fffe7')};
+  }
+`;
 
 export const Links = styled(Link)`
     text-align: center;
