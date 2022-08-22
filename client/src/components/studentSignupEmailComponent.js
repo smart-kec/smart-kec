@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../assets/styles/css/EmailPage.css";
+import styles from "../assets/styles/css/EmailPage.module.css";
 
 function StudentEmailSignup() {
   const [email, setEmail] = useState("");
