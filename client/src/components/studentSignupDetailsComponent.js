@@ -17,6 +17,18 @@ import {
   Select,
 } from "../assets/styles/style/SignupElements";
 
+const generateArrayOfYears = () => {
+  const max = new Date().getFullYear();
+  const min = max + 9;
+  const years = [];
+  for (let i = max; i <= min; i++) {
+    years.push(i);
+  }
+  return years;
+};
+const years = generateArrayOfYears();
+console.log(years);
+
 
 const Signup = () => {
   return (
@@ -77,12 +89,20 @@ const Signup = () => {
                   <option value="vii">VII</option>
                   <option value="viii">VIII</option>
                 </Select>
+                
+                <Select name="graduationYear">
+                  {years.map((year) => {
+                    return (
+                      <option value={year} key={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </Select>
 
                 <FormLabel htmlFor="for">Gender</FormLabel>
-                <Radio name="gender">
-                  <Radio value="male">Male</Radio>
-                  <option value="female">Female</option>
-                </Radio>
+                <FormInput type="radio" name="male" value="male"/>
+                <FormInput type="radio" name="female" value="female"/>
 
                 <FormLabel htmlFor="for">Phone no</FormLabel>
                 <FormInput type="text" name="phone" required />
