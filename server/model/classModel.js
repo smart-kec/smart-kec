@@ -18,7 +18,10 @@ const classSchema = new mongoose.Schema({
     type: [String],
     required: [true, "Please, Choose Advisors"],
   },
-
+  pastAdvisorKeys: {
+    type: [String],
+    required: [true, "Please, Choose Advisors"],
+  },
   classGroupMailId: {
     type: String,
     unique: true,

@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       { _id: classId },
       { advisorKeys: 1 }
     );
-
+    //FIXME Same Id is pushing all the time
     classInfo.advisorKeys.push(advisorId);
 
     await classModel.updateOne(
