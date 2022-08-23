@@ -1,6 +1,5 @@
 const classModel = require("../../model/classModel");
 const handleError = require("../HandleError/handleError");
-const staffInfo = require("../../model/InfoCollections/staffInfoModel");
 const staffInfoModel = require("../../model/InfoCollections/staffInfoModel");
 const departmentModel = require("../../model/InfoCollections/departmentInfo");
 
@@ -25,66 +24,81 @@ module.exports = async (req, res) => {
     );
     if (deptInfo) {
       const name = programme + "-" + dept + "-" + sec + "-" + Gyear;
-      try {
-        const classInfo = await classModel.create({
-          className: name,
-          aliasName: callName,
-          advisorKeys: advisors,
-          classGroupMailId: mailId,
-          currentSemester: presentSemester,
-          graduationYear: yearOfGraduation,
-          regulation: regulationYear,
-        });
-        var mapError = [];
-        advisors.map(async (advisorId) => {
+      const advisorsInfo = await staffInfoModel.find(
+        { _id: { $in: advisors }, classId: "" },
+        { _id: 1 }
+      );
+
+      if (advisorsInfo.length == advisors.length) {
+        try {
+          const classInfo = await classModel.create({
+            className: name,
+            aliasName: callName,
+            advisorKeys: advisors,
+            classGroupMailId: mailId,
+            currentSemester: presentSemester,
+            graduationYear: yearOfGraduation,
+            regulation: regulationYear,
+          });
+
           try {
-            await staffInfoModel.updateOne(
+            await staffInfoModel.update(
               {
-                _id: advisorId,
+                _id: { $in: advisors },
               },
               {
                 $set: {
                   classId: classInfo._id,
                 },
               },
-              { new: true, upsert: true, runValidators: true }
+              { new: true, runValidators: true }
             );
-          } catch (error) {
-            mapError.push(advisorId);
-          }
-        });
-        if (mapError.length) {
-          res
-            .status(400)
-            .json({ status: "failed", message: "Error in assigning advisors" });
-        } else {
-          try {
             deptInfo.classKeys.push(classInfo._id);
             await departmentModel.updateOne(
               { _id: deptId },
               { $set: { classKeys: deptInfo.classKeys } },
-              { new: true, upsert: true, runValidators: true }
+              { new: true, runValidators: true }
             );
-          } catch (er) {}
-          res.status(201).json({ status: "success", message: "Class Created" });
-        }
-      } catch (err) {
-        res.status(400).json(
-          handleError(
-            err,
-            {
+            res
+              .status(201)
+              .json({ status: "success", message: "Class Created" });
+          } catch (error) {
+            await classModel.deleteOne({
+              _id: classInfo._id,
+            });
+            await staffInfoModel.update(
+              { classId: classInfo._id },
+              { $set: { classId: "" } }
+            );
+            res.status(400).json({
               status: "failed",
-              className: "",
-              aliasName: "",
-              advisorKeys: "",
-              classGroupMailId: "",
-              currentSemester: "",
-              graduationYear: "",
-              regulation: "",
-            },
-            "classes"
-          )
-        );
+              message:
+                "Error in assigning advisors or class to department, So class not created",
+            });
+          }
+        } catch (err) {
+          res.status(400).json(
+            handleError(
+              err,
+              {
+                status: "failed",
+                className: "",
+                aliasName: "",
+                advisorKeys: "",
+                classGroupMailId: "",
+                currentSemester: "",
+                graduationYear: "",
+                regulation: "",
+              },
+              "classes"
+            )
+          );
+        }
+      } else {
+        res.status(400).json({
+          status: "failed",
+          message: "Advisors not found or assigned with other classes",
+        });
       }
     } else {
       res.status(400).json({

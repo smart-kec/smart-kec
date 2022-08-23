@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
           await departmentModel.updateOne(
             { email: deptEmail },
             { $set: { yearIncharge: final } },
-            { new: true, upsert: true, runValidators: true }
+            { new: true, runValidators: true }
           );
           res
             .status(200)

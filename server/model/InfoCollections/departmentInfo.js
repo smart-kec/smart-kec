@@ -68,8 +68,14 @@ const departmentSchema = new mongoose.Schema({
   yearIncharge: {
     type: [yearInchargeSchema],
   },
-  classKeys: [String],
-  endedClassKeys: [String],
+  classKeys: {
+    type : [String],
+    default : []
+  },
+  endedClassKeys: {
+    type : [String],
+    default : []
+  },
 });
 
 const departmentModel = new mongoose.model("departments", departmentSchema);

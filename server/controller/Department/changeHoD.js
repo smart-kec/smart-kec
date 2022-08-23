@@ -4,7 +4,7 @@ const staffInfoModel = require("../../model/InfoCollections/staffInfoModel");
 module.exports = async (req, res) => {
   const { deptId, deptHodEmail } = req.body;
   try {
-    if (await departmentModel.findOne({ _id: deptId })) {
+    if (await departmentModel.findOne({ _id: deptId }, { _id: 1 })) {
       const hod = await staffInfoModel.findOne(
         { email: deptHodEmail },
         { _id: 1 }
@@ -18,10 +18,14 @@ module.exports = async (req, res) => {
         );
         res.status(200).json({ status: "success", message: "Updated HoD" });
       } else {
-        res.status(400).json({ status: "failed", message: "HoD not found" });
+        res
+          .status(400)
+          .json({ status: "failed", message: "Requested HoD not found" });
       }
     } else {
-      res.status(400).json({ status: "failed", message: "Id not found" });
+      res
+        .status(400)
+        .json({ status: "failed", message: "Requested Department not found" });
     }
   } catch (err) {
     const errors = updateHandler(err, {
