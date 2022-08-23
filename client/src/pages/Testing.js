@@ -1,14 +1,16 @@
 import { getData } from "../api/AurthenticationServices";
 
 const Testing = () => {
+  var dataPrint;
   const data = async () => {
-    const dataPrint = await getData();
+    dataPrint = await getData();
     console.log(dataPrint);
   };
   data();
   return (
     <>
       <h1>hrllo</h1>
+      <p></p>
     </>
   );
 };
