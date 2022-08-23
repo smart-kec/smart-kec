@@ -8,6 +8,10 @@ import StudentEmailSignup from "./components/studentSignupEmailComponent";
 import OTPBox from "./components/studentSignupOtpComponent";
 import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
+import AdminInterface from "./interface/AdminInterface";
+import AdminLogin from "./components/adminLogin";
+
+import Testing from "./pages/Testing";
 
 function App() {
   return (
@@ -22,8 +26,14 @@ function App() {
               <Route path="details" element={<Signup />} />
             </Route>
           </Route>
+          <Route path="admin" element={<AdminInterface />}>
+            <Route>
+              <Route path="login" element={<AdminLogin />} />
+            </Route>
+          </Route>
           <Route path="login" element={<Login />} />
         </Route>
+        <Route path="testing" element={<Testing />}></Route>
       </Routes>
     </>
   );

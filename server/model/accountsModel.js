@@ -39,7 +39,7 @@ accountSchema.statics.login = async function (email, password, type) {
     if (type != "Student") {
       throw Error("choose your validType");
     } else {
-      throw Error("incorrect email");
+      throw Error("invalid email");
     }
   }
 };

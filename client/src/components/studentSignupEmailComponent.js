@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../assets/styles/css/EmailPage.css";
+import styles from "../assets/styles/css/EmailPage.module.css";
 
 function StudentEmailSignup() {
   const [email, setEmail] = useState("");
@@ -22,30 +22,30 @@ function StudentEmailSignup() {
   };
 
   return (
-    <div className="app">
-      <div className="head">
+    <div className={styles.app}>
+      <div className={styles.head}>
         <h2> Email Page </h2>{" "}
       </div>{" "}
-      <div className="con">
-        <label htmlFor="email" className="label">
+      <div className={styles.con}>
+        <label htmlFor="email" className={styles.label}>
           {" "}
           Email:{" "}
         </label>{" "}
         <input
           id="email"
-          className="input1"
+          className={styles.input1}
           type="email"
           placeholder="abc.20cse@kongu.edu"
           value={email}
           onChange={handleOnChange}
         />{" "}
-        <div className="buttone">
-          <button className="buttone" onClick={emailValidation}>
+        <div className={styles.buttone}>
+          <button className={styles.buttone} onClick={emailValidation}>
             {" "}
             Proceed to OTP Generation{" "}
           </button>{" "}
         </div>{" "}
-        <p className="message"> {message} </p>{" "}
+        <p className={styles.message}> {message} </p>{" "}
       </div>{" "}
     </div>
   );
