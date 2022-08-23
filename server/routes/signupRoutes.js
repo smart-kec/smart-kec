@@ -2,36 +2,41 @@ const { Router } = require("express");
 const router = Router();
 
 //Controllers
-const accountCreation = require("../controller/SignUp/createAccount");
-const saveInfo = require("../controller/SignUp/signupController");
-const otpController = require("../controller/SignUp/otpController");
-const authorizationController = require("../controller/AuthController/authorizationController");
+//Auth
+const beforeAuthorization = require("../controller/AuthController/beforeAuthorization");
 
-router.route("/*").post(authorizationController.beforeAuthorization);
+//Account
+const saveAccount = require("../controller/Account/saveAccountController");
 
-router
-    .route("/generateotp")
-    .post(otpController.checkUser, otpController.generateAndSendEmailOtp);
+//Student
+const newStudentInfoController = require("../controller/Student/newStudentInfoController");
 
-router.route("/student/isvalidotp").post(otpController.isValidOtp);
-router.route("/student/verifyotp").post(otpController.verifyotp);
-router
-    .route("/student/resendotp")
-    .post(
-        otpController.resendOtp,
-        otpController.checkUser,
-        otpController.generateAndSendEmailOtp
-    );
+//OTP
+const generateAndSendEmailOtp = require("../controller/otp/generateAndSendEmailOtp");
+const checkUser = require("../controller/otp/checkUser");
+const checkOtpExpiry = require("../controller/otp/checkOtpExpiry");
+const verifyOtp = require("../controller/otp/verifyOtp");
+const checkVerifiedStatus = require("../controller/otp/checkVerifiedStatus");
+const verifyUser = require("../controller/otp/verifyUser");
+const deleteOtp = require("../controller/otp/deleteOtp");
+const resendOtp = require("../controller/otp/resendOtp");
 
-router.route("/student/isuserverified").post(otpController.isVerifiedUser);
+router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
 router
-    .route("/student/details")
-    .post(
-        otpController.verifyUser,
-        accountCreation.saveAccount,
-        saveInfo.studentInfo,
-        otpController.deleteOtp
-    );
+  .route("/student/email/generate/otp")
+  .get(checkUser, generateAndSendEmailOtp);
+
+router.route("/student/check/otp/valid").get(checkOtpExpiry);
+router.route("/student/otp/verify").post(verifyOtp);
+router
+  .route("/student/otp/resend")
+  .get(resendOtp, checkUser, generateAndSendEmailOtp);
+
+router.route("/student/check/verify").get(checkVerifiedStatus);
+
+router
+  .route("/student/new/details")
+  .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
 module.exports = router;
