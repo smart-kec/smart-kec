@@ -25,7 +25,7 @@ router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
 router
   .route("/student/email/generate/otp")
-  .get(checkUser, generateAndSendEmailOtp);
+  .put(checkUser, generateAndSendEmailOtp);
 
 router.route("/student/check/otp/valid").get(checkOtpExpiry);
 router.route("/student/otp/verify").post(verifyOtp);
