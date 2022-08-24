@@ -33,7 +33,7 @@ const endAdvisor = require("../controller/Class/endAdvisor");
 
 //Routes
 //Check for Jwt and verifying AdminSignature
-router.use("/*", afterAdminAuthorization);
+// router.use("/*", afterAdminAuthorization);
 
 //Home Data Insertion
 router.route("/home/add/data").post(insertDetails);
@@ -59,6 +59,6 @@ router.route("/staff/delete/account/details").get(deleteStaff);
 //Class Routes
 router.route("/class/new/create").post(createClass);
 router.route("/class/update/add/advisors").get(addAdvisor);
-router.route("/class/delete/advisor").get(removeAdvisor)
-router.route("/class/advisor/end/work").get(endAdvisor)
+router.route("/class/delete/advisor").get(removeAdvisor);
+router.route("/class/advisor/end/work").get(endAdvisor);
 module.exports = router;
