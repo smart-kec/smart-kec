@@ -1,26 +1,33 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { generateAndSendEmailOtp } from "../api/AurthenticationServices";
 import styles from "../assets/styles/css/EmailPage.module.css";
 
 function StudentEmailSignup() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const emailValidation = () => {
     const regEx = /([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
+    regEx.test(email) ? sendData() : setMessage("Email is not valid");
+  };
+  const sendData = async () => {
+    try {
+      const res = await generateAndSendEmailOtp({ userEmail: email });
+      
 
-    if (regEx.test(email)) {
-      setMessage("Email is valid");
-    } else if (!regEx.test(email) && email !== " ") {
-      setMessage("Email is not valid");
-    } else {
-      setMessage(" ");
+      navigate(`/signup/verify`);
+    } catch (err) {
+      console.log(err);
     }
   };
 
   const handleOnChange = (e) => {
     setEmail(e.target.value);
+    console.log(email);
   };
-
   return (
     <div className={styles.app}>
       <div className={styles.head}>
