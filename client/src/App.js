@@ -24,7 +24,7 @@ const App = () => {
       name: "deptFullName",
       type: "text",
       placeholder: "Enter Department Full Name",
-      errorMessage: "Type the Department name correctly!",
+      errorMessage: "Check the Department name correctly!",
       label: "Department Full Name",
       // pattern: "^[A-Za-z0-9]{3,16}$",
       required: true,
@@ -34,7 +34,7 @@ const App = () => {
       name: "deptAliasName",
       type: "text",
       placeholder: "Enter Department Alias Name",
-      errorMessage: "Check the Alias name correctly",
+      errorMessage: "Check the Alias name correctly!",
       label: "Department Alias Name",
       required: true,
     },
@@ -52,19 +52,21 @@ const App = () => {
       type: "password",
       placeholder: "Enter the Password",
       errorMessage:
-        "Password should be strong and it should be 8-10 characters!",
+        "Password should be 8-10 characters,must have uppercase,lowercase and atleast 2 numbers and no spaces!",
       label: "Password",
-      // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
     },
     {
       id: 5,
-      name: "noOfSemesters",
+      name: "noOfSemester",
       type: "number",
       placeholder: "Enter the Semester Number",
-      errorMessage: "Check the Semester Number",
-      label: "No of Semesters",
+      errorMessage: "Check your semester number correctly! ",
+      label: "No of Semester",
       required: true,
+      min: 1,
+      max: 8,
     },
   ];
 
@@ -80,21 +82,21 @@ const App = () => {
     <div className="outer">
       <div className="container">
         <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+        <div className="dept-form">
+          <form onSubmit={handleSubmit}>
+            <h1 class="dept-details">Department Details</h1>
+            {inputs.map((input) => (
+              <Deptform
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+            <button class="dept-btn">Submit</button>
+          </form>
+        </div>
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-      </div>
-      <div className="dept-form">
-        <form onSubmit={handleSubmit}>
-          <h1 class="dept-details">Department Details</h1>
-          {inputs.map((input) => (
-            <Deptform
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-            />
-          ))}
-          <button class="dept-btn">Submit</button>
-        </form>
       </div>
     </div>
   );
