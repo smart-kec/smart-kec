@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="labs/halls" onClick={toggle}>
             Labs/Halls
           </SidebarLink>
-          <SidebarLink to="/signup/stdemail" onClick={toggle}>
+          <SidebarLink to="/signup/email" onClick={toggle}>
             Student Signup
           </SidebarLink>
           <SideBtnWrap>

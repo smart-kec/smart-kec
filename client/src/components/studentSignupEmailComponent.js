@@ -16,9 +16,10 @@ function StudentEmailSignup() {
   const sendData = async () => {
     try {
       const res = await generateAndSendEmailOtp({ userEmail: email });
-      
-
-      navigate(`/signup/verify`);
+      console.log(res.data.message);
+      if (res.data.message != "already registered") {
+        navigate(`/signup/verify`);
+      }
     } catch (err) {
       console.log(err);
     }
