@@ -1,23 +1,20 @@
 const express = require("express");
+const cookiePareser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
+
+app.use(express.json());
+app.use(morgan("tiny"));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
-    // to support URL-encoded bodies
     extended: true,
   })
 );
-const loginRouter = require("./routes/loginRoutes");
-const studentInfoRouter = require("./routes/studentInfoRoutes");
-const organizerInfoRouter = require("./routes/organizerInfoRoutes");
-const eventInfoRouter = require("./routes/eventInfoRoutes");
-const registrationRouter = require("./routes/registrationRoutes");
-
-// app.use('/login',loginRouter);
-// app.use('/student',studentInfoRouter);
-// app.use('/organizer',organizerInfoRouter);
-// app.use('/event',eventInfoRouter);
-// app.use('/registration',registrationRouter);
+app.use(cookiePareser());
+require("./routes")(app);
 
 module.exports = app;

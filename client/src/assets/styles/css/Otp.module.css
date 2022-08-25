@@ -1,0 +1,78 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-Content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+  }
+  
+  .header {
+    color: black;
+    padding: 5px;
+    text-align: center;
+  }
+  .content{
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    margin : 15px;
+  }
+  
+  .card {
+    margin-top: 20px;
+    box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
+    padding: 50px 100px;
+    background-color: white;
+    border-radius: 20px;
+  }
+  
+  .lnk{
+    margin-left: 15px;
+    font-size: 20px;
+    margin: 15px;
+  }
+  .button1 {
+    text-align: center;
+    padding: 4%;
+    border: none;
+    background-color: #4fffe7;
+    border-radius: 30px;
+    margin-right: 80px;
+    width : 20%;
+    margin: 15px;
+    margin-top: 20px;
+  }
+  .button2 {
+    text-align: center;
+    padding: 4%;
+    border: none;
+    background-color: #4fffe7;
+    border-radius: 30px;
+    margin-left: 50px;
+    width : 20%;
+    margin-top: 20px;
+  }
+  .button3 {
+    text-align: center;
+    padding: 3%;
+    border: none;
+    background-color: #4fffe7;
+    border-radius: 30px;
+    margin-left: 60px;
+    width : 30%;
+    margin-top: 20px;
+  }
+  
+  .otpfield{
+    text-align: center;
+    background-color : white;
+    box-sizing: border-box;
+    width: 60px;
+    height: 40px;
+    margin: 15px ;
+  }
+  
+  
+  
+  
