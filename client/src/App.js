@@ -12,6 +12,8 @@ import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
 
 import Testing from "./pages/Testing";
+import AdminDashboard from './pages/adminDashboard';
+
 
 function App() {
   return (
@@ -26,13 +28,15 @@ function App() {
               <Route path="details" element={<Signup />} />
             </Route>
           </Route>
-          <Route path="admin" element={<AdminInterface />}>
-            <Route>
-              <Route path="login" element={<AdminLogin />} />
-            </Route>
-          </Route>
-          <Route path="login" element={<Login />} />
         </Route>
+        <Route path="admin" element={<AdminInterface />}>
+          <Route>
+            <Route path="login" element={<AdminLogin />} />
+            <Route path="dept" element={<AdminDashboard />} />
+          </Route>
+        </Route>
+        <Route path="login" element={<Login />} />
+
         <Route path="testing" element={<Testing />}></Route>
       </Routes>
     </>
