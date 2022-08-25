@@ -1,4 +1,4 @@
-import "./Deptform.css";
+import "./Deptform.css";  
 import { useState } from "react";
 const Deptform = (props) => {
   const [focused, setFocused] = useState(false);

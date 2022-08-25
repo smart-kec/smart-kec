@@ -16,9 +16,9 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         <a href="#">
           <i className="fa fa-clock-o"></i>
         </a>
-        {/* <a href="#">
+        <a href="#">
           <img width="30" src={user} alt="adminlogo" />
-        </a> */}
+        </a>
       </div>
     </nav>
   );
