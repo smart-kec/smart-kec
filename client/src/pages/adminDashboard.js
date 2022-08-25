@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../assets/styles/css/DashboardSplit.css";
 import DashboardSidebar from "./../components/Dashboard/DashboardSidebarComponent";
 import DashboardNavbar from "./../components/Dashboard/DashboardNavbarComponent";
 import NewDepartment from "./../components/Department/NewDepartmentComponent";

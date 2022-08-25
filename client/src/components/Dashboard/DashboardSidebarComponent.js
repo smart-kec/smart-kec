@@ -19,10 +19,10 @@ const DashboardSidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-home"></i>
           <a href="#">Dashboard</a>
         </div>
-        <h2 class="h2">Student</h2>
+        <h2 class="h2">Department</h2>
         <div className="side__link">
           <i className="fa fa-user-secret"></i>
-          <a href="#">Department</a>
+          <a href="#">New Department</a>
         </div>
         <div className="side__link">
           <i className="fa fa-user-secret"></i>
