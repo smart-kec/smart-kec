@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
 const jwt = require("jsonwebtoken");
 
-const maxAge = 600; //seconds
+const maxAge = 12 * 3600; //seconds
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_AUTH_ADMINSECRET, {
@@ -11,13 +11,13 @@ const createToken = (id) => {
   });
 };
 
-module.exports.loginAuthentication = async (req, res) => {
-  const { email, password, type } = req.body;
+module.exports = async (req, res) => {
+  const { AdminEmail, AdminPassword } = req.body;
   try {
-    const user = await adminModel.login(email, password, type);
+    const user = await adminModel.login(AdminEmail, AdminPassword);
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ status: "success", id: user._id });
+    res.status(200).json({ status: "success", id: user._id });
   } catch (err) {
     res.status(400).json({ status: "failed", message: err.message });
   }
