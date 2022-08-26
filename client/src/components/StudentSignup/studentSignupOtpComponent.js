@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../assets/styles/css/Otp.module.css";
+import styles from "../../assets/styles/css/Otp.module.css";
 
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
@@ -35,7 +35,7 @@ const OTPBox = () => {
             </p>
             {otp.map((data, index) => {
               return (
-                <input 
+                <input
                   className={styles.otpfield}
                   type="text"
                   name="otp"
