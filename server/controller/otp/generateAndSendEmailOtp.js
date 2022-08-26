@@ -8,7 +8,7 @@ const emailHandler = require("../Email/emailHandler");
 
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
-  console.log(req);
+  
   const otp = Math.floor(10000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
 
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
     var errors = handleError(
       err,
       {
-        status: "failed",
+        STATUS: "failed",
         email: "",
         otp: "",
       },
