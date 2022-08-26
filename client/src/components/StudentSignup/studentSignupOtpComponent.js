@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../assets/styles/css/Otp.module.css";
+import styles from "../../assets/styles/css/Otp.module.css";
 
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
@@ -35,7 +35,7 @@ const OTPBox = () => {
             </p>
             {otp.map((data, index) => {
               return (
-                <input 
+                <input
                   className={styles.otpfield}
                   type="text"
                   name="otp"
@@ -55,19 +55,19 @@ const OTPBox = () => {
                 Clear
               </button>
               <button
-                className="button2"
+                className={styles.button2}
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Continue
               </button>
               <button
-                className="button3"
+                className={styles.button3}
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Resend OTP in{" "}
-                <span style={{ color: "black" }}>
+                <div className={styles.counters}>
                   00:{counter<10 ? "0"+counter:counter}
-                </span>
+                  </div>
               </button>
             </div>
           </div>
