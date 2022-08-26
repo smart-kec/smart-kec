@@ -5,6 +5,7 @@
     align-items: center;
     background-color: black;
     height: 100vh;
+  
   }
   
   .header {
@@ -29,50 +30,71 @@
   
   .lnk{
     margin-left: 15px;
-    font-size: 20px;
+    font-size: 18px;
     margin: 15px;
+    text-decoration: none;
   }
-  .button1 {
+  a:link { text-decoration: none; }
+  .button1{
     text-align: center;
     padding: 4%;
     border: none;
     background-color: #4fffe7;
+    color: black;
+    font-size: 15px;
     border-radius: 30px;
     margin-right: 80px;
     width : 20%;
     margin: 15px;
     margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .button1:hover {
+    background-color: white;
   }
   .button2 {
     text-align: center;
     padding: 4%;
     border: none;
     background-color: #4fffe7;
+    color: black;
     border-radius: 30px;
     margin-left: 50px;
     width : 20%;
     margin-top: 20px;
+    cursor: pointer;
+    font-size: 15px;
   }
-  .button3 {
+  .button2:hover {
+    background-color: white;
+  }
+  .button3{
     text-align: center;
     padding: 3%;
     border: none;
     background-color: #4fffe7;
+    color: black;
     border-radius: 30px;
     margin-left: 60px;
     width : 30%;
     margin-top: 20px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .button3:hover {
+    background-color: white;
   }
   
   .otpfield{
     text-align: center;
-    background-color : white;
-    box-sizing: border-box;
+    background-color : grey;
+    color: white;
+    font-size: 15px;
     width: 60px;
     height: 40px;
     margin: 15px ;
   }
-  
-  
-  
-  
+
+ 

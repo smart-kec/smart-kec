@@ -22,8 +22,10 @@
 
 .message {
     text-align: center;
-    font-size: 20px;
+    font-size: 12px;
+    color: red;
     padding-top: 10px;
+    font-weight: bold;
 }
 
 .label {
@@ -34,16 +36,18 @@
 
 .buttone {
     text-align: center;
-    padding: 10px;
     border: none;
     background-color: #4fffe7;
-    border-radius: 30px;
+    border-radius: 20px;
+    margin: 20px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .input1 {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding:10px;
+    margin: 10px 0;
     border: none;
     border-bottom: 1px solid #000;
     background-color: white;
