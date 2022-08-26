@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { generateAndSendEmailOtp } from "../api/AurthenticationServices";
-import styles from "../assets/styles/css/EmailPage.module.css";
+import { generateAndSendEmailOtp } from "../../api/AurthenticationServices";
+import styles from "../../assets/styles/css/EmailPage.module.css";
 
 function StudentEmailSignup() {
   const navigate = useNavigate();

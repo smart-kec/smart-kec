@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "./useForm";
 import validate from './validateInfo'
 // import { Button } from "./ButtonElements";
-import bg from "../assets/images/bg-1.jpeg";
+import bg from "../../assets/images/bg-1.jpeg";
 import {
   Container,
   Bg,
@@ -14,7 +14,7 @@ import {
   FormInput,
   FormButton,
   Select,
-} from "../assets/styles/style/SignupElements";
+} from "../../assets/styles/style/SignupElements";
 
 const generateArrayOfYears = () => {
   const max = new Date().getFullYear();
@@ -26,7 +26,7 @@ const generateArrayOfYears = () => {
   return years;
 };
 const years = generateArrayOfYears();
-console.log(years);
+// console.log(years);
 
 
 const Signup = () => {

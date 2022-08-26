@@ -33,7 +33,7 @@ const InfoSection = ({
   dark,
   dark2,
 }) => {
-  console.log(homeObjOne);
+  // console.log(homeObjOne);
   const [image, setImage] = useState(null);
   useEffect(() => {
     setImage(require("../assets/images/" + homeObjOne.img));
