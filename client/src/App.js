@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/homePage";
 import HomeInterface from "./interface/HomeInterface";
 import Login from "./components/loginComponent";
-import StudentEmailSignup from "./components/studentSignupEmailComponent";
-import OTPBox from "./components/studentSignupOtpComponent";
-import Signup from "./components/studentSignupDetailsComponent";
+import StudentEmailSignup from "./components/StudentSignup/studentSignupEmailComponent";
+import OTPBox from "./components/StudentSignup/studentSignupOtpComponent";
+import Signup from "./components/StudentSignup/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
@@ -26,7 +26,7 @@ function App() {
               <Route path="details" element={<Signup />} />
             </Route>
           </Route>
-        <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login />} />
         </Route>
         <Route path="admin" element={<AdminInterface />}>
           <Route>
