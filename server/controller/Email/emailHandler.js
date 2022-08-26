@@ -11,8 +11,10 @@ module.exports = async (data, message, res) => {
   await transporter.sendMail(data, (error, info) => {
     if (error) {
       res.status(400).json({
+
         STATUS: "failed",
         message: "An error in sending mail",
+
       });
     } else {
       res.status(201).json({ STATUS: "success", message: message });
