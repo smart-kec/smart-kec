@@ -102,13 +102,18 @@ export const FormInput = styled.input`
 `;
 
 export const FormButton = styled.button`
-  background: #4fffe7;
+  background: ${({primary}) => (primary ? '#4fffe7' : '#010606')};
   padding: 16px 0;
   border: none;
   border-radius: 4px;
-  color: #fff;
+  color: ${({dark}) => (dark ? '#010606' : '#fff')};;
   font-size: 20px;
   cursor: pointer;
+
+  &:hover{
+        transition: all 0.2s ease-in-out;
+        background: ${({primary}) => (primary ? '#fff' : '#4fffe7')};
+  }
 `;
 
 export const Links = styled(Link)`
@@ -124,3 +129,10 @@ export const Select = styled.select`
   border: none;
   border-radius: 4px;
 `;
+
+export const Option = styled.option`
+  padding: 16px 16px;
+  margin-bottom: 32px;
+  border: none;
+  border-radius: 4px;
+`
