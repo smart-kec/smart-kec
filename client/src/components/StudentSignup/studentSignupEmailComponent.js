@@ -53,13 +53,13 @@ function StudentEmailSignup() {
           value={email}
           onChange={handleOnChange}
         />{" "}
+        <p className={styles.message}> {message} </p>{" "}
         <div className={styles.buttone}>
           <button className={styles.buttone} onClick={emailValidation}>
             {" "}
             Proceed to OTP Generation{" "}
           </button>{" "}
         </div>{" "}
-        <p className={styles.message}> {message} </p>{" "}
       </div>{" "}
     </div>
   );

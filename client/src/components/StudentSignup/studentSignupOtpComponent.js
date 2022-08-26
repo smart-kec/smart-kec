@@ -4,7 +4,7 @@ import styles from "../../assets/styles/css/Otp.module.css";
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
 
-  const [counter, setCounter] = React.useState(59);
+  const [counter, setCounter] = React.useState(159);
   React.useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -27,9 +27,9 @@ const OTPBox = () => {
         <div className={styles.header}>
           <div className={styles.card}>
             <h1>AUTHENTICATION</h1>
-            <p className={styles.content}>
+            <p className=" content">
               Enter the OTP sent to ****.20**@kongu.edu email
-              <div className={styles.lnk}>
+              <div className="lnk">
                 <a href="/signup/stdemail">Change Email ID</a>
               </div>
             </p>
@@ -65,9 +65,9 @@ const OTPBox = () => {
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Resend OTP in{" "}
-                <span style={{ color: "black", fontWeight: "bold" }}>
-                  04:{counter}
-                </span>
+                <div className={styles.counters}>
+                  00:{counter<10 ? "0"+counter:counter}
+                  </div>
               </button>
             </div>
           </div>
