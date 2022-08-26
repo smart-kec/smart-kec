@@ -6,7 +6,7 @@ import {
   Bg,
   FormLabel,
   FormWrap,
-  Icon,
+  // Icon,
   FormContent,
   Form,
   FormH1,
@@ -21,13 +21,13 @@ const AdminLogin = () => {
       <Container>
         <Bg imgUrl={bg}>
           <FormWrap>
-            <Icon to="/"> Smart_KEC </Icon>{" "}
+            {/* <Icon to="/"> Smart_KEC </Icon>{" "} */}
             <FormContent>
               <Form action="#">
                 <FormH1> Sign in to your account </FormH1>{" "}
                 <FormLabel htmlFor="for"> Email </FormLabel>{" "}
                 <FormInput type="email" required />
-                <FormLabel htmlFor="for"> Password </FormLabel>{" "}
+                <FormLabel htmlFor="password"> Password </FormLabel>{" "}
                 <FormInput type="password" required />
                 <FormButton to="/" primary="true" dark="true">
                   {" "}
