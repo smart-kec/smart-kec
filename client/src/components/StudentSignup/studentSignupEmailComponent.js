@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { generateAndSendEmailOtp } from "../api/AurthenticationServices";
-import styles from "../assets/styles/css/EmailPage.module.css";
+import { generateAndSendEmailOtp } from "../../api/AurthenticationServices";
+import styles from "../../assets/styles/css/EmailPage.module.css";
 
 function StudentEmailSignup() {
   const navigate = useNavigate();
@@ -53,13 +53,13 @@ function StudentEmailSignup() {
           value={email}
           onChange={handleOnChange}
         />{" "}
+        <p className={styles.message}> {message} </p>{" "}
         <div className={styles.buttone}>
           <button className={styles.buttone} onClick={emailValidation}>
             {" "}
             Proceed to OTP Generation{" "}
           </button>{" "}
         </div>{" "}
-        <p className={styles.message}> {message} </p>{" "}
       </div>{" "}
     </div>
   );
