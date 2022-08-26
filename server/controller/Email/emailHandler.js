@@ -12,7 +12,7 @@ module.exports = async (data, message, res) => {
     if (error) {
       res.status(400).json({
         status: "failed",
-        message: "An error in sending mail",
+        message: "An error in sending mail. Try Again...",
       });
     } else {
       res.status(201).json({ status: "success", message: message });
