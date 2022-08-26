@@ -1,4 +1,6 @@
 import React from "react";
+import useForm from "./useForm";
+import validate from './validateInfo'
 // import { Button } from "./ButtonElements";
 import bg from "../assets/images/bg-1.jpeg";
 import {
@@ -11,9 +13,6 @@ import {
   FormH1,
   FormInput,
   FormButton,
-  // Links,
-  Radio,
-  RadioInput,
   Select,
 } from "../assets/styles/style/SignupElements";
 
@@ -31,22 +30,34 @@ console.log(years);
 
 
 const Signup = () => {
+  const {handleChange,values,handleSubmit} = useForm(validate);
+
+
   return (
     <>
       <Container>
         <Bg imgUrl={bg}>
           <FormWrap>
             <FormContent>
-              <Form action="#">
+              <Form action="#" onSubmit={handleSubmit}>
                 <FormH1>Create an Account</FormH1>
                 <FormLabel htmlFor="for">Name</FormLabel>
-                <FormInput type="text" name="studname" required />
+                <FormInput type="text" name="studname" 
+                value={values.studname} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Roll No.</FormLabel>
-                <FormInput type="text" name="studrollno" required />
+                <FormInput type="text" name="studrollno"
+                value={values.studrollno} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Email</FormLabel>
-                <FormInput type="email" name="studemail" required />
+                <FormInput type="email" name="studemail" 
+                value={values.studemail} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Programme</FormLabel>
                 <Select name="programme">
@@ -100,28 +111,39 @@ const Signup = () => {
                   })}
                 </Select>
 
-                <FormLabel htmlFor="for">Gender</FormLabel>
+                <FormLabel htmlFor="for" name="gender">Gender</FormLabel>
                 <FormLabel>
                 <FormInput type="radio" name="male" />Male    
                 <FormInput type="radio" name="female"/>Female
                 </FormLabel>
 
                 <FormLabel htmlFor="for">Phone no</FormLabel>
-                <FormInput type="text" name="phone" required />
+                <FormInput type="text" name="phone" 
+                value={values.phone} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Hackerrank Id</FormLabel>
-                <FormInput type="text" name="hack-id" required />
+                <FormInput type="text" name="hack_id" 
+                value={values.hack_id} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Password</FormLabel>
-                <FormInput type="password" required />
+                <FormInput type="password" name="password"
+                value={values.password} 
+                onChange={handleChange}
+                required />
 
                 <FormLabel htmlFor="for">Confirm Password</FormLabel>
-                <FormInput type="password" required />
+                <FormInput type="password" name="password2" 
+                value={values.password2} 
+                onChange={handleChange}
+                required />
 
                 <FormButton to="/" primary="true" dark="true">
                   Continue
                 </FormButton>
-                {/* <Links to="/">Forgot Password?</Links> */}
               </Form>
             </FormContent>
           </FormWrap>
