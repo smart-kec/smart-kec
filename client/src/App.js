@@ -10,7 +10,7 @@ import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
-
+import Dashboard from "./pages/Dashboard";
 import Testing from "./pages/Testing";
 
 function App() {
@@ -26,13 +26,15 @@ function App() {
               <Route path="details" element={<Signup />} />
             </Route>
           </Route>
-          <Route path="admin" element={<AdminInterface />}>
-            <Route>
-              <Route path="login" element={<AdminLogin />} />
-            </Route>
-          </Route>
-          <Route path="login" element={<Login />} />
         </Route>
+        <Route path="admin" element={<AdminInterface />}>
+          <Route>
+            <Route path="login" element={<AdminLogin />} />
+            <Route path="dept" element={<Dashboard />} />
+          </Route>
+        </Route>
+        <Route path="login" element={<Login />} />
+
         <Route path="testing" element={<Testing />}></Route>
       </Routes>
     </>

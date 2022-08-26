@@ -2,7 +2,9 @@ const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel"
 const accountModel = require("../../model/accountsModel");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
-const tryAgainError = { status: "failed", message: "try again" };
+
+const tryAgainError = { status: "failed", message: "Error in generating otp. Try again after some time" };
+
 
 module.exports = async (req, res, next) => {
   const { userEmail } = req.body;
@@ -14,7 +16,7 @@ module.exports = async (req, res, next) => {
     if (fuser) {
       if (fuser.verified) {
         const resDetails = {
-          status: "success",
+          STATUS: "success",
           message: "verified user",
         };
         res.status(200).json(resDetails);
@@ -34,7 +36,7 @@ module.exports = async (req, res, next) => {
       if (user) {
         res
           .status(200)
-          .json({ status: "success", message: "already registered" });
+          .json({ STATUS: "warning", message: "already registered" });
       } else {
         next();
       }

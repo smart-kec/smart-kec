@@ -16,9 +16,16 @@ function StudentEmailSignup() {
   const sendData = async () => {
     try {
       const res = await generateAndSendEmailOtp({ userEmail: email });
-      console.log(res.data.message);
-      if (res.data.message != "already registered") {
+      const msg = res.data.message;
+      if (msg === "otp generated") {
         navigate(`/signup/verify`);
+      } else if (msg === "verified user") {
+        navigate(`/signup/details`);
+      } else if (msg === "already registered") {
+        const userMsg = "Account with this email is already registered.";
+        console.log(userMsg);
+      } else {
+        console.log(res.data.message);
       }
     } catch (err) {
       console.log(err);
@@ -27,12 +34,11 @@ function StudentEmailSignup() {
 
   const handleOnChange = (e) => {
     setEmail(e.target.value);
-    console.log(email);
   };
   return (
     <div className={styles.app}>
       <div className={styles.head}>
-        <h2> Email Page </h2>{" "}
+        <h2> Student Signup </h2>{" "}
       </div>{" "}
       <div className={styles.con}>
         <label htmlFor="email" className={styles.label}>

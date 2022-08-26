@@ -1,17 +1,16 @@
 const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel");
 const handleError = require("../HandleError/handleError");
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
 const emailHandler = require("../Email/emailHandler");
 
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
-  console.log(req);
+
   const otp = Math.floor(10000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
-
+  console.log(userEmail);
   try {
     await otpModel.create({
       email: userEmail,
@@ -32,7 +31,7 @@ module.exports = async (req, res) => {
     var errors = handleError(
       err,
       {
-        status: "failed",
+        STATUS: "failed",
         email: "",
         otp: "",
       },
