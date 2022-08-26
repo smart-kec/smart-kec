@@ -1,6 +1,6 @@
 import "../../assets/styles/css/DashboardNavbar.css";
-// import user from "../../assets/images/user.png";
-const DashboardNavbar = ({ sidebarOpen, openSidebar }) => {
+import user from "../../assets/user.png";
+const Navbar = ({ sidebarOpen, openSidebar }) => {
   return (
     <nav className="navbar">
       <div className="nav_icon" onClick={() => openSidebar()}>
@@ -16,11 +16,11 @@ const DashboardNavbar = ({ sidebarOpen, openSidebar }) => {
         <a href="#">
           <i className="fa fa-clock-o"></i>
         </a>
-        {/* <a href="#">
+        <a href="#">
           <img width="30" src={user} alt="adminlogo" />
-        </a> */}
+        </a>
       </div>
     </nav>
   );
 };
-export default DashboardNavbar;
+export default Navbar;

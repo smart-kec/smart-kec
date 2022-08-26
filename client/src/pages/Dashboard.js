@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "../assets/styles/css/DashboardSplit.css";
-import DashboardSidebar from "./../components/Dashboard/DashboardSidebarComponent";
-import DashboardNavbar from "./../components/Dashboard/DashboardNavbarComponent";
-import NewDepartment from "./../components/Department/NewDepartmentComponent";
+import "../assets/styles/css/Dashboard.css";
+import Navbar from "../components/Dashboard/DashboardNavbar";
+import Sidebar from "./../components/Dashboard/DashboardSidebar";
+import Deptform from "./../components/Department/Deptform";
 
-const AdminDashboard = () => {
+const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const openSidebar = () => {
     setSidebarOpen(true);
@@ -82,12 +82,12 @@ const AdminDashboard = () => {
   return (
     <div className="outer">
       <div className="container">
-        <DashboardNavbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+        <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
         <div className="dept-form">
           <form onSubmit={handleSubmit}>
             <h1 class="dept-details">Department Details</h1>
             {inputs.map((input) => (
-              <NewDepartment
+              <Deptform
                 key={input.id}
                 {...input}
                 value={values[input.name]}
@@ -97,13 +97,10 @@ const AdminDashboard = () => {
             <button class="dept-btn">Submit</button>
           </form>
         </div>
-        <DashboardSidebar
-          sidebarOpen={sidebarOpen}
-          closeSidebar={closeSidebar}
-        />
+        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;
