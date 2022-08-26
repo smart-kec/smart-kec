@@ -1,6 +1,6 @@
 import "../../assets/styles/css/DashboardSidebar.css";
-import logo from "../../assets/images/logo.jpg";
-const DashboardSidebar = ({ sidebarOpen, closeSidebar }) => {
+import logo from "../../assets/logo.jpg";
+const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   return (
     <div className={sidebarOpen ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar__title">
@@ -19,10 +19,10 @@ const DashboardSidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-home"></i>
           <a href="#">Dashboard</a>
         </div>
-        <h2 class="h2">Department</h2>
+        <h2 class="h2">Student</h2>
         <div className="side__link">
           <i className="fa fa-user-secret"></i>
-          <a href="#">New Department</a>
+          <a href="#">Department</a>
         </div>
         <div className="side__link">
           <i className="fa fa-user-secret"></i>
@@ -75,4 +75,4 @@ const DashboardSidebar = ({ sidebarOpen, closeSidebar }) => {
     </div>
   );
 };
-export default DashboardSidebar;
+export default Sidebar;
