@@ -26,6 +26,7 @@ function App() {
               <Route path="details" element={<Signup />} />
             </Route>
           </Route>
+        <Route path="login" element={<Login />} />
         </Route>
         <Route path="admin" element={<AdminInterface />}>
           <Route>
@@ -33,7 +34,6 @@ function App() {
             <Route path="dept" element={<Dashboard />} />
           </Route>
         </Route>
-        <Route path="login" element={<Login />} />
 
         <Route path="testing" element={<Testing />}></Route>
       </Routes>
