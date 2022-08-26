@@ -10,10 +10,9 @@ import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
-
+import Dashboard from "./Dashboard";
 import Testing from "./pages/Testing";
-import AdminDashboard from './pages/adminDashboard';
-
+import AdminDashboard from "./pages/adminDashboard";
 
 function App() {
   return (
@@ -36,6 +35,7 @@ function App() {
           </Route>
         </Route>
         <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="testing" element={<Testing />}></Route>
       </Routes>
