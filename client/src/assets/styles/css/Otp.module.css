@@ -1,0 +1,103 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+}
+
+.header {
+  color: black;
+  padding: 5px;
+  text-align: center;
+}
+.content {
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  margin: 15px;
+}
+
+.card {
+  margin-top: 20px;
+  box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
+  padding: 50px 100px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.lnk {
+  margin-left: 15px;
+  font-size: 18px;
+  margin: 15px;
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
+.button1 {
+  text-align: center;
+  padding: 4%;
+  border: none;
+  background-color: #4fffe7;
+  color: black;
+  font-size: 15px;
+  border-radius: 30px;
+  margin-right: 80px;
+  width: 20%;
+  margin: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background-color: white;
+}
+.button2 {
+  text-align: center;
+  padding: 4%;
+  border: none;
+  background-color: #4fffe7;
+  color: black;
+  border-radius: 30px;
+  margin-left: 50px;
+  width: 20%;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.button2:hover {
+  background-color: white;
+}
+.button3 {
+  text-align: center;
+  padding: 3%;
+  border: none;
+  background-color: #4fffe7;
+  color: black;
+  border-radius: 30px;
+  margin-left: 60px;
+  width: 30%;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.button3:hover {
+  background-color: white;
+}
+
+.otpfield {
+  text-align: center;
+  background-color: grey;
+  color: white;
+  font-size: 15px;
+  width: 60px;
+  height: 40px;
+  margin: 15px;
+}
+
+.counters {
+  color: black;
+}

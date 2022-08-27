@@ -4,20 +4,18 @@ const passwordReset = require("../../model/OTP and Reset Models/resetModel");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
-const passwordRules = require("../passwordValidation");
+const passwordRules = require("../Validation/passwordValidation");
 
 const handleError = require("../HandleError/passwordHandler");
 
 const emailHandler = require("../Email/emailHandler");
 
 module.exports.checkUser = async (req, res, next) => {
-  const { email } = req.body;
+  const { userEmail } = req.body;
   try {
-    const user = await accountModel.findOne({ email });
+    const user = await accountModel.findOne({ email: userEmail });
     if (user) {
-      req.body.id = user._id;
-
-      await passwordReset.deleteOne({ email });
+      await passwordReset.deleteOne({ email: userEmail });
 
       next();
     } else {
@@ -29,26 +27,23 @@ module.exports.checkUser = async (req, res, next) => {
 };
 
 module.exports.sendLink = async (req, res) => {
-  const { email, id, redirectUrl } = req.body;
+  const { userEmail, redirectUrl } = req.body;
   const randomString = randomstring.generate();
 
-  console.log(Date(Date.now()));
   const createdAt = Date.now();
   var expiresAt = Date.now() + 15 * 60 * 1000;
 
-  console.log(createdAt, expiresAt);
   try {
     const hashedrandomString = await bcrypt.hash(randomString, 10);
     const u = await passwordReset.create({
-      email,
+      email: userEmail,
       resetToken: hashedrandomString,
       createdAt,
       expiresAt,
     });
-    console.log(u);
     const data = {
       from: process.env.MAIL_USER,
-      to: email,
+      to: userEmail,
       subject: "Password Reset - Smart KEC",
       html: `<p> We heard that you lost the password.</p><p>Don't worry, use the link below to reset it.</p> <p> This link <b>expires is 15 minutes</b>.</p><p>Click <a href=${
         redirectUrl + "?id=" + u.id + "&token=" + randomString
@@ -65,7 +60,6 @@ module.exports.checkForValidToken = async (req, res, next) => {
   try {
     const user = await passwordReset.findOne({ _id: userId });
     if (user) {
-      // console.log(user);
       if (Date.now() < user.expiresAt) {
         if (await bcrypt.compare(resetToken, user.resetToken)) {
           next();
@@ -91,24 +85,24 @@ module.exports.checkForValidToken = async (req, res, next) => {
 };
 
 module.exports.resetPassword = async (req, res) => {
-  const { email, password } = req.body;
+  const { userEmail, resetPassword } = req.body;
   var checkPassword;
 
   try {
-    checkPassword = passwordRules.validate(password, { details: true });
+    checkPassword = passwordRules.validate(resetPassword, { details: true });
     if (checkPassword.length == 0) {
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(resetPassword, 10);
       await accountModel.findOneAndUpdate(
-        { email },
+        { email: userEmail },
         { $set: { password: hashedPassword } },
         {
           new: true,
           runValidators: true,
         }
       );
-      await passwordReset.findOneAndDelete({ email });
+      await passwordReset.findOneAndDelete({ email: userEmail });
       res
-        .status(201)
+        .status(200)
         .json({ status: "success", message: "Password reset successfully" });
     } else {
       throw new Error("Password length");
@@ -131,7 +125,7 @@ module.exports.getEmail = async (req, res) => {
     if (user) {
       // console.log(user, Date.now());
       if (Date.now() < user.expiresAt) {
-        res.status(201).json({ status: "success", email: user.email });
+        res.status(200).json({ status: "success", email: user.email });
       } else {
         res
           .status(400)

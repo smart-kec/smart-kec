@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "../assets/styles/css/Otp.css";
+import styles from "../../assets/styles/css/Otp.module.css";
 
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
 
-  const [counter, setCounter] = React.useState(59);
+  const [counter, setCounter] = React.useState(159);
   React.useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -23,9 +23,9 @@ const OTPBox = () => {
 
   return (
     <>
-      <div className="app">
-        <div className="header">
-          <div className="card">
+      <div className={styles.app}>
+        <div className={styles.header}>
+          <div className={styles.card}>
             <h1>AUTHENTICATION</h1>
             <p className=" content">
               Enter the OTP sent to ****.20**@kongu.edu email
@@ -36,7 +36,7 @@ const OTPBox = () => {
             {otp.map((data, index) => {
               return (
                 <input
-                  className="otp-field"
+                  className={styles.otpfield}
                   type="text"
                   name="otp"
                   maxLength="1"
@@ -49,25 +49,25 @@ const OTPBox = () => {
             })}
             <div className="button">
               <button
-                className="button1"
+                className={styles.button1}
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Clear
               </button>
               <button
-                className="button2"
+                className={styles.button2}
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Continue
               </button>
               <button
-                className="button3"
+                className={styles.button3}
                 onClick={(e) => setOtp([...otp.map((v) => "")])}
               >
                 Resend OTP in{" "}
-                <span style={{ color: "black", fontWeight: "bold" }}>
-                  04:{counter}
-                </span>
+                <div className={styles.counters}>
+                  00:{counter<10 ? "0"+counter:counter}
+                  </div>
               </button>
             </div>
           </div>
