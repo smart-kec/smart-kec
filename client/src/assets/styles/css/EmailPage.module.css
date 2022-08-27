@@ -36,9 +36,10 @@
 
 .buttone {
   text-align: center;
+  padding: 1%;
   border: none;
   background-color: #4fffe7;
-  border-radius: 20px;
+  border-radius: 30px;
   margin: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -57,5 +58,5 @@
 }
 
 .buttone:hover {
-  background-color: white;
+  background-color: #c9fef7;
 }

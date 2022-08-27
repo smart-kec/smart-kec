@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useForm from "./useForm";
 import validate from './validateInfo'
 // import { Button } from "./ButtonElements";
@@ -30,9 +30,13 @@ const years = generateArrayOfYears();
 
 
 const Signup = () => {
-  const {handleChange,values,handleSubmit} = useForm(validate);
+  const {handleChange,values,handleSubmit, errors} = useForm(validate);
 
+  // const [isSubmitted, setIsSubmitted] = useState(false)
 
+  // function submitForm() {
+  //   setIsSubmitted(true);
+  // }
   return (
     <>
       <Container>
@@ -46,18 +50,22 @@ const Signup = () => {
                 value={values.studname} 
                 onChange={handleChange}
                 required />
+                <div>
+                {errors.studname && <p color="#fff">{errors.studname}</p>}</div>
 
                 <FormLabel htmlFor="for">Roll No.</FormLabel>
                 <FormInput type="text" name="studrollno"
                 value={values.studrollno} 
                 onChange={handleChange}
                 required />
+                console.log({errors.studrollno && <p color="#fff">{errors.studrollno}</p>})
 
                 <FormLabel htmlFor="for">Email</FormLabel>
                 <FormInput type="email" name="studemail" 
                 value={values.studemail} 
                 onChange={handleChange}
                 required />
+                 {errors.studemail && <p color="#fff">{errors.studemail}</p>}
 
                 <FormLabel htmlFor="for">Programme</FormLabel>
                 <Select name="programme">
@@ -122,24 +130,28 @@ const Signup = () => {
                 value={values.phone} 
                 onChange={handleChange}
                 required />
+                 {errors.phone && <p color="#fff">{errors.phone}</p>}
 
                 <FormLabel htmlFor="for">Hackerrank Id</FormLabel>
                 <FormInput type="text" name="hack_id" 
                 value={values.hack_id} 
                 onChange={handleChange}
                 required />
+                 {errors.hack_id && <p color="#fff">{errors.hack_id}</p>}
 
                 <FormLabel htmlFor="for">Password</FormLabel>
                 <FormInput type="password" name="password"
                 value={values.password} 
                 onChange={handleChange}
                 required />
+                 {errors.password && <p color="#fff">{errors.password}</p>}
 
                 <FormLabel htmlFor="for">Confirm Password</FormLabel>
                 <FormInput type="password" name="password2" 
                 value={values.password2} 
                 onChange={handleChange}
                 required />
+                 {errors.password2 && <p color="#fff">{errors.password2}</p>}
 
                 <FormButton to="/" primary="true" dark="true">
                   Continue
