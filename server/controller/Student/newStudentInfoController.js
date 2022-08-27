@@ -5,6 +5,7 @@ module.exports = async (req, res, next) => {
   const {
     studentName,
     studentRollNo,
+    stdDob,
     stdprogramme,
     stdbranch,
     stdyearOfStudy,
@@ -20,6 +21,7 @@ module.exports = async (req, res, next) => {
     await studentInfoModel.create({
       name: studentName,
       rollNo: studentRollNo,
+      dob: stdDob,
       programme: stdprogramme,
       branch: stdbranch,
       yearOfStudy: stdyearOfStudy,
@@ -38,6 +40,7 @@ module.exports = async (req, res, next) => {
         status: "failed",
         name: "",
         rollNo: "",
+        dob: "",
         programme: "",
         branch: "",
         yearOfStudy: "",
