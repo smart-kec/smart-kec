@@ -2,13 +2,16 @@ const departmentModel = require("../../model/InfoCollections/departmentInfo");
 const staffInfoModel = require("../../model/InfoCollections/staffInfoModel");
 
 module.exports = async (req, res) => {
-  const { deptEmail, studentYear, studentInchargeEmail } = req.body;
+  const { deptId, studentYear, stdInchargeId } = req.body;
   try {
-    const dept = await departmentModel.findOne({ deptEmail });
-
+    const dept = await departmentModel.findOne(
+      { _id: deptId },
+      { _id: 1, yearIncharge: 1 }
+    );
+    console.log(dept);
     if (dept) {
       const yearInchargeCheck = await staffInfoModel.findOne(
-        { email: studentInchargeEmail },
+        { _id: stdInchargeId },
         { _id: 1 }
       );
       if (yearInchargeCheck) {
@@ -23,7 +26,7 @@ module.exports = async (req, res) => {
         final.push(datas);
         try {
           await departmentModel.updateOne(
-            { email: deptEmail },
+            { _id: deptId },
             { $set: { yearIncharge: final } },
             { new: true, runValidators: true }
           );

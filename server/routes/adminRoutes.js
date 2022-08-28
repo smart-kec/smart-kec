@@ -7,8 +7,7 @@ const router = Router();
 const saveAccount = require("../controller/Account/saveAccountController");
 
 //Authorization
-const afterAdminAuthorization = require("../controller/AuthController/afterAdminAuthorization");
-
+const afterAuthorization = require("../controller/AuthController/afterAuthorization");
 //Home
 const insertDetails = require("../controller/Home/insertDetails");
 
@@ -30,10 +29,19 @@ const createClass = require("../controller/Class/createClass");
 const addAdvisor = require("../controller/Class/addAdvisor");
 const removeAdvisor = require("../controller/Class/removeAdvisor");
 const endAdvisor = require("../controller/Class/endAdvisor");
+const editClassDetails = require("../controller/Class/editClassDetails");
+const enrollStudents = require("../controller/Class/enrollStudents");
+const classStudents = require("../controller/Class/classStudents");
+const unEnrollStd = require("../controller/Class/unEnrollStd");
+
+// For Dropdown and others
+const listAllDeptDD = require("../controller/Department/listAllDeptDD");
+const listAdvisorsDD = require("../controller/Staff/listAdvisorsDD");
+const studentsListDD = require("../controller/Student/studentsListDD");
 
 //Routes
 //Check for Jwt and verifying AdminSignature
-// router.use("/*", afterAdminAuthorization);
+router.use("/*", afterAuthorization);
 
 //Home Data Insertion
 router.route("/home/add/data").post(insertDetails);
@@ -61,4 +69,15 @@ router.route("/class/new/create").post(createClass);
 router.route("/class/update/add/advisors").get(addAdvisor);
 router.route("/class/delete/advisor").get(removeAdvisor);
 router.route("/class/advisor/end/work").get(endAdvisor);
+router.route("/class/edit/details").get(editClassDetails);
+router.route("/class/enroll/students").put(enrollStudents);
+router.route("/class/list/student").get(classStudents);
+router.route("/class/unenroll/student").get(unEnrollStd);
+
+//For Dropdown and others
+
+router.route("/dept/list/all").get(listAllDeptDD);
+router.route("/staff/list/advisor/dd").get(listAdvisorsDD);
+router.route("/student/list/class/enroll").get(studentsListDD);
+
 module.exports = router;

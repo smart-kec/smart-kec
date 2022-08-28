@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
 const eventStatusSchema = new mongoose.Schema({
   eventKeys: {
     type: [String],
@@ -41,6 +42,10 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Student must study in any one of the branches"],
   },
+  deptId: {
+    type: ObjectIdSchema,
+    required: [true, "Dept id missing"],
+  },
   section: {
     type: String,
     default: "Not Assigned",
@@ -76,7 +81,7 @@ const studentInfoSchema = new mongoose.Schema({
     unique: true,
   },
   registeredEvents: [registeredEventsSchema],
-  classKey: String,
+  classKey: ObjectIdSchema,
 });
 
 const studentInfoModel = mongoose.model("studentinfos", studentInfoSchema);

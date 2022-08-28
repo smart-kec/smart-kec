@@ -1,19 +1,18 @@
 const departmentModel = require("../../model/InfoCollections/departmentInfo");
 const updateHandler = require("../../controller/HandleError/updateHandler");
 const staffInfoModel = require("../../model/InfoCollections/staffInfoModel");
+const mongoose = require("mongoose");
+var ObjectId = mongoose.Types.ObjectId;
+
 module.exports = async (req, res) => {
-  const { deptId, deptHodEmail } = req.body;
+  const { deptId, deptHodId } = req.body;
   try {
     if (await departmentModel.findOne({ _id: deptId }, { _id: 1 })) {
-      const hod = await staffInfoModel.findOne(
-        { email: deptHodEmail },
-        { _id: 1 }
-      );
-      console.log(hod);
+      const hod = await staffInfoModel.findOne({ _id: deptHodId }, { _id: 1 });
       if (hod) {
         await departmentModel.updateOne(
           { _id: deptId },
-          { $set: { hodId: hod._id } },
+          { $set: { hodId: ObjectId(hod._id) } },
           { new: true, upsert: true, runValidators: true }
         );
         res.status(200).json({ status: "success", message: "Updated HoD" });

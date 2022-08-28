@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
 
 const yearInchargeSchema = new mongoose.Schema({
   year: {
     type: Number,
-    unique: [true, "Only one year incharge for one year"],
-    required: [true, "Specify the year"],
+    // unique: [true, "Only one year incharge for one year"],
+    // required: [true, "Specify the year"],
   },
   yearInchargeId: {
-    type: String,
-    trim: true,
-    required: [true, "Required Year Incharge Id"],
+    type: ObjectIdSchema,
+    // trim: true,
+    // required: [true, "Required Year Incharge Id"],
   },
 });
 const departmentSchema = new mongoose.Schema({
@@ -28,7 +30,6 @@ const departmentSchema = new mongoose.Schema({
   },
   programme: {
     type: String,
-    unique: true,
     trim: true,
     required: [true, "Must mention Programme "],
   },
@@ -53,9 +54,7 @@ const departmentSchema = new mongoose.Schema({
     required: [true, "Mention the year the department has started"],
   },
   hodId: {
-    type: String,
-    unique: true,
-    trim: true,
+    type: ObjectIdSchema,
   },
   facultyCount: {
     type: Number,
@@ -67,14 +66,15 @@ const departmentSchema = new mongoose.Schema({
   },
   yearIncharge: {
     type: [yearInchargeSchema],
+    default: [],
   },
   classKeys: {
-    type : [String],
-    default : []
+    type: [ObjectIdSchema],
+    default: [],
   },
   endedClassKeys: {
-    type : [String],
-    default : []
+    type: [ObjectIdSchema],
+    default: [],
   },
 });
 
