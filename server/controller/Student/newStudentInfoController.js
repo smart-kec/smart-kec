@@ -46,7 +46,6 @@ module.exports = async (req, res, next) => {
       STATUS: "success",
     });
   } catch (err) {
-    console.log(err);
     const errors = handleError(
       err,
       {

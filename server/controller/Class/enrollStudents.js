@@ -6,12 +6,12 @@ module.exports = async (req, res) => {
   const { stdKeys, classId } = req.body;
   try {
     const checkStd = await studentInfoModel.find(
-      { _id: { $in: stdKeys } },
+      { _id: { $in: stdKeys }, classKey: null },
       { _id: 1 }
     );
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { studentsKeys: 1, section: 1 }
+      { studentsKeys: 1, section: 1, currentSemester: 1 }
     );
     if (checkStd.length == stdKeys.length && classInfo) {
       var stdId = classInfo.studentsKeys;
@@ -20,12 +20,18 @@ module.exports = async (req, res) => {
       });
       await studentInfoModel.updateMany(
         { _id: { $in: stdKeys } },
-        { classKey: classId, section: classInfo.section },
+        {
+          $set: {
+            classKey: classId,
+            section: classInfo.section,
+            semesterNo: classInfo.currentSemester,
+          },
+        },
         { new: true, upsert: true, runValidators: true }
       );
       await classModel.updateOne(
         { _id: classId },
-        { studentsKeys: stdId },
+        { $set: { studentsKeys: stdId } },
         { new: true, upsert: true, runValidators: true }
       );
       res

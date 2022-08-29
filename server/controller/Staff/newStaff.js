@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
       message: "New staff created... Login for more",
     });
   } catch (error) {
-    console.log(error);
+    
     try {
       await accountModel.deleteOne({ email: userEmail });
       res.status(400).json(

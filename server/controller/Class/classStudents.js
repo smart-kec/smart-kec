@@ -8,7 +8,8 @@ module.exports = async (req, res) => {
       { _id: classId },
       { studentsKeys: 1 }
     );
-    var result = { STATUS: "success", data: [] };
+    const gender = type.toLowerCase();
+    var result = { STATUS: "success" };
     if (type == "all") {
       const stdList = await studentInfoModel
         .find(
@@ -17,7 +18,8 @@ module.exports = async (req, res) => {
         )
         .sort({ rollNo: 1 });
       result.data = stdList;
-    } else {
+      res.status(200).json(result);
+    } else if (gender == "male" || gender == "female") {
       const stdList = await studentInfoModel
         .find(
           {
@@ -28,9 +30,12 @@ module.exports = async (req, res) => {
         )
         .sort({ rollNo: 1 });
       result.data = stdList;
+      res.status(200).json(result);
+    } else {
+      result.STATUS = "failed";
+      result.message = "Invalid request";
+      res.status(400).json(result);
     }
-
-    res.status(200).json(result);
   } catch (error) {
     res
       .status(400)

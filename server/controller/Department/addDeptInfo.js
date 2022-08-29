@@ -27,7 +27,6 @@ module.exports = async (req, res) => {
       message: "New department created... Login for more",
     });
   } catch (err) {
-    console.log(err.message);
     var errors = handleError(
       err,
       {

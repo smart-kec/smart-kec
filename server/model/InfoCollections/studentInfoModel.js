@@ -50,7 +50,7 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     default: "Not Assigned",
   },
-  semesterNo: {
+  semesterNo : {
     type: Number,
     default: 1,
   },

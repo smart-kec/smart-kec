@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   try {
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { studentsKeys: 1 }
+      { studentsKeys: 1, boysRep: 1, girlsRep: 1 }
     );
     const stdInfo = await studentInfoModel.findOne(
       { _id: stdId, classKey: classId },
@@ -16,12 +16,13 @@ module.exports = async (req, res) => {
       classInfo.studentsKeys.remove(stdId);
       await classModel.update(
         { _id: classId },
-        { studentsKeys: classInfo.studentsKeys },
+        { $set: { studentsKeys: classInfo.studentsKeys } },
         { new: true, upsert: true, runValidators: true }
       );
       await studentInfoModel.updateOne(
         { _id: stdId },
-        { classKey: null, section: "Not Assigned" }
+        { $set: { classKey: null, section: "Not Assigned" } },
+        { new: true, upsert: true, runValidators: true }
       );
       res.status(200).json({
         STATUS: "success",
@@ -33,7 +34,6 @@ module.exports = async (req, res) => {
         .json({ STATUS: "failed", message: "Student or class not found" });
     }
   } catch (error) {
-    console.log(error);
     res
       .status(400)
       .json({ STATUS: "failed", message: "Error in un-enrolling student" });

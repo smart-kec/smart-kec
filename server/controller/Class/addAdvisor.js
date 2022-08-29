@@ -82,7 +82,6 @@ module.exports = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(400).json({
       STATUS: "failed",
       message: "Error in updating advisor to the class",

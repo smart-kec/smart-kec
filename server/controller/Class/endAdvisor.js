@@ -41,8 +41,10 @@ module.exports = async (req, res) => {
           await classModel.updateOne(
             { _id: classId },
             {
-              advisorKeys: classInfo.advisorKeys,
-              pastAdvisorKeys: classInfo.pastAdvisorKeys,
+              $set: {
+                advisorKeys: classInfo.advisorKeys,
+                pastAdvisorKeys: classInfo.pastAdvisorKeys,
+              },
             },
             {
               new: true,

@@ -33,6 +33,7 @@ const editClassDetails = require("../controller/Class/editClassDetails");
 const enrollStudents = require("../controller/Class/enrollStudents");
 const classStudents = require("../controller/Class/classStudents");
 const unEnrollStd = require("../controller/Class/unEnrollStd");
+const chooseRep = require("../controller/Class/chooseRep");
 
 // For Dropdown and others
 const listAllDeptDD = require("../controller/Department/listAllDeptDD");
@@ -73,6 +74,7 @@ router.route("/class/edit/details").get(editClassDetails);
 router.route("/class/enroll/students").put(enrollStudents);
 router.route("/class/list/student").get(classStudents);
 router.route("/class/unenroll/student").get(unEnrollStd);
+router.route("/class/choose/rep").get(chooseRep);
 
 //For Dropdown and others
 

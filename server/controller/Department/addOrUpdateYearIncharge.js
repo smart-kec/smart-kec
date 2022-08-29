@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       { _id: deptId },
       { _id: 1, yearIncharge: 1 }
     );
-    console.log(dept);
+
     if (dept) {
       const yearInchargeCheck = await staffInfoModel.findOne(
         { _id: stdInchargeId },

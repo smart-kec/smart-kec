@@ -31,7 +31,9 @@ module.exports = async (req, res) => {
           _id: classId,
         },
         {
-          advisorKeys: classInfo.advisorKeys,
+          $set: {
+            advisorKeys: classInfo.advisorKeys,
+          },
         },
         {
           new: true,

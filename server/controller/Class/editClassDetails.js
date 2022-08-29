@@ -1,11 +1,15 @@
 const classModel = require("../../model/classModel");
+const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const updateHandler = require("../HandleError/updateHandler");
 
 module.exports = async (req, res) => {
   const { classId, callName, classMail, semNo, gYear, regulationYear } =
     req.body;
   try {
-    const classInfo = await classModel.findOne({ _id: classId }, { _id: 1 });
+    const classInfo = await classModel.findOne(
+      { _id: classId },
+      { _id: 1, currentSemester: 1 }
+    );
     if (classInfo) {
       try {
         await classModel.updateOne(
@@ -21,6 +25,13 @@ module.exports = async (req, res) => {
           },
           { new: true, upsert: true, runValidators: true }
         );
+        if (classInfo.currentSemester != semNo) {
+          await studentInfoModel.updateMany(
+            { classKey: classId },
+            { $set: { semesterNo: semNo } },
+            { new: true, upsert: true, runValidators: true }
+          );
+        }
         res.status(200).json({
           STATUS: "success",
           message: "Class Details updated",
