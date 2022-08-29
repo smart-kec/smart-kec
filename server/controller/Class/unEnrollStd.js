@@ -10,13 +10,24 @@ module.exports = async (req, res) => {
     );
     const stdInfo = await studentInfoModel.findOne(
       { _id: stdId, classKey: classId },
-      { _id: 1 }
+      { _id: 1, gender: 1 }
     );
     if (classInfo && stdInfo) {
       classInfo.studentsKeys.remove(stdId);
+      if (stdInfo.gender == "Male" && classInfo.boysRep == stdId) {
+        classInfo.boysRep = null;
+      } else if (stdInfo.gender == "Female" && classInfo.girlsRep == stdId) {
+        classInfo.girlsRep = null;
+      }
       await classModel.update(
         { _id: classId },
-        { $set: { studentsKeys: classInfo.studentsKeys } },
+        {
+          $set: {
+            studentsKeys: classInfo.studentsKeys,
+            boysRep: classInfo.boysRep,
+            girlsRep: classInfo.girlsRep,
+          },
+        },
         { new: true, upsert: true, runValidators: true }
       );
       await studentInfoModel.updateOne(
