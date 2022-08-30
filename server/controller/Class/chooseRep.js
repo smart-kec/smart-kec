@@ -6,10 +6,9 @@ module.exports = async (req, res) => {
   try {
     const classInfo = await classModel.findOne(
       { _id: classId, studentsKeys: { $all: [boyKey, girlKey] } },
-      { _id: 1 }
+      { _id: 1, status: 1 }
     );
-    console.log(classInfo);
-    if (classInfo) {
+    if (classInfo && classInfo.status == "ongoing") {
       await classModel.updateOne(
         { _id: classId },
         { $set: { boysRep: ObjectId(boyKey), girlsRep: ObjectId(girlKey) } },
@@ -20,10 +19,17 @@ module.exports = async (req, res) => {
         message: "Representative Choosed successfully",
       });
     } else {
-      res.status(400).json({
-        STATUS: "warning",
-        message: "Student is not enrolled in this class or class not found",
-      });
+      if (classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message: "Student is not enrolled in this class or class not found",
+        });
+      }
     }
   } catch (error) {
     res.status(400).json({

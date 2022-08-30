@@ -7,27 +7,39 @@ module.exports = async (req, res) => {
   try {
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { advisorKeys: 1, pastAdvisorKeys: 1 }
+      { advisorKeys: 1, pastAdvisorKeys: 1, status: 1 }
     );
     const advisorInfo = await staffInfoModel.findOne(
       { _id: advisorId, classId: null },
       { _id: 1, pastClass: 1 }
     );
-    if (classInfo && advisorInfo) {
-      if (classInfo.advisorKeys.includes(advisorId)) {
+    if (classInfo && advisorInfo && classInfo.status == "ongoing") {
+      if (
+        classInfo.advisorKeys != null &&
+        classInfo.advisorKeys.includes(advisorId)
+      ) {
         res.status(400).json({
           STATUS: "failed",
           message: "Advisor is already assigned ",
         });
       } else {
-        if (classInfo.pastAdvisorKeys.includes(advisorId)) {
+        if (
+          classInfo.pastAdvisorKeys != null &&
+          classInfo.pastAdvisorKeys.includes(advisorId)
+        ) {
           classInfo.pastAdvisorKeys.remove(advisorId);
         }
-        if (advisorInfo.pastClass.includes(classId)) {
+
+        if (
+          advisorInfo.pastClass != null &&
+          advisorInfo.pastClass.includes(classId)
+        ) {
           advisorInfo.pastClass.remove(classId);
         }
+        console.log("kk");
 
         classInfo.advisorKeys.push(ObjectId(advisorId));
+        console.log("jj");
 
         await classModel.updateOne(
           { _id: classId },
@@ -75,13 +87,21 @@ module.exports = async (req, res) => {
         }
       }
     } else {
-      res.status(400).json({
-        STATUS: "failed",
-        message:
-          "Requested Class or Advisor not found or advisor assigned to other class",
-      });
+      if (classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message:
+            "Requested Class or Advisor not found or advisor assigned to other class",
+        });
+      }
     }
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       STATUS: "failed",
       message: "Error in updating advisor to the class",
