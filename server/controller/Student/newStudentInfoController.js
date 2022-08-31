@@ -1,6 +1,9 @@
 const studentInfoModel = require("../../model/InfoCollections/studentInfoModel");
 const accountsModel = require("../../model/accountsModel");
 const handleError = require("../HandleError/handleError");
+const mongoose = require("mongoose");
+const departmentModel = require("../../model/InfoCollections/departmentInfo");
+const ObjectId = mongoose.Types.ObjectId;
 module.exports = async (req, res, next) => {
   const {
     studentName,
@@ -8,6 +11,7 @@ module.exports = async (req, res, next) => {
     stdDob,
     stdprogramme,
     stdbranch,
+    stdDeptId,
     stdyearOfStudy,
     stdsemesterNo,
     stdgender,
@@ -18,12 +22,17 @@ module.exports = async (req, res, next) => {
   } = req.body;
 
   try {
+    const dept = await departmentModel.findOne({ _id: stdDeptId }, { _id: 1 });
+    if (!dept) {
+      throw "invalid dept";
+    }
     await studentInfoModel.create({
       name: studentName,
       rollNo: studentRollNo,
       dob: stdDob,
       programme: stdprogramme,
       branch: stdbranch,
+      deptId: ObjectId(stdDeptId),
       yearOfStudy: stdyearOfStudy,
       semesterNo: stdsemesterNo,
       gender: stdgender,
@@ -32,7 +41,10 @@ module.exports = async (req, res, next) => {
       phoneNumber: stdPhoneNumber,
       hackerRankId: stdHackerRankId,
     });
-    next();
+    // next();
+    res.status(201).json({
+      STATUS: "success",
+    });
   } catch (err) {
     const errors = handleError(
       err,
@@ -43,6 +55,7 @@ module.exports = async (req, res, next) => {
         dob: "",
         programme: "",
         branch: "",
+        deptId: "",
         yearOfStudy: "",
         semesterNo: "",
         gender: "",

@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         _id: advisorId,
       },
       {
-        $set: { classId: "" },
+        $set: { classId: null },
       },
       {
         new: true,
@@ -31,7 +31,9 @@ module.exports = async (req, res) => {
           _id: classId,
         },
         {
-          advisorKeys: classInfo.advisorKeys,
+          $set: {
+            advisorKeys: classInfo.advisorKeys,
+          },
         },
         {
           new: true,
@@ -39,18 +41,18 @@ module.exports = async (req, res) => {
         }
       );
       res.status(200).json({
-        status: "success",
+        STATUS: "success",
         message: "Advisor Removed successfully",
       });
     } else {
       res.status(400).json({
-        status: "failed",
+        STATUS: "failed",
         message: "Advisor not Assigned to class",
       });
     }
   } catch (err) {
     res.status(400).json({
-      status: "failed",
+      STATUS: "failed",
       message: "Error in removing advisor",
     });
   }

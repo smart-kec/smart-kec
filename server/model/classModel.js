@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
 
 const classSchema = new mongoose.Schema({
   className: {
@@ -12,14 +14,18 @@ const classSchema = new mongoose.Schema({
     type: "String",
     required: [true, "Class must have an common name"],
   },
-  studentsKeys: [String],
+  section: {
+    type: "String",
+    required: [true, "Class must have a section"],
+  },
+  studentsKeys: [ObjectIdSchema],
 
   advisorKeys: {
-    type: [String],
+    type: [ObjectIdSchema],
     required: [true, "Please, Choose Advisors"],
   },
   pastAdvisorKeys: {
-    type: [String],
+    type: [ObjectIdSchema],
     required: [true, "Please, Choose Advisors"],
   },
   classGroupMailId: {
@@ -29,7 +35,10 @@ const classSchema = new mongoose.Schema({
     lowercase: [true, "Email should be Lowercase"],
     validate: [isEmail, "Please, enter a valid email "],
   },
-
+  deptId: {
+    type: ObjectIdSchema,
+    required: [true, "Dept id required"],
+  },
   currentSemester: {
     type: Number,
     required: [true, "Choose Semester Number"],
@@ -45,8 +54,8 @@ const classSchema = new mongoose.Schema({
     required: [true, "Mention Regulations"],
   },
 
-  boysRep: String,
-  girlsRep: String,
+  boysRep: ObjectIdSchema,
+  girlsRep: ObjectIdSchema,
 
   status: {
     type: String,
