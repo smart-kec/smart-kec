@@ -33,6 +33,7 @@ const OTPBox = () => {
                 <a href="/signup/stdemail">Change Email ID</a>
               </div>
             </p>
+            <div className={styles.otp_number_input}>
             {otp.map((data, index) => {
               return (
                 <input
@@ -47,6 +48,7 @@ const OTPBox = () => {
                 />
               );
             })}
+            </div>
             <div className="button">
               <button
                 className={styles.button1}

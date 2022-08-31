@@ -99,11 +99,18 @@ cursor: pointer; */
   background-color: grey;
   color: white;
   font-size: 15px;
-  width: 60px;
-  height: 40px;
-  margin: 15px;
+  width: 12%;
+  height: 12%;
+  margin: 2%;
 }
 
 .counters {
   color: black;
+}
+
+.otp_number_input{
+  width: 80%;
+  background-color: red;
+  display: flex;
+  margin: 0 auto;
 }

@@ -27,12 +27,12 @@ function App() {
             </Route>
           </Route>
           <Route path="login" element={<Login />} />
-        </Route>
         <Route path="admin" element={<AdminInterface />}>
           <Route>
             <Route path="login" element={<AdminLogin />} />
             <Route path="dept" element={<Dashboard />} />
           </Route>
+        </Route>
         </Route>
 
         <Route path="testing" element={<Testing />}></Route>
