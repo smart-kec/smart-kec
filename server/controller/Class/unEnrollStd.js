@@ -6,13 +6,13 @@ module.exports = async (req, res) => {
   try {
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { studentsKeys: 1, boysRep: 1, girlsRep: 1 }
+      { studentsKeys: 1, boysRep: 1, girlsRep: 1, status: 1 }
     );
     const stdInfo = await studentInfoModel.findOne(
       { _id: stdId, classKey: classId },
       { _id: 1, gender: 1 }
     );
-    if (classInfo && stdInfo) {
+    if (classInfo && stdInfo && classInfo.status == "ongoing") {
       classInfo.studentsKeys.remove(stdId);
       if (stdInfo.gender == "Male" && classInfo.boysRep == stdId) {
         classInfo.boysRep = null;
@@ -40,9 +40,16 @@ module.exports = async (req, res) => {
         message: "Student Unenrolled successfully",
       });
     } else {
-      res
-        .status(400)
-        .json({ STATUS: "failed", message: "Student or class not found" });
+      if (classInfo && classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res
+          .status(400)
+          .json({ STATUS: "failed", message: "Student or class not found" });
+      }
     }
   } catch (error) {
     res

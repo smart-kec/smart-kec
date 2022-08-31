@@ -8,9 +8,9 @@ module.exports = async (req, res) => {
   try {
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { _id: 1, currentSemester: 1 }
+      { _id: 1, currentSemester: 1, status: 1 }
     );
-    if (classInfo) {
+    if (classInfo && classInfo.status == "ongoing") {
       try {
         await classModel.updateOne(
           { _id: classId },
@@ -48,10 +48,17 @@ module.exports = async (req, res) => {
         res.status(400).json(errors);
       }
     } else {
-      res.status(400).json({
-        STATUS: "failed",
-        message: "Class not found",
-      });
+      if (classInfo && classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message: "Class not found",
+        });
+      }
     }
   } catch (error) {
     res.status(400).json({

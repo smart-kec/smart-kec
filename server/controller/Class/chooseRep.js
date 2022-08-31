@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
         message: "Representative Choosed successfully",
       });
     } else {
-      if (classInfo.status == "ended") {
+      if (classInfo && classInfo.status == "ended") {
         res.status(400).json({
           STATUS: "warning",
           message: "Class Ended",

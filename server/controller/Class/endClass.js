@@ -18,9 +18,7 @@ module.exports = async (req, res) => {
       { _id: { $in: classInfo.advisorKeys } },
       { classId: 1, pastClass: 1 }
     );
-    console.log(classInfo);
-    console.log(deptInfo);
-    console.log(staffInfo);
+
     if (classInfo && deptInfo && staffInfo.length > 0) {
       if (classInfo.status == "ongoing") {
         console.log("Ongoing");
@@ -75,7 +73,7 @@ module.exports = async (req, res) => {
           .json({ STATUS: "success", message: "Class Ended successfully" });
       } else {
         res.status(400).json({
-          STATUS: "failed",
+          STATUS: "warning",
           message: "class already ended",
         });
       }
