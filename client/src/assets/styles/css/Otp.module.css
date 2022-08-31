@@ -25,6 +25,7 @@
   padding: 50px 100px;
   background-color: white;
   border-radius: 20px;
+  width: 500px;
 }
 
 .lnk {
@@ -99,9 +100,9 @@ cursor: pointer; */
   background-color: grey;
   color: white;
   font-size: 15px;
-  width: 12%;
-  height: 12%;
-  margin: 2%;
+  width: 36px;
+  height: 36px;
+  margin: 25px;
 }
 
 .counters {
@@ -109,8 +110,9 @@ cursor: pointer; */
 }
 
 .otp_number_input{
-  width: 80%;
+  width: 100%;
   background-color: #fff;
   display: flex;
   margin: 0 auto;
+  justify-content: space-between;
 }
