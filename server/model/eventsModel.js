@@ -45,6 +45,11 @@ const festEventsSchema = new mongoose.Schema({
     required: [true, "Event must contain registration ending date"],
   },
 
+  registrationStatus: {
+    //Open or Close
+    type: Boolean,
+  },
+
   chatLink: {
     type: String,
     required: [
@@ -59,11 +64,13 @@ const festEventsSchema = new mongoose.Schema({
     required: [true, "Required is Document need to be collected from student"],
     default: false,
   },
-
-  isAttendenceRequired: {
-    type: Boolean,
-    required: [true, "Required : Whether attendence is needed?"],
-    default: false,
+  maxStdPerTeam: {
+    //Maximum students per team
+    type: Number,
+    default: 1,
+  },
+  registrationKey: {
+    type: String,
   },
 });
 
@@ -72,12 +79,6 @@ const eventInfoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Event name is must for the new Event"],
     unique: true,
-    trim: true,
-  },
-
-  festId: {
-    type: String,
-    required: [true, "An event must have an event id"],
     trim: true,
   },
 
@@ -106,6 +107,10 @@ const eventInfoSchema = new mongoose.Schema({
   festEndDate: {
     type: Date,
     required: [true, "An event must have a end date and End Time"],
+  },
+
+  allowedDepts: {
+    type: [String],
   },
 
   festVenue: {

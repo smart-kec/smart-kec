@@ -1,50 +1,69 @@
 const classModel = require("../../model/classModel");
 const staffInfoModel = require("../../model/InfoCollections/staffInfoModel");
-
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 module.exports = async (req, res) => {
   const { advisorId, classId } = req.body;
   try {
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { advisorKeys: 1 }
+      { advisorKeys: 1, pastAdvisorKeys: 1, status: 1 }
     );
     const advisorInfo = await staffInfoModel.findOne(
-      { _id: advisorId },
-      { _id: 1 }
+      { _id: advisorId, classId: null },
+      { _id: 1, pastClass: 1 }
     );
-    if (classInfo && advisorInfo) {
-      if (classInfo.advisorKeys.includes(advisorId)) {
+    if (classInfo && advisorInfo && classInfo.status == "ongoing") {
+      if (
+        classInfo.advisorKeys != null &&
+        classInfo.advisorKeys.includes(advisorId)
+      ) {
         res.status(400).json({
-          status: "failed",
-          message: "Advisor is already assigned",
+          STATUS: "failed",
+          message: "Advisor is already assigned ",
         });
       } else {
-        classInfo.advisorKeys.push(advisorId);
+        if (
+          classInfo.pastAdvisorKeys != null &&
+          classInfo.pastAdvisorKeys.includes(advisorId)
+        ) {
+          classInfo.pastAdvisorKeys.remove(advisorId);
+        }
+
+        if (
+          advisorInfo.pastClass != null &&
+          advisorInfo.pastClass.includes(classId)
+        ) {
+          advisorInfo.pastClass.remove(classId);
+        }
+        console.log("kk");
+
+        classInfo.advisorKeys.push(ObjectId(advisorId));
+        console.log("jj");
 
         await classModel.updateOne(
+          { _id: classId },
           {
-            _id: classId,
+            $set: {
+              advisorKeys: classInfo.advisorKeys,
+              pastAdvisorKeys: classInfo.pastAdvisorKeys,
+            },
           },
-          {
-            $set: { advisorKeys: classInfo.advisorKeys },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
+          { new: true, runValidators: true }
         );
         try {
           await staffInfoModel.updateOne(
+            { _id: advisorId },
             {
-              _id: advisorId,
-            },
-            {
-              $set: { classId: classId },
+              $set: {
+                classId: ObjectId(classId),
+                pastClass: advisorInfo.pastClass,
+              },
             },
             { new: true, upsert: true, runValidators: true }
           );
           res.status(200).json({
-            status: "success",
+            STATUS: "success",
             message: "New Advisor added to the class",
           });
         } catch (err) {
@@ -62,21 +81,29 @@ module.exports = async (req, res) => {
             }
           );
           res.status(400).json({
-            status: "failed",
+            STATUS: "failed",
             message: "Error in updating class to the advisor",
           });
         }
       }
     } else {
-      res.status(400).json({
-        status: "failed",
-        message: "Requested Class or Advisor not found",
-      });
+      if (classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message:
+            "Requested Class or Advisor not found or advisor assigned to other class",
+        });
+      }
     }
   } catch (error) {
     console.log(error);
     res.status(400).json({
-      status: "failed",
+      STATUS: "failed",
       message: "Error in updating advisor to the class",
     });
   }

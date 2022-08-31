@@ -1,4 +1,8 @@
 module.exports = (err, errors, collectionName) => {
+  if (err == "invalid dept") {
+    errors.deptId = "Invalid Dept id";
+    return errors;
+  }
   //Duplicate key error
   if (err.code == 11000) {
     return {
@@ -13,5 +17,6 @@ module.exports = (err, errors, collectionName) => {
     });
     return errors;
   }
+
   return errors;
 };

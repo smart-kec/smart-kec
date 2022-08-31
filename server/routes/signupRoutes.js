@@ -39,4 +39,8 @@ router
   .route("/student/new/details")
   .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
+router
+  .route("/student/new/detailsdup")
+  .post(saveAccount, newStudentInfoController);
+
 module.exports = router;

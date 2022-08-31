@@ -1,4 +1,24 @@
 const mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
+const eventStatusSchema = new mongoose.Schema({
+  eventKeys: {
+    type: [String],
+    default: [],
+  },
+  eventStatus: {
+    type: String,
+    default: "registered",
+  },
+});
+
+const registeredEventsSchema = new mongoose.Schema({
+  events: [eventStatusSchema],
+  semesterNo: {
+    type: Number,
+    default: 1,
+  },
+});
 
 const studentInfoSchema = new mongoose.Schema({
   name: {
@@ -10,6 +30,10 @@ const studentInfoSchema = new mongoose.Schema({
     required: [true, "A student must have a roll number"],
     unique: [true, "Rollnumber must be unique"],
   },
+  dob: {
+    type: Date,
+    required: [true, "DoB required"],
+  },
   programme: {
     type: String,
     required: [true, "A student must be in a programme"],
@@ -18,13 +42,17 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Student must study in any one of the branches"],
   },
+  deptId: {
+    type: ObjectIdSchema,
+    required: [true, "Dept id missing"],
+  },
   section: {
     type: String,
     default: "Not Assigned",
   },
-  semesterNo: {
+  semesterNo : {
     type: Number,
-    default: 0,
+    default: 1,
   },
   yearOfStudy: {
     type: Number,
@@ -52,11 +80,8 @@ const studentInfoSchema = new mongoose.Schema({
     required: [true, "Must mention hacker rank id for Coding Contests"],
     unique: true,
   },
-  registeredEvents: {
-    type: [String],
-    default: [],
-  },
-  classKey: String,
+  registeredEvents: [registeredEventsSchema],
+  classKey: ObjectIdSchema,
 });
 
 const studentInfoModel = mongoose.model("studentinfos", studentInfoSchema);
