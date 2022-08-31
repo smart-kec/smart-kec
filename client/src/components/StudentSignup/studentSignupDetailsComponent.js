@@ -40,10 +40,23 @@ const validate = (values) => {
 
   if (values.password.length < 8) {
     errors.password = "Password needs to be atleat 8 characters";
-  } else if (!"^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$") {
-    errors.password =
-      "Not strong enough(Atleast 1 uppercase,1 lowercase,1 number";
+  }else if (values.password.length > 100) {
+    errors.password = "Password should not exceed 100 characters";
+  } 
+  if (values.password.search(/[a-z]/) < 0){
+    errors.password = "Should contain a lowercase";
   }
+  if (values.password.search(/[A-Z]/) < 0){
+    errors.password = "Should contain an uppercase";
+  }
+  if (values.password.search(/[0-9]/i) < 0){
+    errors.password = "Should contain a number";
+  }
+
+  // if (values.password!="^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$") {
+  //   errors.password =
+  //     "Not strong enough(Atleast 1 uppercase,1 lowercase and 1 number)";
+  // }
 
   if (values.password2 !== values.password) {
     errors.password2 = "Passwords do not match";
