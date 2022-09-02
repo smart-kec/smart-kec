@@ -87,7 +87,7 @@ module.exports = async (req, res) => {
         }
       }
     } else {
-      if (classInfo.status == "ended") {
+      if (classInfo && classInfo.status == "ended") {
         res.status(400).json({
           STATUS: "warning",
           message: "Class Ended",

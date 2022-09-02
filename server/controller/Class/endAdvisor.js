@@ -13,9 +13,9 @@ module.exports = async (req, res) => {
     );
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { advisorKeys: 1, pastAdvisorKeys: 1 }
+      { advisorKeys: 1, pastAdvisorKeys: 1, status: 1 }
     );
-    if (staff && classInfo) {
+    if (staff && classInfo && classInfo.status == "ongoing") {
       if (
         staff.pastClass.includes(classId) &&
         classInfo.pastAdvisorKeys.includes(advisorId)
@@ -63,10 +63,17 @@ module.exports = async (req, res) => {
         }
       }
     } else {
-      res.status(400).json({
-        STATUS: "failed",
-        message: "Advisor or Class not found",
-      });
+      if (classInfo && classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message: "Advisor or Class not found",
+        });
+      }
     }
   } catch (err) {
     res.status(400).json({
