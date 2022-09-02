@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { generateAndSendEmailOtp } from "../../api/AurthenticationServices";
 import styles from "../../assets/styles/css/EmailPage.module.css";
+import OTPBox from "./studentSignupOtpComponent";
 
 function StudentEmailSignup() {
   const navigate = useNavigate();
@@ -19,15 +20,18 @@ function StudentEmailSignup() {
       const msg = res.data.message;
       if (msg === "otp generated") {
         navigate(`/signup/verify`);
+        // return <OTPBox />;
       } else if (msg === "verified user") {
         navigate(`/signup/details`);
       } else if (msg === "already registered") {
+        alert("Account with this email is already registered.");
         const userMsg = "Account with this email is already registered.";
         console.log(userMsg);
       } else {
-        console.log(res.data.message);
+        alert(msg);
       }
     } catch (err) {
+      alert("Try Again after some time");
       console.log(err);
     }
   };
