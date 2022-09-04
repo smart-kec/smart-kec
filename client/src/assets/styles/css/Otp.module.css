@@ -29,7 +29,7 @@
 
 .lnk {
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 14px;
   margin: 15px;
   text-decoration: none;
 }
@@ -108,7 +108,7 @@ cursor: pointer; */
   color: black;
 }
 
-.otp_number_input{
+.otp_number_input {
   width: 80%;
   background-color: #fff;
   display: flex;
