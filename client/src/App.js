@@ -10,6 +10,7 @@ import Signup from "./components/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import CreateOrganizer from "./components/createOrganizerComponent";
 import Add from "./components/AddHod/Front"
+import Display from "./components/Display"
 function App() {
   return (
     <>
@@ -32,6 +33,9 @@ function App() {
       </Routes>
       <Routes>
       <Route path="Add" element={<Add />} />
+      </Routes>
+      <Routes>
+        <Route path="Display"element={<Display/>}/>
       </Routes>
     </>
   );
