@@ -26,7 +26,7 @@ const OTPBox = () => {
       <div className={styles.app}>
         <div className={styles.header}>
           <div className={styles.card}>
-            <h1>AUTHENTICATION</h1>
+            <div className={styles.head}><h1>AUTHENTICATION</h1></div>
             <p className=" content">
               Enter the OTP sent to ****.20**@kongu.edu email
               <div className="lnk">

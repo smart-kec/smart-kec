@@ -12,6 +12,7 @@ import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
 import Dashboard from "./pages/Dashboard";
 import Testing from "./pages/Testing";
+import StudentInterface from "./interface/StudentInterface";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
             <Route path="login" element={<AdminLogin />} />
             <Route path="dept" element={<Dashboard />} />
           </Route>
+        </Route>
+        <Route path="student" element={<StudentInterface />}>
+          
         </Route>
         </Route>
 

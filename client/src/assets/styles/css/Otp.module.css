@@ -5,6 +5,11 @@
     align-items: center;
     background-color: black;
     height: 100vh;
+    
+}
+
+.head{
+  max-width: 80%;
 }
 
 .header {
@@ -90,15 +95,6 @@ a:link {
     cursor: pointer;
     font-size: 15px;
 }
-
-
-/* text-align: center;
-border: none;
-background-color: #4fffe7;
-border-radius: 20px;
-margin: 20px;
-font-weight: bold;
-cursor: pointer; */
 
 .button3:hover {
     background-color: #c9fef7;
