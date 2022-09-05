@@ -22,9 +22,10 @@
 .card {
   margin-top: 20px;
   box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
-  padding: 50px 100px;
+  padding: 5rem 0rem;
   background-color: white;
   border-radius: 20px;
+  max-width: 500px;
 }
 
 .lnk {
