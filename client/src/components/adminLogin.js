@@ -21,7 +21,7 @@ const AdminLogin = () => {
       <Container>
         <Bg imgUrl={bg}>
           <FormWrap>
-            <Icon to="/"> Smart_KEC </Icon>{" "}
+            <Icon to="/"> Smart KEC </Icon>{" "}
             <FormContent>
               <Form action="#">
                 <FormH1> Sign in to your account </FormH1>{" "}
