@@ -41,26 +41,26 @@ const Footer = () => {
             <FooterLinkItems>
               <FooterLinkTitle>Contact</FooterLinkTitle>
               <FooterLink to="/signin">Contact</FooterLink>
-              <FooterLink to="/signin">Support</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to="/signin">Instagram</FooterLink>
+              <FooterLink to="https://kongu.ac.in/">Instagram</FooterLink>
               <FooterLink to="/signin">Facebook</FooterLink>
               <FooterLink to="/signin">Youtube</FooterLink>
               <FooterLink to="/signin">Twitter</FooterLink>
+              <FooterLink to="/signin">LinkedIn</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/" onClick={toggleHome}>
-              Smart_KEC
+              Smart KEC
             </SocialLogo>
             <WebsiterRights>
-              Smart_KEC © {new Date().getFullYear()} All rights reserved.
+              Smart KEC © {new Date().getFullYear()} All rights reserved.
             </WebsiterRights>
             <SocialIcons>
               <SocialIconLink href="/" target="_blank" aria-label="Facebook">
