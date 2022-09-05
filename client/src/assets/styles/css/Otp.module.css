@@ -5,11 +5,10 @@
     align-items: center;
     background-color: black;
     height: 100vh;
-    
 }
 
-.head{
-  max-width: 80%;
+.head {
+    max-width: 80%;
 }
 
 .header {
@@ -28,7 +27,7 @@
 .card {
     margin-top: 20px;
     box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
-    padding: 50px 100px;
+    padding: 5rem 0rem;
     background-color: white;
     border-radius: 20px;
     max-width: 500px;
@@ -36,7 +35,7 @@
 
 .lnk {
     margin-left: 15px;
-    font-size: 18px;
+    font-size: 14px;
     margin: 15px;
     text-decoration: none;
 }
@@ -120,5 +119,16 @@ a:link {
 }
 
 .counters {
-    color: black;
+    <<<<<<< HEAD color: black;
 }
+
+=======color: black;
+
+}
+.otp_number_input {
+    width: 80%;
+    background-color: #fff;
+    display: flex;
+    margin: 0 auto;
+}
+>>>>>>>test

@@ -3,7 +3,7 @@ const accountModel = require("../../model/accountsModel");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
 
-const tryAgainError = { status: "failed", message: "Error in generating otp. Try again after some time" };
+const tryAgainError = { STATUS: "failed", message: "error" };
 
 
 module.exports = async (req, res, next) => {

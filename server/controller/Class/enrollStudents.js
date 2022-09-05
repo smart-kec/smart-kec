@@ -11,9 +11,13 @@ module.exports = async (req, res) => {
     );
     const classInfo = await classModel.findOne(
       { _id: classId },
-      { studentsKeys: 1, section: 1, currentSemester: 1 }
+      { studentsKeys: 1, section: 1, currentSemester: 1, status: 1 }
     );
-    if (checkStd.length == stdKeys.length && classInfo) {
+    if (
+      checkStd.length == stdKeys.length &&
+      classInfo &&
+      classInfo.status == "ongoing"
+    ) {
       var stdId = classInfo.studentsKeys;
       stdKeys.map((key) => {
         stdId.push(ObjectId(key));
@@ -38,10 +42,17 @@ module.exports = async (req, res) => {
         .status(200)
         .json({ STATUS: "success", message: "Students enrolled successfully" });
     } else {
-      res.status(400).json({
-        STATUS: "failed",
-        message: "Mismatch in Student Id's or requested class not found",
-      });
+      if (classInfo && classInfo.status == "ended") {
+        res.status(400).json({
+          STATUS: "warning",
+          message: "Class Ended",
+        });
+      } else {
+        res.status(400).json({
+          STATUS: "failed",
+          message: "Mismatch in Student Id's or requested class not found",
+        });
+      }
     }
   } catch (error) {
     res

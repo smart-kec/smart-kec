@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import styles from "../../assets/styles/css/Otp.module.css";
+import { verifyOtp } from "./../../api/AurthenticationServices";
 
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  const navigate = useNavigate();
+  const stdEmail = useSelector((state) => state.UserEmail);
 
   const [counter, setCounter] = React.useState(159);
   React.useEffect(() => {
@@ -21,6 +27,27 @@ const OTPBox = () => {
     }
   };
 
+  //API
+  const sendData = async () => {
+    try {
+      const res = await verifyOtp({
+        userEmail: stdEmail,
+        userotp: Number(otp.join("")),
+      });
+      const msg = res.data.message;
+      console.log(msg);
+      if (res.data.status === "success") {
+        if (msg === "otp verified") {
+          navigate(`/signup/details`);
+        }
+      } else {
+        // [];
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className={styles.app}>
@@ -28,26 +55,26 @@ const OTPBox = () => {
           <div className={styles.card}>
             <div className={styles.head}><h1>AUTHENTICATION</h1></div>
             <p className=" content">
-              Enter the OTP sent to ****.20**@kongu.edu email
+              Enter the One Time Password(OTP) sent to {stdEmail}
               <div className="lnk">
-                <a href="/signup/stdemail">Change Email ID</a>
+                <a href="/signup/email">Change Email</a>
               </div>
             </p>
             <div className={styles.otp_number_input}>
-            {otp.map((data, index) => {
-              return (
-                <input
-                  className={styles.otpfield}
-                  type="text"
-                  name="otp"
-                  maxLength="1"
-                  key={index}
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onFocus={(e) => e.target.select()}
-                />
-              );
-            })}
+              {otp.map((data, index) => {
+                return (
+                  <input
+                    className={styles.otpfield}
+                    type="text"
+                    name="otp"
+                    maxLength="1"
+                    key={index}
+                    value={data}
+                    onChange={(e) => handleChange(e.target, index)}
+                    onFocus={(e) => e.target.select()}
+                  />
+                );
+              })}
             </div>
             <div className="button">
               <button
@@ -58,7 +85,8 @@ const OTPBox = () => {
               </button>
               <button
                 className={styles.button2}
-                onClick={(e) => setOtp([...otp.map((v) => "")])}
+                // onClick={(e) => setOtp([...otp.map((v) => "")])}
+                onClick={sendData}
               >
                 Continue
               </button>
@@ -68,8 +96,8 @@ const OTPBox = () => {
               >
                 Resend OTP in{" "}
                 <div className={styles.counters}>
-                  00:{counter<10 ? "0"+counter:counter}
-                  </div>
+                  00:{counter < 10 ? "0" + counter : counter}
+                </div>
               </button>
             </div>
           </div>
