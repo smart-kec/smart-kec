@@ -35,12 +35,12 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>About Us</FooterLinkTitle>
-              <FooterLink to="/signin">About</FooterLink>
-              <FooterLink to="/signin">Terms of Service</FooterLink>
+              <FooterLink to="https://kongu.ac.in/">About</FooterLink>
+              <FooterLink to="#">Terms of Service</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Contact</FooterLinkTitle>
-              <FooterLink to="/signin">Contact</FooterLink>
+              <FooterLink to="#">MailUs</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
