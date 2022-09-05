@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+// import { combineReducers } from "redux";
 const SET_EMAIL = "SET_EMAIL";
 
 export const storeEmail = (UserEmail) => {
@@ -12,7 +12,7 @@ export const storeEmail = (UserEmail) => {
 
 const defaultStore = { UserEmail: "gandhamathanv.20cse@kongu.edu", age: "20" };
 
-const SignupStore = (state = defaultStore, action) => {
+const SignupStoreApp = (state = defaultStore, action) => {
   switch (action.type) {
     case SET_EMAIL:
       return {
@@ -25,8 +25,8 @@ const SignupStore = (state = defaultStore, action) => {
   }
 };
 
-const SignupStoreApp = combineReducers({
-  SignupStore,
-});
+// const SignupStoreApp = combineReducers({
+//   SignupStore,
+// });
 
 export default SignupStoreApp;

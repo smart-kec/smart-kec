@@ -23,7 +23,7 @@ function StudentEmailSignup() {
       const status = res.data.STATUS;
       if (status === "success") {
         if (msg === "otp generated") {
-          // dispatch(storeEmail(email));
+          dispatch(storeEmail(email));
           navigate(`/signup/verify`);
         } else if (msg === "verified user") {
           navigate(`/signup/details`);
