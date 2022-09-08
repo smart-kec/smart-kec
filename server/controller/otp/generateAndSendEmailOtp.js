@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
   const otp = Math.floor(10000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
-  
+
   try {
     await otpModel.create({
       email: userEmail,
@@ -20,13 +20,24 @@ module.exports = async (req, res) => {
     });
 
     const data = {
-      from: process.env.MAIL_USER,
       to: userEmail,
-      subject: "Verify Your Otp - Smart KEC",
-      text: `OTP for your student verification in smart KEC is generated and valid for 5 mins. The OTP is ${otp} `,
+      subject: "Verify Otp - CSEA",
+      text: "OTP is generated",
+      html: `<p>One Time Password(OTP) for your student verification in CSEA is generated and valid for 5 mins. The OTP is ${otp} </p>`,
     };
 
-    emailHandler(data, "otp generated", res);
+    const result = await emailHandler(data);
+    if (result.status == "success") {
+      res.status(200).json({
+        STATUS: "SUCCESS",
+        message: "otp generated",
+      });
+    } else {
+      res.status(400).json({
+        STATUS: "FAILED",
+        message: "otp failed",
+      });
+    }
   } catch (err) {
     var errors = handleError(
       err,
