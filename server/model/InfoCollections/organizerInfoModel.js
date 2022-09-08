@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-
-const members = new mongoose.Schema({
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
+const membersSchema = new mongoose.Schema({
   memberKey: {
-    type: String,
+    type: ObjectIdSchema,
     trim: true,
   },
   memberDesignation: {
@@ -10,7 +11,19 @@ const members = new mongoose.Schema({
     trim: true,
   },
 });
-
+const coOrdinatorsSchema = new mongoose.Schema({
+  year: {
+    type: Number,
+  },
+  coOrdinatorsKey: {
+    type: [ObjectIdSchema],
+    default: [],
+  },
+  members: {
+    type: [membersSchema],
+    default: [],
+  },
+});
 const organizerInfoSchema = new mongoose.Schema({
   organizationName: {
     type: String,
@@ -45,15 +58,14 @@ const organizerInfoSchema = new mongoose.Schema({
     required: [true, "Required : A description about the organization"],
   },
   organizationEvents: {
-    type: [String],
+    type: [ObjectIdSchema],
     default: [],
   },
 
-  coOrdinatorsKey: {
-    type: [String],
+  coOrdinators: {
+    type: [coOrdinatorsSchema],
     default: [],
   },
-  organizationMembers: [members],
 
   organizationEmail: {
     type: String,
@@ -65,6 +77,10 @@ const organizerInfoSchema = new mongoose.Schema({
   organizationPhoneNumber: {
     type: String,
     trim: true,
+  },
+  roles: {
+    type: [String],
+    default: [],
   },
 });
 
