@@ -22,14 +22,15 @@
 .card {
   margin-top: 20px;
   box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
-  padding: 50px 100px;
+  padding: 5rem 0rem;
   background-color: white;
   border-radius: 20px;
+  max-width: 500px;
 }
 
 .lnk {
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 14px;
   margin: 15px;
   text-decoration: none;
 }
@@ -45,14 +46,14 @@ a:link {
   font-size: 15px;
   border-radius: 30px;
   margin-right: 80px;
-  width: 20%;
+  width: 30%;
   margin: 15px;
   margin-top: 20px;
   cursor: pointer;
 }
 
 .button1:hover {
-  background-color: white;
+  background-color: #c9fef7;
 }
 .button2 {
   text-align: center;
@@ -62,13 +63,13 @@ a:link {
   color: black;
   border-radius: 30px;
   margin-left: 50px;
-  width: 20%;
+  width: 30%;
   margin-top: 20px;
   cursor: pointer;
   font-size: 15px;
 }
 .button2:hover {
-  background-color: white;
+  background-color: #c9fef7;
 }
 .button3 {
   text-align: center;
@@ -83,9 +84,15 @@ a:link {
   cursor: pointer;
   font-size: 15px;
 }
-
+/* text-align: center;
+border: none;
+background-color: #4fffe7;
+border-radius: 20px;
+margin: 20px;
+font-weight: bold;
+cursor: pointer; */
 .button3:hover {
-  background-color: white;
+  background-color: #c9fef7;
 }
 
 .otpfield {
@@ -93,11 +100,18 @@ a:link {
   background-color: grey;
   color: white;
   font-size: 15px;
-  width: 60px;
-  height: 40px;
-  margin: 15px;
+  width: 12%;
+  height: 12%;
+  margin: 2%;
 }
 
 .counters {
   color: black;
+}
+
+.otp_number_input {
+  width: 80%;
+  background-color: #fff;
+  display: flex;
+  margin: 0 auto;
 }

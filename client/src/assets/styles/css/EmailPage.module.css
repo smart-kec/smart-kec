@@ -15,9 +15,11 @@
 .con {
   margin-top: 20px;
   box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
-  padding: 50px 100px;
+  padding: 5rem 0rem;
   background-color: white;
   border-radius: 20px;
+  /* width: 50vh;
+  height: 40vh; */
 }
 
 .message {
@@ -36,9 +38,10 @@
 
 .buttone {
   text-align: center;
+  padding: 1%;
   border: none;
   background-color: #4fffe7;
-  border-radius: 20px;
+  border-radius: 30px;
   margin: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -57,5 +60,5 @@
 }
 
 .buttone:hover {
-  background-color: white;
+  background-color: #c9fef7;
 }
