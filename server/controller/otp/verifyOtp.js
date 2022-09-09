@@ -2,7 +2,7 @@ const otpModel = require("../../model/OTP and Reset Models/otpVerificationModel"
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/config.env` });
-const tryAgainError = { status: "failed", message: "try again" };
+const tryAgainError = { STATUS: "failed", message: "Try again after some time" };
 
 module.exports = async (req, res) => {
   const { userEmail, userotp } = req.body;
@@ -24,15 +24,15 @@ module.exports = async (req, res) => {
           } catch (e) {
             res.status(400).json(tryAgainError);
           }
-          res.status(200).json({ status: "success", message: "otp verified" });
+          res.status(200).json({ STATUS: "success", message: "otp verified" });
         } else {
-          res.status(400).json({ status: "failed", message: "incorrect otp" });
+          res.status(400).json({ STATUS: "failed", message: "Incorrect otp" });
         }
       } else {
-        res.status(400).json({ status: "failed", message: "otp expired" });
+        res.status(400).json({ STATUS: "failed", message: "Otp Expired" });
       }
     } else {
-      res.status(400).json({ status: "failed", message: "otp not generated" });
+      res.status(400).json({ STATUS: "failed", message: "User not found" });
     }
   } catch (err) {
     res.status(400).json(tryAgainError);

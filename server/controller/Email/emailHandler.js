@@ -23,7 +23,7 @@ module.exports = async (data) => {
       connectionTimeout: 5 * 60 * 1000,
     });
     const mailOptions = {
-      from: "CSEA <smartkecinfo@gmail.com>",
+      from: "SMART KEC <smartkecinfo@gmail.com>",
       to: `${data.to}`,
       subject: `${data.subject}`,
       text: `${data.text}`,
