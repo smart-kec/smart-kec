@@ -20,62 +20,34 @@ import StudentInterface from "./interface/StudentInterface";
 // const signupStore = createStore(SignupStoreApp);
 
 function App() {
-    return ( <
-        >
-        <
-        Routes >
-        <
-        Route path = ""
-        element = { < Home / > } >
-        <
-        Route path = ""
-        element = { < HomeInterface / > }
-        /> <
-        Route path = "signup"
-        element = { < SignupInterface / > } >
-        <
-        Route >
-        <
-        Route path = "email"
-        element = { < StudentEmailSignup / > }
-        /> <
-        Route path = "verify"
-        element = { < OTPBox / > }
-        /> <
-        Route path = "details"
-        element = { < Signup / > }
-        /> <
-        /Route> <
-        /Route> <
-        Route path = "login"
-        element = { < Login / > }
-        /> <
-        Route path = "admin"
-        element = { < AdminInterface / > } >
-        <
-        Route >
-        <
-        Route path = "login"
-        element = { < AdminLogin / > }
-        /> <
-        Route path = "dept"
-        element = { < Dashboard / > }
-        /> <
-        /Route> <
-        /Route> <
-        /Route> <
-        Route path = "student"
-        element = { < StudentInterface / > } >
+    return ( <>
+        <Routes >
+        <Route path = "" element = { < Home / > }>
+        <Route path = "" element = { < HomeInterface / > }/> 
+        <Route path = "signup" element = { < SignupInterface / > }>
+        <Route>
+        <Route path = "email" element = { < StudentEmailSignup / > }/> 
+        <Route path = "verify" element = { < OTPBox / > }/> 
+        <Route path = "details" element = { < Signup / > }/> 
+        </Route> 
+        </Route> 
+        <Route path = "login" element = { < Login / > }/> 
+        <Route path = "admin" element = { < AdminInterface / > } >
+        <Route >
+        <Route path = "login" element = { < AdminLogin / > }/> 
+        <Route path = "dept" element = { < Dashboard / > } /> 
+        </Route> 
+        </Route> 
+        </Route> 
+        <Route path = "student" element = { < StudentInterface / > } >
 
-        <
-        /Route> <
-        /Route>
+        </Route> 
+        {/* </Route> */}
 
-        <
-        Route path = "testing"
-        element = { < Testing / > } > < /Route> <
-        /Routes> <
-        />
+        <Route path = "testing" element = { < Testing / > } > 
+        </Route> 
+        </Routes> 
+        </>
     );
 }
 
