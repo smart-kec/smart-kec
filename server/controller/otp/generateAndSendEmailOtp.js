@@ -8,7 +8,7 @@ const emailHandler = require("../Email/emailHandler");
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
 
-  const otp = Math.floor(10000 + Math.random() * 900000);
+  const otp = Math.floor(100000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
 
   try {
