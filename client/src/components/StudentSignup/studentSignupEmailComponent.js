@@ -21,7 +21,7 @@ function StudentEmailSignup({ addData, data }) {
       const res = await generateAndSendEmailOtp({ userEmail: email });
       const msg = res.data.message;
       const status = res.data.STATUS;
-
+      console.log(res);
       if (status === "SUCCESS") {
         if (msg === "otp generated") {
           uEmail = email;

@@ -7,15 +7,13 @@ const tryAgainError = {
 };
 
 module.exports = async (req, res) => {
-  console.log(req);
-  const { userEmail } = req.body;
-  console.log(userEmail);
+  
+  const { userEmail } = req.query;
   try {
     const user = await otpModel.findOne(
       { email: userEmail },
       { expiresAt: 1, _id: 0 }
     );
-    console.log(user);
     if (user) {
       if (Date.now() < user.expiresAt) {
         res.status(200).json({ STATUS: "success" });

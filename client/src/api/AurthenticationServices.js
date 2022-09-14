@@ -11,8 +11,7 @@ export const generateAndSendEmailOtp = (credentials) => {
 };
 
 export const checkOtpExpiry = (credentials) => {
-  console.log(credentials);
-  return Api().get("signup/student/check/otp/valid", credentials);
+  return Api().get("signup/student/check/otp/valid", { params: credentials });
 };
 
 export const verifyOtp = (credentials) => {

@@ -34,23 +34,16 @@ const OTPBox = () => {
   //API
   const sendData = async () => {
     try {
-      console.log("Stage 1", { userEmail: stdEmail });
       const checkExp = await checkOtpExpiry({ userEmail: stdEmail });
-      console.log("Stage 2", checkExp.data);
 
       if (checkExp.data.STATUS === "success") {
-        console.log("Stage 3");
-
         const res = await verifyOtp({
           userEmail: stdEmail,
-          userotp: Number(otp.join("")),
+          userotp: otp.join(""),
         });
-        console.log("Stage 4");
 
         const msg = res.data.message;
         if (res.data.STATUS === "success") {
-          console.log("Stage 5");
-
           if (msg === "otp verified") {
             navigate(`/signup/details`);
           } else {
