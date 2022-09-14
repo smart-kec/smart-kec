@@ -8,7 +8,7 @@ const emailHandler = require("../Email/emailHandler");
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
 
-  const otp = Math.floor(10000 + Math.random() * 900000);
+  const otp = Math.floor(100000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
 
   try {
@@ -21,9 +21,9 @@ module.exports = async (req, res) => {
 
     const data = {
       to: userEmail,
-      subject: "Verify Otp - CSEA",
+      subject: "Verify Otp - Smart KEC",
       text: "OTP is generated",
-      html: `<p>One Time Password(OTP) for your student verification in CSEA is generated and valid for 5 mins. The OTP is ${otp} </p>`,
+      html: `<p>One Time Password(OTP) for your student verification in Smart KEC is generated and valid for 5 mins. The OTP is ${otp} </p>`,
     };
 
     const result = await emailHandler(data);

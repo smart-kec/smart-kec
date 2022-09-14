@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import styles from "../../assets/styles/css/Otp.module.css";
-import { verifyOtp } from "./../../api/AurthenticationServices";
+import { checkOtpExpiry, verifyOtp } from "./../../api/AurthenticationServices";
 
 const OTPBox = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const navigate = useNavigate();
-  const stdEmail = useSelector((state) => state.UserEmail);
-
+  const stdEmail = useSelector((state) => state.data);
   const [counter, setCounter] = React.useState(159);
+
   React.useEffect(() => {
+    /* eslint-disable */
+    if (stdEmail === "nill") {
+      navigate("/signup/email");
+    }
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
@@ -30,20 +34,33 @@ const OTPBox = () => {
   //API
   const sendData = async () => {
     try {
-      const res = await verifyOtp({
-        userEmail: stdEmail,
-        userotp: Number(otp.join("")),
-      });
-      const msg = res.data.message;
-      console.log(msg);
-      if (res.data.status === "success") {
-        if (msg === "otp verified") {
-          navigate(`/signup/details`);
+      const checkExp = await checkOtpExpiry({ userEmail: stdEmail });
+
+      if (checkExp.data.STATUS === "success") {
+        const res = await verifyOtp({
+          userEmail: stdEmail,
+          userotp: otp.join(""),
+        });
+
+        const msg = res.data.message;
+        if (res.data.STATUS === "success") {
+          if (msg === "otp verified") {
+            navigate(`/signup/details`);
+          } else {
+            navigate(`/signup/email`);
+          }
+        } else {
+          alert(msg);
+          navigate(`/signup/email`);
         }
       } else {
-        // [];
+        const msg = res.data.message;
+        alert(msg);
+        navigate(`/signup/email`);
       }
     } catch (error) {
+      alert("Error! Try Again after some time");
+      navigate(`/signup/email`);
       console.log(error);
     }
   };

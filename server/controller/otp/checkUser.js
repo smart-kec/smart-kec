@@ -5,7 +5,6 @@ dotenv.config({ path: `${__dirname}/config.env` });
 
 const tryAgainError = { STATUS: "failed", message: "error" };
 
-
 module.exports = async (req, res, next) => {
   const { userEmail } = req.body;
   try {
@@ -16,7 +15,7 @@ module.exports = async (req, res, next) => {
     if (fuser) {
       if (fuser.verified) {
         const resDetails = {
-          STATUS: "success",
+          STATUS: "SUCCESS",
           message: "verified user",
         };
         res.status(200).json(resDetails);
