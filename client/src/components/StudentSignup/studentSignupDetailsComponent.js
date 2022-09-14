@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import bg from "../../assets/images/bg-1.jpeg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Bg,
@@ -40,16 +42,16 @@ const validate = (values) => {
 
   if (values.password.length < 8) {
     errors.password = "Password needs to be atleat 8 characters";
-  }else if (values.password.length > 100) {
+  } else if (values.password.length > 100) {
     errors.password = "Password should not exceed 100 characters";
-  } 
-  if (values.password.search(/[a-z]/) < 0){
+  }
+  if (values.password.search(/[a-z]/) < 0) {
     errors.password = "Should contain a lowercase";
   }
-  if (values.password.search(/[A-Z]/) < 0){
+  if (values.password.search(/[A-Z]/) < 0) {
     errors.password = "Should contain an uppercase";
   }
-  if (values.password.search(/[0-9]/i) < 0){
+  if (values.password.search(/[0-9]/i) < 0) {
     errors.password = "Should contain a number";
   }
 
@@ -64,10 +66,17 @@ const validate = (values) => {
 
   return errors;
 };
+/* eslint-disable */
 
 const Signup = () => {
   // STATE
-  
+  const navigate = useNavigate();
+  const stdEmail = useSelector((state) => state.data);
+  React.useEffect(() => {
+    if (stdEmail === "nill") {
+      navigate("/signup/email");
+    }
+  });
   const [values, setValues] = useState({
     studname: "",
     studrollno: "",
@@ -102,12 +111,19 @@ const Signup = () => {
 
     //FIXME: VALIDATE AND SUBMIT
 
-
-    // if( setErrors(validate(values))){   
+    // if( setErrors(validate(values))){
     // console.log(values);
     // }
   };
 
+  const sendData = async () => {
+    try {
+    } catch (error) {
+      alert("Error! Try Again after some time");
+      navigate(`/signup/email`);
+      console.log(error);
+    }
+  };
   return (
     <>
       <Container>
@@ -146,9 +162,9 @@ const Signup = () => {
                 <FormInput
                   type="email"
                   name="studemail"
-                  value={values.studemail}
+                  value={stdEmail}
                   onChange={handleChange}
-                  required
+                  readOnly
                 />
                 {errors.studemail && (
                   <p style={{ color: "red" }}>{errors.studemail}</p>
@@ -219,11 +235,23 @@ const Signup = () => {
                     }}
                   >
                     <div>
-                      <FormInput type="radio" value="male" name="gender" checked={values.gender=="male"} onChange={handleChange}/>
+                      <FormInput
+                        type="radio"
+                        value="male"
+                        name="gender"
+                        checked={values.gender == "male"}
+                        onChange={handleChange}
+                      />
                       Male
                     </div>
                     <div>
-                      <FormInput type="radio" value="female" name="gender" checked={values.gender=="female"} onChange={handleChange}/>
+                      <FormInput
+                        type="radio"
+                        value="female"
+                        name="gender"
+                        checked={values.gender == "female"}
+                        onChange={handleChange}
+                      />
                       Female
                     </div>
                   </div>
@@ -275,8 +303,13 @@ const Signup = () => {
                   <p style={{ color: "red" }}>{errors.password2}</p>
                 )}
 
-                <FormButton to="/" primary="true" dark="true">
-                  Continue
+                <FormButton
+                  to="/"
+                  primary="true"
+                  dark="true"
+                  onClick={sendData}
+                >
+                  Submit
                 </FormButton>
               </Form>
             </FormContent>

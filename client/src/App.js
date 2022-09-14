@@ -11,33 +11,33 @@ import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
 import AdminLogin from "./components/adminLogin";
 import Dashboard from "./pages/Dashboard";
-import Testing from "./pages/Testing";
-
+// import Testing from "./pages/Testing";
+import LoadingComponent from "./components/LoadingPage/LoadingComponent";
 
 function App() {
   return (
     <>
-        <Routes>
-          <Route path="" element={<Home />}>
-            <Route path="" element={<HomeInterface />} />
-            <Route path="signup" element={<SignupInterface />}>
-              <Route>
-                <Route path="email" element={<StudentEmailSignup />} />
-                <Route path="verify" element={<OTPBox />} />
-                <Route path="details" element={<Signup />} />
-              </Route>
-            </Route>
-            <Route path="login" element={<Login />} />
-            <Route path="admin" element={<AdminInterface />}>
-              <Route>
-                <Route path="login" element={<AdminLogin />} />
-                <Route path="dept" element={<Dashboard />} />
-              </Route>
+      <Routes>
+        <Route path="" element={<Home />}>
+          <Route path="" element={<HomeInterface />} />
+          <Route path="signup" element={<SignupInterface />}>
+            <Route>
+              <Route path="email" element={<StudentEmailSignup />} />
+              <Route path="verify" element={<OTPBox />} />
+              <Route path="details" element={<Signup />} />
             </Route>
           </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="admin" element={<AdminInterface />}>
+            <Route>
+              <Route path="login" element={<AdminLogin />} />
+              <Route path="dept" element={<Dashboard />} />
+            </Route>
+          </Route>
+        </Route>
 
-          <Route path="testing" element={<Testing />}></Route>
-        </Routes>
+        <Route path="testing" element={<LoadingComponent />}></Route>
+      </Routes>
     </>
   );
 }

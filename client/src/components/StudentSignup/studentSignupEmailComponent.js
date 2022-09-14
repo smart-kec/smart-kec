@@ -23,9 +23,9 @@ function StudentEmailSignup({ addData, data }) {
       const status = res.data.STATUS;
       console.log(res);
       if (status === "SUCCESS") {
+        uEmail = email;
+        addData();
         if (msg === "otp generated") {
-          uEmail = email;
-          addData();
           navigate(`/signup/verify`);
         } else if (msg === "verified user") {
           navigate(`/signup/details`);
