@@ -9,13 +9,13 @@ import OTPBox from "./components/StudentSignup/studentSignupOtpComponent";
 import Signup from "./components/StudentSignup/studentSignupDetailsComponent";
 import SignupInterface from "./interface/SignupInterface";
 import AdminInterface from "./interface/AdminInterface";
-import AdminLogin from "./components/adminLogin";
+import AdminLogin from " ./components/adminLogin";
 import Dashboard from "./pages/Dashboard";
 import Testing from "./pages/Testing";
 import StudentInterface from "./interface/StudentInterface";
 // import { Provider } from "react-redux";
 // import { createStore } from "redux";
-// import SignupStoreApp from "./store/signupStore";
+// import SignupStoreApp from "./store signupStore";
 
 // const signupStore = createStore(SignupStoreApp);
 

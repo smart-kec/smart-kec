@@ -1,6 +1,6 @@
 const StudTable = () => {
     return (
-        <h1>Hello1</h1>
+         <h1></h1>
     );
 
 }
