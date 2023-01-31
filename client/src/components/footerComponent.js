@@ -35,47 +35,78 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>About Us</FooterLinkTitle>
-              <FooterLink to="/signin">About</FooterLink>
-              <FooterLink to="/signin">Terms of Service</FooterLink>
+              <FooterLink to="https://kongu.ac.in/">About</FooterLink>
+              <FooterLink to="#">Terms of Service</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Contact</FooterLinkTitle>
-              <FooterLink to="/signin">Contact</FooterLink>
-              <FooterLink to="/signin">Support</FooterLink>
+              <FooterLink to="#">MailUs</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to="/signin">Instagram</FooterLink>
-              <FooterLink to="/signin">Facebook</FooterLink>
-              <FooterLink to="/signin">Youtube</FooterLink>
-              <FooterLink to="/signin">Twitter</FooterLink>
+              <FooterLink to="https://www.instagram.com/konguengineeringcollege/">
+                Instagram
+              </FooterLink>
+              <FooterLink to="https://www.facebook.com/konguengineeringcollegeperundurai">
+                Facebook
+              </FooterLink>
+              <FooterLink to="https://www.youtube.com/c/konguengineeringcollege">
+                Youtube
+              </FooterLink>
+              <FooterLink to="https://twitter.com/KonguOfficial">
+                Twitter
+              </FooterLink>
+
+              <FooterLink to="https://www.linkedin.com/school/kongu-engineering-collegeerode/">
+                LinkedIn
+              </FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/" onClick={toggleHome}>
-              Smart_KEC
+              Smart KEC
             </SocialLogo>
             <WebsiterRights>
-              Smart_KEC © {new Date().getFullYear()} All rights reserved.
+              Smart KEC © {new Date().getFullYear()} All rights reserved.
             </WebsiterRights>
             <SocialIcons>
-              <SocialIconLink href="/" target="_blank" aria-label="Facebook">
+              <SocialIconLink
+                href="https://www.facebook.com/konguengineeringcollegeperundurai"
+                target="_blank"
+                aria-label="Facebook"
+              >
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Instagram">
+              <SocialIconLink
+                href="https://www.instagram.com/konguengineeringcollege/"
+                target="_blank"
+                aria-label="Instagram"
+              >
                 <FaInstagram />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Youtube">
+              <SocialIconLink
+                href="https://www.youtube.com/c/konguengineeringcollege"
+                target="_blank"
+                aria-label="Youtube"
+              >
                 <FaYoutube />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Twitter">
+              <SocialIconLink
+                href="https://twitter.com/KonguOfficial"
+                target="_blank"
+                aria-label="Twitter"
+              >
                 <FaTwitter />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Linkedin">
+              <SocialIconLink
+                href="https://www.linkedin.com/school/kongu-engineering-collegeerode/"
+                target="_blank"
+                aria-label="Linkedin"
+              >
                 <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>

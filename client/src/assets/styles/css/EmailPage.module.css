@@ -1,0 +1,64 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+}
+
+.head {
+  color: white;
+  padding: 10px;
+}
+
+.con {
+  margin-top: 20px;
+  box-shadow: 0 4x 8px 0 rgba(0, 0, 0, 0.2), 0 6px;
+  padding: 5rem 0rem;
+  background-color: white;
+  border-radius: 20px;
+  /* width: 50vh;
+  height: 40vh; */
+}
+
+.message {
+  text-align: center;
+  font-size: 12px;
+  color: red;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.buttone {
+  text-align: center;
+  padding: 1%;
+  border: none;
+  background-color: #4fffe7;
+  border-radius: 30px;
+  margin: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input1 {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: white;
+  outline: none;
+  font-size: 6;
+  box-sizing: border-box;
+}
+
+.buttone:hover {
+  background-color: #c9fef7;
+}

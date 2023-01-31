@@ -26,7 +26,7 @@ router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
 router
   .route("/student/email/generate/otp")
-  .get(checkUser, generateAndSendEmailOtp);
+  .put(checkUser, generateAndSendEmailOtp);
 
 router.route("/student/check/otp/valid").get(checkOtpExpiry);
 router.route("/student/otp/verify").post(verifyOtp);
@@ -40,9 +40,9 @@ router
   .route("/student/new/details")
   .post(verifyUser, saveAccount, newStudentInfoController, deleteOtp);
 
-// routwe for duplicate  data entry
 router
-  .route("/sanjeev/entry/duplicates")
-  .post(saveAccount, newStudentInfoController, dupResponse);
+  .route("/student/new/detailsdup")
+  .post(saveAccount, newStudentInfoController);
+
 
 module.exports = router;

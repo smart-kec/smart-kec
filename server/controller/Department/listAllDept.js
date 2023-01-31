@@ -13,10 +13,7 @@ module.exports = async (req, res) => {
         _id: 1,
       }
     );
-    res.status(200).json({
-      status: "success",
-      data: dept,
-    });
+    res.status(200).json(dept);
   } catch (err) {
     res.status(400).json({
       staus: "failed",

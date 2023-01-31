@@ -1,18 +1,18 @@
 import React from "react";
-import { Button } from "./ButtonElements";
 import bg from "../assets/images/bg-1.jpeg";
 import {
   Container,
   Bg,
   FormLabel,
   FormWrap,
-  Icon,
   FormContent,
   Form,
   FormH1,
   FormInput,
+  FormButton,
   Links,
 } from "../assets/styles/style/AdminLoginElements";
+import { Icon } from "../assets/styles/style/SidebarElements";
 
 const AdminLogin = () => {
   return (
@@ -20,18 +20,17 @@ const AdminLogin = () => {
       <Container>
         <Bg imgUrl={bg}>
           <FormWrap>
-            <Icon to="/"> Smart_KEC </Icon>{" "}
+            <Icon to="/"> Smart KEC </Icon>{" "}
             <FormContent>
               <Form action="#">
                 <FormH1> Sign in to your account </FormH1>{" "}
                 <FormLabel htmlFor="for"> Email </FormLabel>{" "}
                 <FormInput type="email" required />
-                <FormLabel htmlFor="for"> Password </FormLabel>{" "}
+                <FormLabel htmlFor="password"> Password </FormLabel>{" "}
                 <FormInput type="password" required />
-                <Button to="/" primary="true" dark="true">
-                  {" "}
+                <FormButton to="/" primary="true" dark="true">
                   Continue{" "}
-                </Button>{" "}
+                </FormButton>{" "}
                 <Links to="/"> Forgot Password ? </Links>{" "}
               </Form>{" "}
             </FormContent>{" "}

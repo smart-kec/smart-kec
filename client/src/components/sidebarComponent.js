@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="home" onClick={toggle}>
+          <SidebarLink to="/" onClick={toggle}>
             Home
           </SidebarLink>
           <SidebarLink to="events" onClick={toggle}>
@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="labs/halls" onClick={toggle}>
             Labs/Halls
           </SidebarLink>
-          <SidebarLink to="/signup/stdemail" onClick={toggle}>
+          <SidebarLink to="/signup/email" onClick={toggle}>
             Student Signup
           </SidebarLink>
           <SideBtnWrap>

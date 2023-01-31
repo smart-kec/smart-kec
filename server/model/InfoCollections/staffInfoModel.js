@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
 
 const staffInfoSchema = new mongoose.Schema({
   name: {
@@ -31,6 +33,10 @@ const staffInfoSchema = new mongoose.Schema({
     required: [true, "Required Department Staff or Office Staff"],
     trim: true,
   },
+  deptId: {
+    type: ObjectIdSchema,
+    required: [true, "Required Dept id"],
+  },
   email: {
     type: String,
     required: [true, "Staff must have an email id"],
@@ -44,14 +50,19 @@ const staffInfoSchema = new mongoose.Schema({
     required: [true, "Staff must mention his/her phone number"],
   },
   classId: {
-    type: String,
+    type: ObjectIdSchema,
+    default: null,
   },
   labID: {
-    type: String,
+    type: ObjectIdSchema,
+    default: null,
   },
-  pastClass: [String],
+  pastClass: {
+    type: [ObjectIdSchema],
+    default: [],
+  },
 });
 
-const staffInfoModel = new mongoose.model("staffinfo", staffInfoSchema);
+const staffInfoModel = new mongoose.model("staffinfos", staffInfoSchema);
 
 module.exports = staffInfoModel;

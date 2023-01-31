@@ -6,4 +6,7 @@ module.exports = function (app) {
   app.use("/signup", signupRouter);
   app.use("/login", loginRouter);
   app.use("/admin", adminRouter);
+  app.get("/test", (req, res) => {
+    res.send("hello");
+  });
 };

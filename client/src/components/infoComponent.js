@@ -33,7 +33,7 @@ const InfoSection = ({
   dark,
   dark2,
 }) => {
-  console.log(homeObjOne);
+  // console.log(homeObjOne);
   const [image, setImage] = useState(null);
   useEffect(() => {
     setImage(require("../assets/images/" + homeObjOne.img));
@@ -56,9 +56,9 @@ const InfoSection = ({
                 <BtnWrap>
                   <Button
                     to="home"
-                    smooth={true}
+                    smooth="true"
                     duration={500}
-                    spy={true}
+                    spy="true"
                     offset={-80}
                     primary={homeObjOne.primary ? 1 : 0}
                     dark={homeObjOne.dark ? 1 : 0}
