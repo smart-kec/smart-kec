@@ -25,9 +25,8 @@ const Login = () => {
                 <FormH1>Sign in to your account</FormH1>
                 <Select name="type">
                   <option value="student">Student</option>
-                  <option value="organizer">organizer</option>
-                  <option value="department">Department</option>
-                  <option value="lab-hall">Lab/Hall</option>
+                  <option value="Employee">organizer</option>
+                  
                 </Select>
                 <FormLabel htmlFor="for">Email</FormLabel>
                 <FormInput type="email" required />
