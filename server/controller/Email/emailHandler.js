@@ -10,6 +10,8 @@ oAuth2client.setCredentials({ refresh_token: config.mailer.REFRESH_TOKEN });
 module.exports = async (data) => {
   try {
     const accessToken = await oAuth2client.getAccessToken();
+    console.log(data);
+    console.log(config.mailer.REDIRECT_URL);
     const transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -31,7 +33,6 @@ module.exports = async (data) => {
     };
     const result = await transport.sendMail(mailOptions);
     result.status = "success";
-
     return result;
   } catch (error) {
     console.log(error);

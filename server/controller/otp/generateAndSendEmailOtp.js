@@ -7,10 +7,10 @@ const emailHandler = require("../Email/emailHandler");
 
 module.exports = async (req, res) => {
   const { userEmail } = req.body;
-
+  console.log(userEmail);
   const otp = Math.floor(100000 + Math.random() * 900000);
   const hashedotp = await bcrypt.hash(`${otp}`, 10);
-
+  console.log(otp);
   try {
     await otpModel.create({
       email: userEmail,
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       text: "OTP is generated",
       html: `<p>One Time Password(OTP) for your student verification in Smart KEC is generated and valid for 5 mins. The OTP is ${otp} </p>`,
     };
-
+    console.log(data);
     const result = await emailHandler(data);
     if (result.status == "success") {
       res.status(200).json({

@@ -20,6 +20,7 @@ const checkVerifiedStatus = require("../controller/otp/checkVerifiedStatus");
 const verifyUser = require("../controller/otp/verifyUser");
 const deleteOtp = require("../controller/otp/deleteOtp");
 const resendOtp = require("../controller/otp/resendOtp");
+const dupResponse = require("../controller/Student/dupResponse");
 
 router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
@@ -42,5 +43,6 @@ router
 router
   .route("/student/new/detailsdup")
   .post(saveAccount, newStudentInfoController);
+
 
 module.exports = router;
