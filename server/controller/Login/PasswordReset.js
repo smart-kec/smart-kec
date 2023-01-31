@@ -123,7 +123,7 @@ module.exports.getEmail = async (req, res) => {
   try {
     const user = await passwordReset.findOne({ _id: userId });
     if (user) {
-      // console.log(user, Date.now());
+      
       if (Date.now() < user.expiresAt) {
         res.status(200).json({ status: "success", email: user.email });
       } else {

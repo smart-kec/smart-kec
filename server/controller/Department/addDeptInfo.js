@@ -37,6 +37,7 @@ module.exports = async (req, res) => {
         noOfSemesters: "",
         establishedYear: "",
         programme: "",
+        hodId: "",
       },
       "departments"
     );
