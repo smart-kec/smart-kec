@@ -26,10 +26,12 @@ const Login = () => {
               <Form action="#">
                 <FormH1>Sign in to your account</FormH1>
                 <Select name="type">
+
                   <Option value="student">Student</Option>
                   <Option value="organiser">Organiser</Option>
                   <Option value="department">Department</Option>
                   <Option value="lab-hall">Lab/Hall</Option>
+
                 </Select>
                 <FormLabel htmlFor="for">Email</FormLabel>
                 <FormInput type="email" required />
