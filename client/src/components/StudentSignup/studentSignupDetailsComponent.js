@@ -29,12 +29,10 @@ const years = generateArrayOfYears();
 const validate = (values) => {
   console.log("validate");
   let errors = {};
-
-  if (
-    !/([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/i.test(values.studemail)
-  ) {
-    errors.studemail = "Email address is invalid";
-  }
+  // const regEx = /([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
+  // if (!regEx.test(values.studemail)) {
+  //   errors.studemail = "Email address is invalid";
+  // }
 
   if (values.phone.length !== 10) {
     errors.phone = "Phone Numbers should have 10";
@@ -118,6 +116,8 @@ const Signup = () => {
 
   const sendData = async () => {
     try {
+      dispatch(loadingPage(true));
+      
     } catch (error) {
       alert("Error! Try Again after some time");
       navigate(`/signup/email`);

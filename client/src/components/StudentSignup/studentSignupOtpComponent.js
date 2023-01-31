@@ -43,6 +43,7 @@ const OTPBox = () => {
         });
 
         const msg = res.data.message;
+        console.log(msg);
         if (res.data.STATUS === "success") {
           if (msg === "otp verified") {
             navigate(`/signup/details`);
