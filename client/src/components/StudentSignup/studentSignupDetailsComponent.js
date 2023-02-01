@@ -75,6 +75,7 @@ const Signup = () => {
       navigate("/signup/email");
     }
   });
+  const [visible,setVisible]=useState(false);
   const [values, setValues] = useState({
     studname: "",
     studrollno: "",
@@ -88,6 +89,13 @@ const Signup = () => {
     hack_id: "",
     password: "",
     password2: "",
+    fathername: "",
+    mothername:"",
+    address:"",
+    fatherphone:"",
+    motherphone:"",
+    stayin:""
+
   });
 
   const [errors, setErrors] = useState({});
@@ -279,6 +287,99 @@ const Signup = () => {
                   <p style={{ color: "red" }}>{errors.hack_id}</p>
                 )}
 
+                
+                
+                <FormLabel htmlFor="for" name="stayin">
+                  Stay In
+                </FormLabel>
+                <FormLabel>
+                  <div
+                    style={{
+                      display: "flex",
+                      "flex-direction": "row",
+                      "justify-content": "space-around",
+                    }}
+                  >
+                    <div>
+                      <FormInput
+                        type="radio"
+                        value="0"
+                        name="stayin"
+                      
+                        onChange={handleChange}
+                        onClick={()=>setVisible(false)}
+                      />
+                      Dayschollar
+                    </div>
+                    <div>
+                      <FormInput
+                        type="radio"
+                        value="1"
+                        name="stayin"
+                      
+                        onChange={handleChange}
+                        onClick={()=>setVisible(true)}
+                      />
+                      Hosteller
+                    </div>
+                  </div>
+                  {visible  &&
+                  <div>
+                 
+                  <FormLabel htmlFor="for">Hostel Name</FormLabel>
+                  
+                  <Select name="sem" style={{
+                    marginTop:"20px",
+                    paddingRight:"240px",
+                   
+                     border: "none",
+                     borderradius: "4px",
+                     
+                    
+                  }}>
+                    <option value="Ponnar">Ponnar</option>
+                    <option value="Dheeran">Dheeran</option>
+                    <option value="Kanban">Kanban</option>
+                    <option value="Bharathi">Bharathi</option>
+                    <option value="Vaigai">Vaigai</option>
+                   
+                  </Select>
+                 
+                 </div>
+                  }
+                </FormLabel>
+                 <FormLabel htmlFor="for">FatherName</FormLabel>
+                <FormInput
+                  type="text"
+                  name="studname"
+                  value={values.fathername}
+                  onChange={handleChange}
+                  required
+                />
+                 <FormLabel htmlFor="for">MotherName</FormLabel>
+                <FormInput
+                  type="text"
+                  name="studname"
+                  value={values.mothername}
+                  onChange={handleChange}
+                  required
+                />
+                <FormLabel htmlFor="for">Father Ph.No</FormLabel>
+                <FormInput
+                  type="text"
+                  name="studname"
+                  value={values.fatherphone}
+                  onChange={handleChange}
+                  required
+                />
+                <FormLabel htmlFor="for">Mother Ph.No</FormLabel>
+                <FormInput
+                  type="text"
+                  name="studname"
+                  value={values.motherphone}
+                  onChange={handleChange}
+                  required
+                />
                 <FormLabel htmlFor="for">Password</FormLabel>
                 <FormInput
                   type="password"
@@ -302,7 +403,6 @@ const Signup = () => {
                 {errors.password2 && (
                   <p style={{ color: "red" }}>{errors.password2}</p>
                 )}
-
                 <FormButton
                   to="/"
                   primary="true"
@@ -321,3 +421,4 @@ const Signup = () => {
 };
 
 export default Signup;
+ 
