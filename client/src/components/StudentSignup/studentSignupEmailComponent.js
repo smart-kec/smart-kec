@@ -22,7 +22,8 @@ function StudentEmailSignup({ addData, data }) {
   useEffect(() => {
     console.log("Page ", showLoad);
     if (showLoad) {
-      navigate(`/testing`);
+      return 
+      // navigate(`/testing`);
     }
   });
   
