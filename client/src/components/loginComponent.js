@@ -26,6 +26,10 @@ const Login = () => {
               <Form action="#">
                 <FormH1>Sign in to your account</FormH1>
                 <Select name="type">
+                  <option value="student">Student</option>
+                  <option value="Employee">organizer</option>
+                  
+
 
                   <Option value="student">Student</Option>
                   <Option value="organiser">Organiser</Option>

@@ -1,30 +1,43 @@
+import { BiEditAlt, BiBookReader } from "react-icons/bi";
+import { FaGraduationCap } from "react-icons/fa";
+import { BsFillPeopleFill, BsCalendarDate } from "react-icons/bs";
+
+
 import {
-  dob,
-  semester,
-  img1,
-  img2,
-  img3,
-  img4,
-  icon1,
-  gender,
-  graduation,
-  classn,
-  contact,
-  hacker,
-  year,
-  email,
-} from "../assets/images/Display/images";
+  MdOutlineFormatListNumbered,
+  MdPermContactCalendar,
+  MdEmail,
+} from "react-icons/md";
+import { SiGoogleclassroom, SiHackerrank, SiFuturelearn } from "react-icons/si";
+import { GiCircle } from "react-icons/gi";
+
+import { img1, img4 } from "../assets/images/Display/images";
 import {
   Details,
   Detailslayout,
   Detailsfront,
   Box,
+  Bt,
+  Wrapper,
 } from "../assets/styles/style/DisplayElements";
+import { useState } from "react";
 
 const Display = () => {
+  const [Edit, setEdit] = useState(false);
+  const [Edit2, setEdit2] = useState(false);
+  const [Edit3, setEdit3] = useState(false);
+  const [Edit4, setEdit4] = useState(false);
+  const [change, setchange] = useState("");
+
+  const Handler4 = (data) => {
+    setchange(data);
+  };
+  const submit = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
-      <form>
+      <form onSubmit={submit}>
         <Box
           style={{
             backgroundImage: `url(${img4})`,
@@ -33,75 +46,127 @@ const Display = () => {
             backgroundSize: "40rem",
           }}
         >
-          <img id="one" src={img1} alt="a" />
-          <img id="two" src={img3} alt="b" />
-          <h1>SANJEEV BALASUBRAMANI</h1>
-          <img id="three" src={img2} alt="c" />
+          <GiCircle id="two"></GiCircle>
+          <Wrapper>
+            <Bt>
+            
+              <img id="one" src={img1} alt="a" />
+            </Bt>
+            <input type="file" />
+          </Wrapper>
 
-          <button type="submit">Update</button>
+          <h1>SANJEEV BALASUBRAMANI</h1>
+
+          <FaGraduationCap
+            id="three"
+            style={{ color: "#bbb7b7" }}
+          ></FaGraduationCap>
+          <h2 id="be">BE COMPUTER SCIENCE AND ENGINEERING</h2>
+          <button
+            type="submit"
+            onChange={(event) => Handler4(event.target.value)}
+            value={change}
+          >
+            UPDATE
+          </button>
         </Box>
       </form>
-
       <Details>
         <Detailslayout>
           <Detailsfront>
-            <img src={icon1} alt="c" />
+            <MdOutlineFormatListNumbered id="img"></MdOutlineFormatListNumbered>
+
             <p>REGISTER NUMBER</p>
-            <h6>20CSR185</h6>
+            <h6 id="space">20CSR185</h6>
           </Detailsfront>
 
           <Detailsfront>
-            <img src={gender} alt="c" />
-
+            <BsFillPeopleFill id="img"></BsFillPeopleFill>
             <p>GENDER</p>
-
-            <h6>MALE</h6>
+            <button id="gen" onClick={() => setEdit(!Edit)}>
+              {" "}
+              <BiEditAlt></BiEditAlt>
+            </button>
+            {Edit  ? ( 
+              <select >
+                <option >MALE</option>
+                <option>FEMALE</option>
+              </select>
+            ) : (
+              <h6>MALE</h6>
+            )}
           </Detailsfront>
 
           <Detailsfront>
-            <img src={graduation} alt="c" />
+            <FaGraduationCap id="img"></FaGraduationCap>
             <p>GRADUATION YEAR</p>
-            <h6>2024</h6>
+            <h6 id="space">2024</h6>
           </Detailsfront>
 
           <Detailsfront>
-            <img src={dob} alt="c" />
+            <BsCalendarDate id="img"></BsCalendarDate>
+
             <p>DATE OF BIRTH</p>
-            <h6>06-05-2003</h6>
+            <button id="gen" onClick={() => setEdit2(!Edit2)}   >
+              {" "}
+              <BiEditAlt></BiEditAlt>
+            </button>
+            {Edit2 ? <input  style={{ marginTop:"3rem"}} type="date" /> : <h6>06.05.2003</h6>}
           </Detailsfront>
 
           <Detailsfront>
-            <img src={classn} alt="c" />
+            <SiGoogleclassroom id="img"></SiGoogleclassroom>
+
             <p>CLASS </p>
-            <h6>CSE-C</h6>
+            <h6 id="space">CSE-C</h6>
           </Detailsfront>
 
           <Detailsfront>
-            <img src={contact} alt="c" />
+            <MdPermContactCalendar id="img"></MdPermContactCalendar>
+
             <p>CONTACT NUMBER</p>
-            <h6>9994262242</h6>
+            <button id="gen" onClick={() => setEdit3(!Edit3)}>
+              {" "}
+              <BiEditAlt></BiEditAlt>
+            </button>
+
+            {Edit3 ? <input id="inputbox" type="text" /> : <h6>9994262242</h6>}
           </Detailsfront>
           <Detailsfront>
-            <img src={semester} alt="c" />
+            <BiBookReader id="img"></BiBookReader>
+
             <p>SEMESTER</p>
-            <h6>05</h6>
+            <h6 id="space">05</h6>
           </Detailsfront>
           <Detailsfront>
-            <img src={hacker} alt="c" />
+            <SiHackerrank id="img"></SiHackerrank>
+
             <p>HACKER RANK ID</p>
-            <h6>sanjubalasubramani@</h6>
+            <button id="gen" onClick={() => setEdit4(!Edit4)}>
+              {" "}
+              <BiEditAlt></BiEditAlt>
+            </button>
+            {!Edit4 ? (
+              <h6>sanjubalasubramani@</h6>
+            ) : (
+              <input style={{}} type="text" defaultValue="sanju"></input>
+            )}
           </Detailsfront>
           <Detailsfront>
-            <img src={year} alt="c" />
+            <SiFuturelearn id="img"></SiFuturelearn>
             <p>YEAR OF STUDY</p>
-            <h6>03</h6>
+            <h6 id="space">03</h6>
           </Detailsfront>
           <Detailsfront>
-            <img src={email} alt="c" />
+            <MdEmail id="img"></MdEmail>
+
             <p>E-MAIL</p>
-            <h6>sanjeevb.20cse@kongu.edu</h6>
+            <h6 id="space">sanjeevb.20cse@kongu.edu</h6>
           </Detailsfront>
         </Detailslayout>
+        <Wrapper>
+          <input type="file" />
+        </Wrapper>
       </Details>
     </>
   );
