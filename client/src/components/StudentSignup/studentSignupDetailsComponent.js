@@ -14,6 +14,7 @@ import {
   FormButton,
   Select,
 } from "../../assets/styles/style/SignupElements";
+import { getBranchListForSignup } from "../../api/AurthenticationServices";
 
 const generateArrayOfYears = () => {
   const max = new Date().getFullYear();
@@ -109,6 +110,38 @@ const Signup = () => {
     });
   };
 
+  var [branchValue, setBranch] = useState([
+    {
+      _id: "633d3a908a094cee83fd32be",
+      aliasName: "CSE",
+      programme: "BE",
+    },
+    {
+      _id: "633d3a908a094cee83fd32be",
+      aliasName: "CSE",
+      programme: "BE",
+    },
+  ]);
+  const handleBranch = async (e) => {
+    try {
+      // dispatch(loadingPage(true));
+      const res = await getBranchListForSignup({ programme: "BE" });
+
+      console.log("Programme : ", values.programme);
+      // const msg = res.data.message;
+      const status = res.data.STATUS;
+      console.log(res);
+      if (status === "success") {
+        setBranch((prevData) => [prevData, res.data]);
+        console.log("Branch Value", branchValue);
+        // dispatch(loadingPage(false));
+      }
+    } catch (err) {
+      // dispatch(loadingPage(false));
+      alert("Try Again after some time");
+      console.log(err);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
@@ -125,7 +158,6 @@ const Signup = () => {
   const sendData = async () => {
     try {
       dispatch(loadingPage(true));
-      
     } catch (error) {
       alert("Error! Try Again after some time");
       navigate(`/signup/email`);
@@ -179,11 +211,15 @@ const Signup = () => {
                 )}
 
                 <FormLabel htmlFor="for">Programme</FormLabel>
-                <Select name="programme">
-                  <option value="be">B.E</option>
-                  <option value="btech">B.Tech</option>
-                  <option value="me">M.E</option>
-                  <option value="bsc">B.Sc</option>
+                <Select
+                  name="programme"
+                  onChange={handleBranch}
+                  value={values.programme}
+                >
+                  <option value="BE">B.E</option>
+                  <option value="BTech">B.Tech</option>
+                  <option value="ME">M.E</option>
+                  <option value="BSc">B.Sc</option>
                   <option value="msc">M.Sc</option>
                   <option value="mba">MBA</option>
                   <option value="mca">MCA</option>
@@ -191,21 +227,26 @@ const Signup = () => {
 
                 <FormLabel htmlFor="for">Branch</FormLabel>
                 <Select name="branch">
-                  <option value="cse">CSE</option>
-                  <option value="it">IT</option>
-                  <option value="ece">ECE</option>
-                  <option value="eee">EEE</option>
-                  <option value="eie">EIE</option>
-                  <option value="mech">Mech</option>
-                  <option value="mts">MTS</option>
-                  <option value="civil">Civil</option>
-                  <option value="auto">Auto</option>
-                  <option value="chem">Chem</option>
-                  <option value="ft">FT</option>
+                  useEffect(
+                  {branchValue.map(function (dept) {
+                    return <option value={dept._id}>{dept.aliasName}</option>;
+                  })}
+                  )
+                  {/* <option value="CSE">CSE</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="EIE">EIE</option>
+                  <option value="MECH">Mech</option>
+                  <option value="MTS">MTS</option>
+                  <option value="CIVIL">Civil</option>
+                  <option value="AUTO">Auto</option>
+                  <option value="CHEM">Chem</option>
+                  <option value="FT">FT</option>
                   <option value="csd">CSD</option>
                   <option value="ai">AI</option>
                   <option value="ct-ug">CT-UG</option>
-                  <option value="ct-pg">CT-PG</option>
+                  <option value="ct-pg">CT-PG</option> */}
                 </Select>
 
                 <FormLabel htmlFor="for">Semester</FormLabel>

@@ -21,6 +21,7 @@ const verifyUser = require("../controller/otp/verifyUser");
 const deleteOtp = require("../controller/otp/deleteOtp");
 const resendOtp = require("../controller/otp/resendOtp");
 const dupResponse = require("../controller/Student/dupResponse");
+const listAllBranch = require("../controller/Department/listAllBranch");
 
 router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
@@ -44,5 +45,5 @@ router
   .route("/student/new/detailsdup")
   .post(saveAccount, newStudentInfoController);
 
-
+router.route("/student/new/branch").get(listAllBranch);
 module.exports = router;
