@@ -28,7 +28,6 @@ const generateArrayOfYears = () => {
 const years = generateArrayOfYears();
 
 const validate = (values) => {
-  console.log("validate");
   let errors = {};
   // const regEx = /([a-zA-Z]+)[.]([0-9]+)([a-z0-9]+)@kongu([.])edu/;
   // if (!regEx.test(values.studemail)) {
@@ -76,7 +75,7 @@ const Signup = () => {
       navigate("/signup/email");
     }
   });
-  const [visible,setVisible]=useState(false);
+  const [visible, setVisible] = useState(false);
   const [values, setValues] = useState({
     studname: "",
     studrollno: "",
@@ -90,15 +89,45 @@ const Signup = () => {
     password: "",
     password2: "",
     fathername: "",
-    mothername:"",
-    address:"",
-    fatherphone:"",
-    motherphone:"",
-    stayin:""
-
+    mothername: "",
+    address: "",
+    fatherphone: "",
+    motherphone: "",
+    stayin: "",
   });
-  const [programme, setProgramme] = useState({});
   const [errors, setErrors] = useState({});
+  //Programme and branch
+  let [branchValue, setBranch] = useState([
+    {
+      _id: "1",
+      aliasName: "Choose Programme",
+      programme: "choose programme",
+    },
+  ]);
+
+  const [programme, setProgramme] = useState({});
+  const changeProgrammeSelectOptionHandler = async (event) => {
+    setProgramme(event.target.value);
+
+    try {
+      // dispatch(loadingPage(true));
+      const res = await getBranchListForSignup({
+        programme: event.target.value,
+      });
+
+      // const msg = res.data.message;
+      const status = res.data.STATUS;
+      if (status === "success") {
+        // setBranch(res.data.data);
+        setBranch(res.data.data);
+        // dispatch(loadingPage(false));
+      }
+    } catch (err) {
+      // dispatch(loadingPage(false));
+      alert("Try Again after some time");
+      console.log(err);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -108,32 +137,7 @@ const Signup = () => {
       [name]: value,
     });
   };
-  const Handler9 = async(data) => {
-    setProgramme(data);
-    console.log(data);
-    try {
-      // dispatch(loadingPage(true));
-      const res = await getBranchListForSignup({ programme: data });
 
-      console.log("Programme : ", data);
-      // const msg = res.data.message;
-      const status = res.data.STATUS;
-      console.log(res);
-      if (status === "success") {
-        setBranch(res.data.data);
-        console.log("Branch Value", branchValue);
-        // dispatch(loadingPage(false));
-      }
-    } catch (err) {
-      // dispatch(loadingPage(false));
-      alert("Try Again after some time");
-      console.log(err);
-    }
-  };
-  var [branchValue, setBranch] = useState([]);
-  const handleBranch = async (e) => {
-    
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
@@ -156,6 +160,7 @@ const Signup = () => {
       console.log(error);
     }
   };
+ 
   return (
     <>
       <Container>
@@ -205,42 +210,28 @@ const Signup = () => {
                 <FormLabel htmlFor="for">Programme</FormLabel>
                 <Select
                   name="programme"
+                  onChange={changeProgrammeSelectOptionHandler}
+                  value={programme}
                   // onChange={handleBranch}
                   // value={values.programme}
-                  onChange={(event) => Handler9(event.target.value)}
-                   value={programme}
+                  // onChange={(event) => Handler9(event.target.value)}
+                  // value={programme}
                 >
-                  <option value="BE">B.E</option>
-                  <option value="BTech">B.Tech</option>
+                  <option value="1">Choose...</option>
+                  <option value="BE">BE</option>
+                  <option value="BTech">BTech</option>
                   <option value="ME">M.E</option>
                   <option value="BSc">B.Sc</option>
-                  <option value="msc">M.Sc</option>
-                  <option value="mba">MBA</option>
-                  <option value="mca">MCA</option>
+                  <option value="MSc">M.Sc</option>
+                  <option value="MBA">MBA</option>
+                  <option value="MCA">MCA</option>
                 </Select>
 
                 <FormLabel htmlFor="for">Branch</FormLabel>
                 <Select name="branch">
-                  useEffect(
                   {branchValue.map(function (dept) {
                     return <option value={dept._id}>{dept.aliasName}</option>;
                   })}
-                  )
-                  {/* <option value="CSE">CSE</option>
-                  <option value="IT">IT</option>
-                  <option value="ECE">ECE</option>
-                  <option value="EEE">EEE</option>
-                  <option value="EIE">EIE</option>
-                  <option value="MECH">Mech</option>
-                  <option value="MTS">MTS</option>
-                  <option value="CIVIL">Civil</option>
-                  <option value="AUTO">Auto</option>
-                  <option value="CHEM">Chem</option>
-                  <option value="FT">FT</option>
-                  <option value="csd">CSD</option>
-                  <option value="ai">AI</option>
-                  <option value="ct-ug">CT-UG</option>
-                  <option value="ct-pg">CT-PG</option> */}
                 </Select>
 
                 <FormLabel htmlFor="for">Semester</FormLabel>
@@ -322,8 +313,6 @@ const Signup = () => {
                   <p style={{ color: "red" }}>{errors.hack_id}</p>
                 )}
 
-                
-                
                 <FormLabel htmlFor="for" name="stayin">
                   Stay In
                 </FormLabel>
@@ -340,9 +329,8 @@ const Signup = () => {
                         type="radio"
                         value="0"
                         name="stayin"
-                      
                         onChange={handleChange}
-                        onClick={()=>setVisible(false)}
+                        onClick={() => setVisible(false)}
                       />
                       Dayschollar
                     </div>
@@ -351,39 +339,36 @@ const Signup = () => {
                         type="radio"
                         value="1"
                         name="stayin"
-                      
                         onChange={handleChange}
-                        onClick={()=>setVisible(true)}
+                        onClick={() => setVisible(true)}
                       />
                       Hosteller
                     </div>
                   </div>
-                  {visible  &&
-                  <div>
-                 
-                  <FormLabel htmlFor="for">Hostel Name</FormLabel>
-                  
-                  <Select name="sem" style={{
-                    marginTop:"20px",
-                    paddingRight:"240px",
-                   
-                     border: "none",
-                     borderradius: "4px",
-                     
-                    
-                  }}>
-                    <option value="Ponnar">Ponnar</option>
-                    <option value="Dheeran">Dheeran</option>
-                    <option value="Kanban">Kanban</option>
-                    <option value="Bharathi">Bharathi</option>
-                    <option value="Vaigai">Vaigai</option>
-                   
-                  </Select>
-                 
-                 </div>
-                  }
+                  {visible && (
+                    <div>
+                      <FormLabel htmlFor="for">Hostel Name</FormLabel>
+
+                      <Select
+                        name="sem"
+                        style={{
+                          marginTop: "20px",
+                          paddingRight: "240px",
+
+                          border: "none",
+                          borderradius: "4px",
+                        }}
+                      >
+                        <option value="Ponnar">Ponnar</option>
+                        <option value="Dheeran">Dheeran</option>
+                        <option value="Kanban">Kanban</option>
+                        <option value="Bharathi">Bharathi</option>
+                        <option value="Vaigai">Vaigai</option>
+                      </Select>
+                    </div>
+                  )}
                 </FormLabel>
-                 <FormLabel htmlFor="for">FatherName</FormLabel>
+                <FormLabel htmlFor="for">FatherName</FormLabel>
                 <FormInput
                   type="text"
                   name="studname"
@@ -391,7 +376,7 @@ const Signup = () => {
                   onChange={handleChange}
                   required
                 />
-                 <FormLabel htmlFor="for">MotherName</FormLabel>
+                <FormLabel htmlFor="for">MotherName</FormLabel>
                 <FormInput
                   type="text"
                   name="studname"
@@ -456,4 +441,3 @@ const Signup = () => {
 };
 
 export default Signup;
- 

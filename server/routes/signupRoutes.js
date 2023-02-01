@@ -45,5 +45,5 @@ router
   .route("/student/new/detailsdup")
   .post(saveAccount, newStudentInfoController);
 
-router.route("/student/new/branch").get(listAllBranch);
+router.route("/student/new/branch").post(listAllBranch);
 module.exports = router;

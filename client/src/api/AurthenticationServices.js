@@ -19,5 +19,6 @@ export const verifyOtp = (credentials) => {
 };
 
 export const getBranchListForSignup = (credentials) => {
-  return Api().get("signup/student/new/branch", credentials);
+  console.log("API", credentials.programme);
+  return Api().post("signup/student/new/branch", credentials);
 };
