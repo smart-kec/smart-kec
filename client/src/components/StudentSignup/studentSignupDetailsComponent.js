@@ -81,7 +81,6 @@ const Signup = () => {
     studname: "",
     studrollno: "",
     studemail: "",
-    programme: "",
     branch: "",
     sem: "",
     graduationYear: "",
@@ -98,7 +97,7 @@ const Signup = () => {
     stayin:""
 
   });
-
+  const [programme, setProgramme] = useState({});
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -109,30 +108,19 @@ const Signup = () => {
       [name]: value,
     });
   };
-
-  var [branchValue, setBranch] = useState([
-    {
-      _id: "633d3a908a094cee83fd32be",
-      aliasName: "CSE",
-      programme: "BE",
-    },
-    {
-      _id: "633d3a908a094cee83fd32be",
-      aliasName: "CSE",
-      programme: "BE",
-    },
-  ]);
-  const handleBranch = async (e) => {
+  const Handler9 = async(data) => {
+    setProgramme(data);
+    console.log(data);
     try {
       // dispatch(loadingPage(true));
-      const res = await getBranchListForSignup({ programme: "BE" });
+      const res = await getBranchListForSignup({ programme: data });
 
-      console.log("Programme : ", values.programme);
+      console.log("Programme : ", data);
       // const msg = res.data.message;
       const status = res.data.STATUS;
       console.log(res);
       if (status === "success") {
-        setBranch((prevData) => [prevData, res.data]);
+        setBranch(res.data.data);
         console.log("Branch Value", branchValue);
         // dispatch(loadingPage(false));
       }
@@ -141,6 +129,10 @@ const Signup = () => {
       alert("Try Again after some time");
       console.log(err);
     }
+  };
+  var [branchValue, setBranch] = useState([]);
+  const handleBranch = async (e) => {
+    
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -213,8 +205,10 @@ const Signup = () => {
                 <FormLabel htmlFor="for">Programme</FormLabel>
                 <Select
                   name="programme"
-                  onChange={handleBranch}
-                  value={values.programme}
+                  // onChange={handleBranch}
+                  // value={values.programme}
+                  onChange={(event) => Handler9(event.target.value)}
+                   value={programme}
                 >
                   <option value="BE">B.E</option>
                   <option value="BTech">B.Tech</option>
