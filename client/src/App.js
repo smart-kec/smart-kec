@@ -15,11 +15,11 @@ import Dashboard from "./pages/Dashboard";
 // import Testing from "./pages/Testing";
 import LoadingComponent from "./components/LoadingPage/LoadingComponent";
 
-  {/*
+  
 import CreateOrganizer from "./components/createOrganizerComponent";
 import Add from "./components/AddHod/Front"
 import Display from "./components/Display"
-*/}
+
 function App() {
   return (
     <>
@@ -45,7 +45,7 @@ function App() {
 
         <Route path="testing" element={<LoadingComponent />}></Route>
 
-      {/* Temporary Routes 
+      Temporary Routes 
 
         <Route path="createOrganizer" element={<CreateOrganizer />} />
       </Routes>
@@ -54,7 +54,7 @@ function App() {
       </Routes>
       <Routes>
         <Route path="Display"element={<Display/>}/> 
-        */}
+       
 
       </Routes>
     </>

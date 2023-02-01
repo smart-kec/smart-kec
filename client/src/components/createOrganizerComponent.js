@@ -44,6 +44,7 @@ const CreateOrganizer = () => {
   };
   const Handler9 = (data) => {
     setBranch(data);
+    console.log(data);
   };
   const Handler10 = (data) => {
     setpassword(data);
