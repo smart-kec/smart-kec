@@ -22,6 +22,7 @@ const deleteOtp = require("../controller/otp/deleteOtp");
 const resendOtp = require("../controller/otp/resendOtp");
 const dupResponse = require("../controller/Student/dupResponse");
 const listAllBranch = require("../controller/Department/listAllBranch");
+const semCount = require("../controller/Department/semCount");
 
 router.route("/*").post(beforeAuthorization).get(beforeAuthorization);
 
@@ -46,4 +47,6 @@ router
   .post(saveAccount, newStudentInfoController);
 
 router.route("/student/new/branch").post(listAllBranch);
+router.route("/student/new/semCount").post(semCount);
+
 module.exports = router;

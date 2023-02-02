@@ -14,7 +14,11 @@ import {
   FormButton,
   Select,
 } from "../../assets/styles/style/SignupElements";
-import { getBranchListForSignup } from "../../api/AurthenticationServices";
+import {
+  sendStudentDetailsSignup,
+  getBranchListForSignup,
+  getSemListForSignup,
+} from "../../api/AurthenticationServices";
 
 const generateArrayOfYears = () => {
   const max = new Date().getFullYear();
@@ -70,6 +74,7 @@ const Signup = () => {
   // STATE
   const navigate = useNavigate();
   const stdEmail = useSelector((state) => state.data);
+
   React.useEffect(() => {
     if (stdEmail === "nill") {
       navigate("/signup/email");
@@ -80,9 +85,6 @@ const Signup = () => {
     studname: "",
     studrollno: "",
     studemail: "",
-    branch: "",
-    sem: "",
-    graduationYear: "",
     gender: "",
     phone: "",
     hack_id: "",
@@ -105,7 +107,13 @@ const Signup = () => {
     },
   ]);
 
+  let [semNoValue, setSemNoValue] = useState(["Choose Branch"]);
+  let [yearNoValue, setYearNoValue] = useState(["Choose Branch"]);
   const [programme, setProgramme] = useState({});
+  const [branch, setBranchValue] = useState({});
+  const [semNo, setSemNo] = useState({});
+  const [yearNo, setYearNo] = useState({});
+  const [graduationYear, setGraduationYear] = useState({});
   const changeProgrammeSelectOptionHandler = async (event) => {
     setProgramme(event.target.value);
 
@@ -129,6 +137,47 @@ const Signup = () => {
     }
   };
 
+  const changeBranchSelectOptionHandler = async (event) => {
+    console.log("ID ", event.target.value);
+    setBranchValue(event.target.value);
+
+    const arrayRange = (start, stop, step) =>
+      Array.from(
+        { length: (stop - start) / step + 1 },
+        (value, index) => start + index * step
+      );
+
+    try {
+      // dispatch(loadingPage(true));
+      const res = await getSemListForSignup({
+        deptID: event.target.value,
+      });
+      console.log(res.data.data);
+      // const msg = res.data.message;
+      const status = res.data.STATUS;
+      if (status === "success") {
+        // Need to generate range of values
+
+        setSemNoValue(arrayRange(1, res.data.data.noOfSemesters, 1));
+        setYearNoValue(arrayRange(1, res.data.data.courseDuration, 1));
+        // dispatch(loadingPage(false));
+      }
+    } catch (err) {
+      // dispatch(loadingPage(false));
+      alert("Try Again after some time");
+      console.log(err);
+    }
+  };
+
+  const changeSemNoValue = (event) => {
+    setSemNo(event.target.value);
+  };
+  const changeYearNoValue = (event) => {
+    setYearNo(event.target.value);
+  };
+  const handleChangeGraduationYear = (event) => {
+    setGraduationYear(event.target.value);
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log("validate", name, value);
@@ -153,14 +202,46 @@ const Signup = () => {
 
   const sendData = async () => {
     try {
-      dispatch(loadingPage(true));
+      // dispatch(loadingPage(true));
+      if (values.password === values.password2) {
+        errors.password2 = "";
+        const data = {
+          userEmail: stdEmail,
+          userType: "Student",
+          userPassword: values.password,
+          studentName: values.studname,
+          studentRollNo: values.studrollno,
+          stdprogramme: programme,
+          stdDeptId: branch,
+          stdSemNo: semNo,
+          stdyearOfStudy: yearNo,
+          stdgraduationYear: graduationYear,
+          stdgender: values.gender,
+          stdPhoneNumber: values.phone,
+          stdHackerRankId: values.hack_id,
+          stayIn: values.stayin,
+          fatherName: values.fathername,
+          motherName: values.mothername,
+          fatherPhnNumber: values.fatherphone,
+          motherPhnNumber: values.motherphone,
+        };
+        console.log(data);
+        const res = await sendStudentDetailsSignup(data);
+        console.log(res.data);
+        if (res.data.status === "success") {
+          alert(res.data.message);
+          navigate(`/`);
+        }
+      } else {
+        errors.password2 = "Confirm Password doesn't match";
+      }
     } catch (error) {
       alert("Error! Try Again after some time");
       navigate(`/signup/email`);
       console.log(error);
     }
   };
- 
+
   return (
     <>
       <Container>
@@ -212,10 +293,6 @@ const Signup = () => {
                   name="programme"
                   onChange={changeProgrammeSelectOptionHandler}
                   value={programme}
-                  // onChange={handleBranch}
-                  // value={values.programme}
-                  // onChange={(event) => Handler9(event.target.value)}
-                  // value={programme}
                 >
                   <option value="1">Choose...</option>
                   <option value="BE">BE</option>
@@ -228,26 +305,37 @@ const Signup = () => {
                 </Select>
 
                 <FormLabel htmlFor="for">Branch</FormLabel>
-                <Select name="branch">
+                <Select
+                  name="branch"
+                  onChange={changeBranchSelectOptionHandler}
+                  onClick={changeBranchSelectOptionHandler}
+                  value={branch}
+                >
                   {branchValue.map(function (dept) {
                     return <option value={dept._id}>{dept.aliasName}</option>;
                   })}
                 </Select>
 
-                <FormLabel htmlFor="for">Semester</FormLabel>
-                <Select name="sem">
-                  <option value="i">I</option>
-                  <option value="ii">II</option>
-                  <option value="iii">III</option>
-                  <option value="iv">IV</option>
-                  <option value="v">V</option>
-                  <option value="vi">VI</option>
-                  <option value="vii">VII</option>
-                  <option value="viii">VIII</option>
+                <FormLabel htmlFor="for">Semester No</FormLabel>
+                <Select name="sem" onChange={changeSemNoValue} value={semNo}>
+                  {semNoValue.map(function (data) {
+                    return <option value={data}>{data}</option>;
+                  })}
+                </Select>
+
+                <FormLabel htmlFor="for">Year of Study</FormLabel>
+                <Select name="year" onChange={changeYearNoValue} value={yearNo}>
+                  {yearNoValue.map(function (data) {
+                    return <option value={data}>{data}</option>;
+                  })}
                 </Select>
 
                 <FormLabel htmlFor="for">Graduation Year</FormLabel>
-                <Select name="graduationYear">
+                <Select
+                  name="graduationYear"
+                  onChange={handleChangeGraduationYear}
+                  value={graduationYear}
+                >
                   {years.map((year) => {
                     return (
                       <option value={year} key={year}>
@@ -271,9 +359,9 @@ const Signup = () => {
                     <div>
                       <FormInput
                         type="radio"
-                        value="male"
+                        value="Male"
                         name="gender"
-                        checked={values.gender == "male"}
+                        checked={values.gender == "Male"}
                         onChange={handleChange}
                       />
                       Male
@@ -281,9 +369,9 @@ const Signup = () => {
                     <div>
                       <FormInput
                         type="radio"
-                        value="female"
+                        value="Female"
                         name="gender"
-                        checked={values.gender == "female"}
+                        checked={values.gender == "Female"}
                         onChange={handleChange}
                       />
                       Female
@@ -327,9 +415,10 @@ const Signup = () => {
                     <div>
                       <FormInput
                         type="radio"
-                        value="0"
+                        value="DayScholar"
                         name="stayin"
                         onChange={handleChange}
+                        checked={values.stayin == "DaySchollar"}
                         onClick={() => setVisible(false)}
                       />
                       Dayschollar
@@ -337,9 +426,10 @@ const Signup = () => {
                     <div>
                       <FormInput
                         type="radio"
-                        value="1"
+                        value="Hosteller"
                         name="stayin"
                         onChange={handleChange}
+                        checked={values.stayin == "Hosteller"}
                         onClick={() => setVisible(true)}
                       />
                       Hosteller
@@ -350,7 +440,7 @@ const Signup = () => {
                       <FormLabel htmlFor="for">Hostel Name</FormLabel>
 
                       <Select
-                        name="sem"
+                        name="hostelName"
                         style={{
                           marginTop: "20px",
                           paddingRight: "240px",
@@ -371,7 +461,7 @@ const Signup = () => {
                 <FormLabel htmlFor="for">FatherName</FormLabel>
                 <FormInput
                   type="text"
-                  name="studname"
+                  name="fathername"
                   value={values.fathername}
                   onChange={handleChange}
                   required
@@ -379,7 +469,7 @@ const Signup = () => {
                 <FormLabel htmlFor="for">MotherName</FormLabel>
                 <FormInput
                   type="text"
-                  name="studname"
+                  name="mothername"
                   value={values.mothername}
                   onChange={handleChange}
                   required
@@ -387,7 +477,7 @@ const Signup = () => {
                 <FormLabel htmlFor="for">Father Ph.No</FormLabel>
                 <FormInput
                   type="text"
-                  name="studname"
+                  name="fatherphone"
                   value={values.fatherphone}
                   onChange={handleChange}
                   required
@@ -395,7 +485,7 @@ const Signup = () => {
                 <FormLabel htmlFor="for">Mother Ph.No</FormLabel>
                 <FormInput
                   type="text"
-                  name="studname"
+                  name="motherphone"
                   value={values.motherphone}
                   onChange={handleChange}
                   required

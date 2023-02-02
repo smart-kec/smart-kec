@@ -10,17 +10,21 @@ module.exports = async (req, res, next) => {
     studentRollNo,
     stdDob,
     stdprogramme,
-    stdbranch,
     stdDeptId,
     stdyearOfStudy,
-    stdsemesterNo,
+    stdSemNo,
     stdgender,
     stdgraduationYear,
     userEmail,
     stdPhoneNumber,
     stdHackerRankId,
+    stayIn,
+    fatherName,
+    motherName,
+    fatherPhnNumber,
+    motherPhnNumber,
   } = req.body;
-
+  console.log("Student Data", stayIn);
   try {
     const dept = await departmentModel.findOne({ _id: stdDeptId }, { _id: 1 });
     if (!dept) {
@@ -31,20 +35,24 @@ module.exports = async (req, res, next) => {
       rollNo: studentRollNo,
       dob: stdDob,
       programme: stdprogramme,
-      branch: stdbranch,
       deptId: ObjectId(stdDeptId),
       yearOfStudy: stdyearOfStudy,
-      semesterNo: stdsemesterNo,
+      semesterNo: stdSemNo,
       gender: stdgender,
       graduationYear: stdgraduationYear,
       email: userEmail,
       phoneNumber: stdPhoneNumber,
       hackerRankId: stdHackerRankId,
+      stayIn: stayIn,
+      fatherName: fatherName,
+      motherName: motherName,
+      fatherPhnNumber: fatherPhnNumber,
+      motherPhnNumber: motherPhnNumber,
     });
-    // next();
-    res.status(201).json({
-      STATUS: "success",
-    });
+    next();
+    // res.status(201).json({
+    //   STATUS: "success",
+    // });
   } catch (err) {
     const errors = handleError(
       err,

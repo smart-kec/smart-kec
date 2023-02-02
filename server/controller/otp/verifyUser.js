@@ -5,6 +5,7 @@ const tryAgainError = { status: "failed", message: "try again" };
 
 module.exports = async (req, res, next) => {
   const { userEmail } = req.body;
+  console.log("Verify user ", userEmail);
   try {
     const user = await otpModel.findOne(
       { email: userEmail },

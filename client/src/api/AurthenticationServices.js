@@ -22,3 +22,13 @@ export const getBranchListForSignup = (credentials) => {
   console.log("API", credentials.programme);
   return Api().post("signup/student/new/branch", credentials);
 };
+
+export const getSemListForSignup = (credentials) => {
+  console.log("API data", credentials.deptID);
+  return Api().post("signup/student/new/semCount", credentials);
+};
+
+export const sendStudentDetailsSignup = (credentials) => {
+  console.log("API Data Signup", credentials);
+  return Api().post("signup/student/new/details", credentials);
+};

@@ -6,7 +6,7 @@ var checkPassword;
 
 module.exports = async (req, res, next) => {
   const { userEmail, userPassword, userType } = req.body;
-
+  console.log("Save Account",userType);
   try {
     checkPassword = passwordRules.validate(userPassword, { details: true });
     if (checkPassword.length == 0) {

@@ -32,16 +32,13 @@ const studentInfoSchema = new mongoose.Schema({
   },
   dob: {
     type: Date,
-    required: [true, "DoB required"],
+    required: [false, "DoB required"],
   },
   programme: {
     type: String,
     required: [true, "A student must be in a programme"],
   },
-  branch: {
-    type: String,
-    required: [true, "Student must study in any one of the branches"],
-  },
+
   deptId: {
     type: ObjectIdSchema,
     required: [true, "Dept id missing"],
@@ -50,7 +47,7 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     default: "Not Assigned",
   },
-  semesterNo : {
+  semesterNo: {
     type: Number,
     default: 1,
   },
@@ -79,6 +76,30 @@ const studentInfoSchema = new mongoose.Schema({
     type: String,
     required: [true, "Must mention hacker rank id for Coding Contests"],
     unique: true,
+  },
+  stayIn: {
+    type: String,
+    required: [true, "Mention StayIn"],
+  },
+  fatherName: {
+    type: String,
+    required: [true, "Father Name Required"],
+  },
+  motherName: {
+    type: String,
+    required: [true, "Mother Name Required"],
+  },
+  fatherPhnNumber: {
+    type: String,
+    required: [true, "Student must mention Father mobile number for contact"],
+  },
+  motherPhnNumber: {
+    type: String,
+    required: [true, "Student must mention Mother mobile number for contact"],
+  },
+  hostelId: {
+    type: ObjectIdSchema,
+    required: [false, "Hostel id missing"],
   },
   registeredEvents: [registeredEventsSchema],
   classKey: ObjectIdSchema,
