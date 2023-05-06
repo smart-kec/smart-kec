@@ -5,7 +5,7 @@ const updateHandler = require("../HandleError/updateHandler");
 module.exports = async (req, res) => {
   const { classId, callName, classMail, semNo, gYear, regulationYear } =
     req.body;
-  try {
+  try { 
     const classInfo = await classModel.findOne(
       { _id: classId },
       { _id: 1, currentSemester: 1, status: 1 }

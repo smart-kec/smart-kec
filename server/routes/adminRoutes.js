@@ -76,7 +76,7 @@ router.route("/class/advisor/end/work").get(endAdvisor);
 router.route("/class/edit/details").get(editClassDetails);
 router.route("/class/enroll/students").put(enrollStudents);
 router.route("/class/list/student").get(classStudents);
-router.route("/class/list/advisors").get(listAdvisors)
+router.route("/class/list/advisors").get(listAdvisors);
 router.route("/class/unenroll/student").get(unEnrollStd);
 router.route("/class/choose/rep").get(chooseRep);
 router.route("/class/list/rep").get(listRep);

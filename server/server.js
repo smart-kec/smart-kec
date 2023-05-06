@@ -23,7 +23,7 @@ mongoose
     console.log(err);
   });
 
-const port = process.env.port;
+const port = 8000;
 
 app.listen(port, () => {
   console.log("Server started");
